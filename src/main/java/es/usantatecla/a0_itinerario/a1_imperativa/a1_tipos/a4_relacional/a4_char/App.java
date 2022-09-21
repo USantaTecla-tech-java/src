@@ -9,6 +9,10 @@ public class App {
 
         console.writeln('c' == 'c'); // true
         console.writeln('c' != 'C'); // true
-        console.writeln(' ' != '\n'); // true        
+        console.writeln(' ' != '\n'); // true  
+        console.writeln('a' < 'b'); // true   
+        console.writeln('a' <= 'a'); // true   
+        console.writeln('a' > 'A'); // true  
+        console.writeln('a' >= 'A'); // true    
     }
 }

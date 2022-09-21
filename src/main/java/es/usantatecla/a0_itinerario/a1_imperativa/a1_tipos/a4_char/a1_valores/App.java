@@ -11,6 +11,7 @@ public class App {
         console.writeln(' '); //  
         console.writeln('*'); // *
         console.writeln('\n'); // (salto de línea)
+        console.writeln('\u3333'); // ?
     }
 
 }
