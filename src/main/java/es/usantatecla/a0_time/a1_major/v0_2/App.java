@@ -1,10 +1,18 @@
-const { Console } = require("./console");
+package es.usantatecla.a0_time.a1_major.v0_2;
 
-const console = new Console();
-const age = console.readNumber("Qué años tienes? ");
-console.writeln(`${isAdult(age)? `Sí` : `No`} eres mayor de edad`);
+import es.usantatecla.utils.Console;
 
-function isAdult(age){
-  const AGE_MAJORITY = 18;
-  return age > AGE_MAJORITY;
+public class App {
+
+    public static void main(String[] args) {
+        Console console = new Console();
+        final int age = console.readInt("Qué años tienes? ");
+        console.writeln((isAdult(age) ? "Sí" : "No") + " eres mayor de edad");
+    }
+
+    static private boolean isAdult(int age){
+      final int AGE_MAJORITY = 18;
+      return age > AGE_MAJORITY;
+    }
+
 }

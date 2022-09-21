@@ -14,8 +14,7 @@ public class App {
         int thirdRight = number & 1;
         number = number >> 1;
         int fourthRight = number & 1;
-        console.writeln("Bits: "+firstRight+secondRight+thirdRight+fourthRight);
+        console.writeln("Bits: " + fourthRight + thirdRight + secondRight + firstRight);
     }
 
 }
-

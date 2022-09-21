@@ -8,7 +8,8 @@ public class App {
     Console console = new Console();
     int number = console.readInt("Dame un número inferior a 16: ");
     String binary = "";
-    for (int i = 0; i < 32; i++) {
+    final int BITS_LENGTH = 32;
+    for (int i = 0; i < BITS_LENGTH; i++) {
       binary = (number & 1) + binary;
       if ((i + 1) % 4 == 0) {
         binary = " " + binary;

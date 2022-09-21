@@ -24,7 +24,7 @@ public class App {
         final int fourthBit = binary;
         decimal = decimal + fourthBit * 8;
         binary = binary - fourthBit;
-        msg += "el número " + decimal + " decimal";
+        msg = msg + "el número " + decimal + " decimal";
         console.writeln(msg);
     }
 
