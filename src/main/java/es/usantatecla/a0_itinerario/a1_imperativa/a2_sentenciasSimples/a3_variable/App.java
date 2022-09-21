@@ -9,7 +9,15 @@ public class App {
         int identifier = 0;
         console.writeln("Valor actual ." + identifier + "."); // Valor actual .0.
         console.writeln("Valor siguiente ." + (identifier + 1) + "."); // Valor siguiente .1.
+        console.writeln("Valor actual ." + identifier + "."); // Valor actual .0.
         int identifierWithoutInitialization;
         //console.writeln("." + identifierWithoutInitialization + "."); // Error
+        byte code;
+        short age;
+        long euros;
+        float distance;
+        double lighYear;
+        char initial = 'A';
+        boolean error = false;
     }
 }
