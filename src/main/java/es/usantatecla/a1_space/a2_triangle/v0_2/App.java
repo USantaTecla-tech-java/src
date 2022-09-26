@@ -1,30 +1,38 @@
-const { Console } = require("./console");
+package es.usantatecla.a1_space.a2_triangle.v0_2;
 
-const console = new Console();
-const sideA = console.readNumber("Dame el 1º lado del triangulo: ");
-const sideB = console.readNumber("Dame el 2º lado del triangulo: ");
-const sideC = console.readNumber("Dame el 3º lado del triangulo: ");
-let greater = sideA;
-if (sideB > greater) {
-  greater = sideB;
-}
-if (sideC > greater) {
-  greater = sideC;
-}
-let msg = `Los lados ${sideA}, ${sideB} y ${sideC} `;
-const isTriangle = greater < (sideA + sideB + sideC) - greater;
-if (!isTriangle) {
-  msg += "NO ";
-}
-msg += `forman un triangulo`;
-if (isTriangle) {
-  msg += ` de tipo`;
-  if (sideA == sideB && sideB == sideC) {
-    msg += " equilatero";
-  } else if (sideA == sideB || sideB == sideC || sideC == sideA) {
-    msg += " isosceles";
-  } else {
-    msg += " escaleno";
+import es.usantatecla.utils.Console;
+
+public class App {
+
+  public static void main(String[] args) {
+    Console console = new Console();
+    final float sideA = console.readFloat("Dame el 1º lado del triangulo: ");
+    final float sideB = console.readFloat("Dame el 2º lado del triangulo: ");
+    final float sideC = console.readFloat("Dame el 3º lado del triangulo: ");
+    float greater;
+    if (sideA >= sideB && sideA >= sideC) {
+      greater = sideA;
+    } else if (sideB >= sideA && sideB >= sideC) {
+      greater = sideB;
+    } else {
+      greater = sideC;
+    }
+    String msg = "Los lados " + sideA + ", " + sideB + " y " + sideC + " ";
+    final boolean isTriangle = greater < (sideA + sideB + sideC) - greater;
+    if (!isTriangle) {
+      msg += "NO ";
+    }
+    msg += "forman un triangulo";
+    if (isTriangle) {
+      msg += " de tipo";
+      if (sideA == sideB && sideB == sideC) {
+        msg += " equilatero";
+      } else if (sideA == sideB || sideB == sideC || sideC == sideA) {
+        msg += " isosceles";
+      } else {
+        msg += " escaleno";
+      }
+    }
+    console.writeln(msg);
   }
 }
-console.writeln(msg);

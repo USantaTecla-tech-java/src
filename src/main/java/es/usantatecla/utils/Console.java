@@ -146,13 +146,31 @@ public class Console {
 		System.out.print(value);
 	}
 
+	public void write(String[] values) {
+		for(String value : values) {
+			this.write(value);
+		}
+	}
+
 	public void writeln(String value) {
 		this.write(value);
 		this.writeln();
 	}
 
+	public void writeln(String[] values) {
+		for(String value : values) {
+			this.writeln(value);
+		}
+	}
+
 	public void write(int value) {
 		System.out.print(value);
+	}
+
+	public void write(int[] values) {
+		for(int value : values) {
+			this.write(value + " - ");
+		}
 	}
 
 	public void writeln(int value) {
@@ -160,8 +178,20 @@ public class Console {
 		this.writeln();
 	}
 
+	public void writeln(int[] values) {
+		for(int value : values) {
+			this.writeln(value);
+		}
+	}
+
 	public void write(float value) {
 		System.out.print(value);
+	}
+
+	public void write(float[] values) {
+		for(float value : values) {
+			this.write(value + " - ");
+		}
 	}
 
 	public void writeln(float value) {
@@ -169,8 +199,20 @@ public class Console {
 		this.writeln();
 	}
 
+	public void writeln(float[] values) {
+		for(float value : values) {
+			this.writeln(value);
+		}
+	}
+
 	public void write(double value) {
 		System.out.print(value);
+	}
+
+	public void write(double[] values) {
+		for(double value : values) {
+			this.write(value + " - ");
+		}
 	}
 
 	public void writeln(double value) {
@@ -178,8 +220,20 @@ public class Console {
 		this.writeln();
 	}
 
+	public void writeln(double[] values) {
+		for(double value : values) {
+			this.writeln(value);
+		}
+	}
+	
 	public void write(long value) {
 		System.out.print(value);
+	}
+
+	public void write(long[] values) {
+		for(long value : values) {
+			this.write(value + " - ");
+		}
 	}
 
 	public void writeln(long value) {
@@ -187,17 +241,41 @@ public class Console {
 		this.writeln();
 	}
 
+	public void writeln(long[] values) {
+		for(long value : values) {
+			this.writeln(value);
+		}
+	}
+
 	public void write(byte value) {
 		System.out.print(value);
 	}
-
+	
+	public void write(byte[] values) {
+		for(byte value : values) {
+			this.write(value + " - ");
+		}
+	}
+	
 	public void writeln(byte value) {
 		this.write(value);
 		this.writeln();
 	}
 
+	public void writeln(byte[] values) {
+		for(byte value : values) {
+			this.writeln(value);
+		}
+	}
+
 	public void write(short value) {
 		System.out.print(value);
+	}
+
+	public void write(short[] values) {
+		for(short value : values) {
+			this.write(value + " - ");
+		}
 	}
 
 	public void writeln(short value) {
@@ -205,8 +283,20 @@ public class Console {
 		this.writeln();
 	}
 
+	public void writeln(short[] values) {
+		for(short value : values) {
+			this.writeln(value);
+		}
+	}
+
 	public void write(char value) {
 		System.out.print(value);
+	}
+
+	public void write(char[] values) {
+		for(char value : values) {
+			this.write(value + " - ");
+		}
 	}
 
 	public void writeln(char value) {
@@ -214,13 +304,31 @@ public class Console {
 		this.writeln();
 	}
 
+	public void writeln(char[] values) {
+		for(char value : values) {
+			this.writeln(value);
+		}
+	}
+
 	public void write(boolean value) {
 		System.out.print(value);
+	}
+
+	public void write(boolean[] values) {
+		for(boolean value : values) {
+			this.write(value + " - ");
+		}
 	}
 
 	public void writeln(boolean value) {
 		this.write(value);
 		this.writeln();
+	}
+
+	public void writeln(boolean[] values) {
+		for(boolean value : values) {
+			this.writeln(value);
+		}
 	}
 
 	private void writeError(String formato) {
