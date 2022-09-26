@@ -12,11 +12,10 @@ public class App {
   }
 
   static float power(int base, int exponent) {
-    return exponent < 0 
-      ? 1 / power(base, -exponent)
-      : exponent == 0 
-        ? 1
-        : base * power(base, exponent - 1);
+    return exponent < 0
+        ? 1 / power(base, -exponent)
+        : exponent == 0
+            ? 1
+            : base * power(base, exponent - 1);
   }
 }
-
