@@ -13,36 +13,55 @@ public class App {
         for (int x : new int[] { 1, 2, 3, 4, 5 }) {
             console.write(x + ", ");
         }
-        console.writeln(); // 1,2,3,4,5,
-        for (String x : new String[] { "Javascript", "Java", "Scala" }) {
+        console.writeln(); // 1, 2, 3, 4, 5,
+        console.writeln(new int[] { 1, 2, 3, 4, 5 }); // 1, 2, 3, 4, 5,
+        for (String x : new String[] { "Java", "Javascript", "Scala" }) {
             console.write(x + ", ");
         }
         console.writeln(); // Javascript, Java, Scala
+        console.writeln(new String[] { "Java", "Javascript", "Scala" }); // Javascript, Java, Scala
         for (boolean x : new boolean[] { false, true }) {
             console.write(x + ", ");
         }
         console.writeln(); // false, true
         boolean b = false;
-        for (boolean x : new boolean[] { true,b,5+6>5-6 }) {
+        for (boolean x : new boolean[] { true, b, 5 + 6 > 5 - 6 }) {
             console.write(x + ", ");
         }
         console.writeln(); // true, false, true,
 
-        for (char[] vowels : new char[][] { {'a','e','i','o','u'}, {'A','E','I','O','U'} }) {
+        for (char[] vowels : new char[][] { 
+                { 'a', 'e', 'i', 'o', 'u' }, 
+                { 'A', 'E', 'I', 'O', 'U' } }) {
             for (char vowel : vowels) {
                 console.write(vowel + ", ");
             }
+            console.writeln();
         }
-        console.writeln(); // a, e, i, o, u, A, E, I, O, U
+        console.writeln(); // a, e, i, o, u, 
+        // A, E, I, O, U
 
-        for (char[] row : new char[][] { {'x',' ','o'},{'x','o','o'},{' ',' ','x'} }) {
+        for (char[] row : new char[][] { 
+                { 'x', ' ', 'o' }, 
+                { 'x', 'o', 'o' }, 
+                { ' ', ' ', 'x' } }) {
             for (char token : row) {
                 console.write(token + ", ");
             }
+            console.writeln();
         }
-        console.writeln(); // x, ,o,x,o,o, , ,x
-        
-        for (int[][] tableData : new int[][][] { { {0,0,0},{0,0},{0} }, { {},{1,2,3,4} } }) {
+        console.writeln(); // x, ,o
+        // x,o,o,
+        //  , ,x
+
+        for (int[][] tableData : new int[][][] { 
+                { 
+                    { 0, 0, 0 }, 
+                    { 0, 0 }, 
+                    { 0 } }, 
+                { 
+                    {}, 
+                    { 1, 2, 3, 4 } } }) {
             for (int[] rowData : tableData) {
                 for (int value : rowData) {
                     console.write(value + ", ");
@@ -52,4 +71,3 @@ public class App {
         console.writeln(); // 0,0,0,0,0,0,1,2,3,4
     }
 }
-
