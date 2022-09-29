@@ -24,16 +24,16 @@ public class App {
     console.writeln("Matriz original: ");
     for (int i = 0; i < matrix.length; i++) {
       for (int j = 0; j < matrix[i].length; j++) {
-        console.write(matrix[j][i]+", ");
+        console.write(matrix[j][i] + ", ");
       }
       console.writeln();
     }
     console.writeln("Matriz original: ");
     for (int i = 0; i < transposed.length; i++) {
       for (int j = 0; j < transposed[i].length; j++) {
-        console.write(matrix[j][i]+", ");
+        console.write(matrix[j][i] + ", ");
       }
       console.writeln();
     }
-    }
+  }
 }
