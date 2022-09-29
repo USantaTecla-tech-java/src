@@ -22,6 +22,8 @@ public class App {
             console.write(item+", "); // 1, 2, 3
         }
         console.writeln();
+        console.writeln(new int[]{0,1,2}.length); // 3
+
     }
 }
 
