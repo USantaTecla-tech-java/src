@@ -31,5 +31,13 @@ public class App {
         array2[1] = 0;
         console.writeln(array1); // 1,666,3
         console.writeln(array2); // 1,0,3
+        for (int value : array1) {
+            console.write(value + ", ");
+        }
+        console.writeln();
+        for (int i = 0; i < array1.length; i++) {
+            console.write(array1[i] + ", ");
+        }
+        console.writeln();
     }
 }
