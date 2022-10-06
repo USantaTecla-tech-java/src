@@ -5,49 +5,49 @@ import es.usantatecla.utils.Console;
 class ServicesContract {
 
 	private final int year;
-	private Interval[] hours;
-	private static final Interval PREFFIX = new Interval(8.0, 12.0);
-	private static final double PRECIO_PREFIJADO = 70.0;
-	private static final double PRECIO_EXTRAORDINARIO = 90.0;
+	private Interval[] timetable;
+	private static final Interval PRESET_INTERVAL = new Interval(8.0, 12.0);
+	private static final double PRESET_COST_PER_HOUR = 70.0;
+	private static final double EXTRAORDINARY_COST_PER_HOUR = 90.0;
 
 	public ServicesContract(int year) {
 		this.year = year;
-		hours = new Interval[Date.daysInYear(year)];
-		for (int i = 0; i < hours.length; i++) {
-			hours[i] = PREFFIX.copy();
+		timetable = new Interval[Date.daysInYear(year)];
+		for (int i = 0; i < timetable.length; i++) {
+			timetable[i] = PRESET_INTERVAL.copy();
 		}
 	}
 
-	public void anular(Date date) {
-		if (date.getYear() == year) {
-			hours[date.daysElapsedYear()] = null;
-		}
+	public void cancel(Date date) {
+		assert date.getYear() == year;
+
+		timetable[date.daysElapsedYear()] = null;
 	}
 
-	public void ampliar(Date date, double factor) {
-		if (date.getYear() == year
-				&& hours[date.daysElapsedYear()] != null) {
-			hours[date.daysElapsedYear()].escale(factor);
-		}
+	public void enlarge(Date date, double factor) {
+		assert date.getYear() == year;
+		assert timetable[date.daysElapsedYear()] != null;
+
+		timetable[date.daysElapsedYear()].escale(factor);
 	}
 
 	public void desplazar(Date date, double desplazamiento) {
-		if (date.getYear() == year
-				&& hours[date.daysElapsedYear()] != null) {
-			hours[date.daysElapsedYear()].shift(desplazamiento);
-		}
+		assert date.getYear() == year;
+		assert timetable[date.daysElapsedYear()] != null;
+
+		timetable[date.daysElapsedYear()].shift(desplazamiento);
 	}
 
 	public void writeln() {
 		Console console = new Console();
 		console.writeln("Contrato de limpieza: " + year);
 		Date date = new Date(1, Month.JANUARY, year);
-		for (int i = 0; i < hours.length; i++) {
+		for (int i = 0; i < timetable.length; i++) {
 			console.write("(" + (i + 1) + ") " + date.toString() + " - ");
-			if (hours[i] == null) {
+			if (timetable[i] == null) {
 				console.writeln("Anulado");
 			} else {
-				console.writeln(hours[i].toString());
+				console.writeln(timetable[i].toString());
 			}
 			date = date.next();
 		}
@@ -55,51 +55,53 @@ class ServicesContract {
 
 	public double getCost() {
 		double cost = 0.0;
-		for (int i = 0; i < hours.length; i++) {
-			if (hours[i] != null) {
-				double prefijado = 0.0;
-				Interval interseccion = hours[i].intersection(PREFFIX);
-				if (interseccion != null) {
-					prefijado = interseccion.length();
-					cost += prefijado * PRECIO_PREFIJADO;
-				}
-				cost += (hours[i].length() - prefijado)
-						* PRECIO_EXTRAORDINARIO;
-			}
+		for (int i = 0; i < timetable.length; i++) {
+			cost += this.cost(timetable[i]);
 		}
 		return cost;
 	}
 
-	public static double cost(Interval intervalo) {
-		double resultado = 0.0;
-		double prefijado = 0.0;
-		Interval interseccion = intervalo.intersection(PREFFIX);
-		if (interseccion != null) {
-			prefijado = interseccion.length();
-			resultado += prefijado * PRECIO_PREFIJADO;
+	public double cost(Interval interval) {
+		if (interval == null) {
+			return 0.0;
 		}
-		resultado += (intervalo.length() - prefijado) * PRECIO_EXTRAORDINARIO;
-		return resultado;
+		double cost = 0.0;
+		double presetHours = 0.0;
+		Interval intersection = interval.intersection(PRESET_INTERVAL);
+		if (intersection != null) {
+			presetHours = intersection.length();
+			cost += presetHours * PRESET_COST_PER_HOUR;
+		}
+		cost += (interval.length() - presetHours)
+				* EXTRAORDINARY_COST_PER_HOUR;
+		return cost;
 	}
 
 	public static void main(String[] args) {
 		Console console = new Console();
-		ServicesContract eui2015 = new ServicesContract(2015);
-		eui2015.anular(new Date(25, Month.JANUARY, 2015));
-		eui2015.ampliar(new Date(30, Month.APRIL, 2015), 2.0);
-		eui2015.desplazar(new Date(28, Month.DECEMBER, 2015), 1.0);
-		eui2015.writeln();
-		console.writeln("Coste total del contrato: "
-				+ eui2015.getCost() + " Euros");
+		ServicesContract etsisi = new ServicesContract(2015);
 		
-		String horario = "8:00-15:00";
-		Interval intervalo = new Interval(horario);
-		console.writeln("Coste del horario "
-				+ horario + ": " + ServicesContract.cost(intervalo));
+		etsisi.writeln();
+		double cost = etsisi.getCost();
+		console.writeln("Coste anual del contrato: " + cost + " €");
+		console.writeln(cost == 102200 ? "" : "ERROR!!!!");
+
+		etsisi.cancel(new Date(25, Month.JANUARY, 2015));
+		etsisi.writeln();
+		cost = etsisi.getCost();
+		console.writeln("Coste anual del contrato: " + cost + " €");
+		console.writeln(cost == 101920 ? "" : "ERROR!!!!");
 		
-		horario = "11:15-16:30";
-		intervalo = new Interval(horario);
-		console.writeln("Coste del horario "
-				+ horario + ": " + ServicesContract.cost(intervalo));
+		etsisi.enlarge(new Date(30, Month.APRIL, 2015), 2.0);
+		etsisi.writeln();
+		cost = etsisi.getCost();
+		console.writeln("Coste anual del contrato: " + cost + " €");
+		console.writeln(cost == 102280 ? "" : "ERROR!!!!");
+
+		etsisi.desplazar(new Date(28, Month.DECEMBER, 2015), 1.0);
+		etsisi.writeln();
+		cost = etsisi.getCost();
+		console.writeln("Coste anual del contrato: " + cost + " €");
+		console.writeln(cost == 102300 ? "" : "ERROR!!!!");
 	}
 }
