@@ -6,7 +6,7 @@ public abstract class EscapeMenu extends AlterantiveMenu {
 
     public EscapeMenu(String title){
         super(title);
-        this.escapeOption = new EscapeOption("Salir");
+        this.escapeOption = new EscapeOption();
         this.add(escapeOption);
     }
 
@@ -18,8 +18,8 @@ public abstract class EscapeMenu extends AlterantiveMenu {
 
 class XEscapeMenu extends EscapeMenu {
 
-    public XEscapeMenu(String title) {
-        super(title);
+    public XEscapeMenu() {
+        super("XEscapeMenu");
     }
 
     protected void addOptions(){
@@ -29,7 +29,7 @@ class XEscapeMenu extends EscapeMenu {
     }
 
     public static void main(String[] args) {
-        XEscapeMenu xEscapeMenu = new XEscapeMenu("Titulo");
+        XEscapeMenu xEscapeMenu = new XEscapeMenu();
         xEscapeMenu.exec();
     }
 }

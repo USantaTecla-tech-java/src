@@ -17,8 +17,8 @@ public abstract class IterativeMenu extends EscapeMenu {
 
 class XIterativeMenu extends IterativeMenu {
 
-    public XIterativeMenu(String title) {
-        super(title);
+    public XIterativeMenu() {
+        super("XIterativeMenu");
     }
 
     protected void addOptions(){
@@ -28,7 +28,7 @@ class XIterativeMenu extends IterativeMenu {
     }
 
     public static void main(String[] args) {
-        XIterativeMenu xIterativeMenu = new XIterativeMenu("Titulo");
+        XIterativeMenu xIterativeMenu = new XIterativeMenu();
         xIterativeMenu.exec();
     }
 }

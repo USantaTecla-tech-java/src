@@ -4,8 +4,8 @@ public class EscapeOption extends Option{
 
     private boolean executed;
 
-    public EscapeOption(String title){
-        super(title);
+    public EscapeOption(){
+        super("Salir");
         this.executed = false;
     }
 

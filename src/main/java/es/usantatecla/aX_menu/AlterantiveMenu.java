@@ -46,8 +46,8 @@ public abstract class AlterantiveMenu {
 class XAlternativeMenu extends AlterantiveMenu {
 
     
-    public XAlternativeMenu(String title) {
-        super(title);
+    public XAlternativeMenu() {
+        super("XAlternativeMenu");
     }
 
     protected void addOptions(){
@@ -57,7 +57,7 @@ class XAlternativeMenu extends AlterantiveMenu {
     }
 
     public static void main(String[] args) {
-        XAlternativeMenu xAlterantiveMenu = new XAlternativeMenu("Titulo");
+        XAlternativeMenu xAlterantiveMenu = new XAlternativeMenu();
         xAlterantiveMenu.exec();
     }
 }

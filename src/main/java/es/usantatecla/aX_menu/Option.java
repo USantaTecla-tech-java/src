@@ -8,10 +8,10 @@ public abstract class Option {
         this.title = title;
     }
 
-    abstract void exec();
+    public abstract void exec();
 
     String getTitle() {
         return this.title;
     }
-    
+
 }

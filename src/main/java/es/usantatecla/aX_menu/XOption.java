@@ -9,7 +9,7 @@ public class XOption extends Option {
     }
 
     @Override
-    void exec() {
+    public void exec() {
         new Console().writeln("Eejcutando comando " + this.getTitle());
     }
     
