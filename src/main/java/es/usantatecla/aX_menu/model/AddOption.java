@@ -13,9 +13,9 @@ public class AddOption extends ModelOption {
         Console console = new Console();
         String string;
         do {
-            string = console.readString("Dame una cadena de caracteres");
-        } while (!string.trim().equals(""));
-        model.add(string);
+            string = console.readString("Dame una cadena de caracteres: ");
+        } while (string.trim().equals(""));
+        model.add(string.trim());
     }
     
 }

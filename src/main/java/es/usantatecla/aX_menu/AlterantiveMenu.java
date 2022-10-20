@@ -22,6 +22,10 @@ public abstract class AlterantiveMenu {
         this.options.add(option);
     }
 
+    protected void removeOptions(){
+        this.options.clear();
+    }
+
     public void exec() {
         Console console = new Console();
         console.writeln(this.title);

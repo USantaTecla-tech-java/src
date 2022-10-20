@@ -9,9 +9,9 @@ public class RemoveOption extends ModelOption {
     }
 
     @Override
-    public void exec() { 
+    public void exec() {
         new XDynamicMenu(model).exec();
-    }   
+    }
 }
 
 class XDynamicMenu extends DynamicMenu {
@@ -21,13 +21,18 @@ class XDynamicMenu extends DynamicMenu {
     public XDynamicMenu(Model model) {
         super("Selección");
         this.model = model;
+        this.addOptions();
+
     }
 
     @Override
     protected void addOptions() {
-        for(int i=0; i<model.size(); i++){
-            this.add(new RemoveUnitOption(model, i));
+        if (this.model != null) {
+            this.removeOptions();
+            for (int i = 0; i < model.size(); i++) {
+                this.add(new RemoveUnitOption(model, i));
+            }
         }
     }
-    
+
 }

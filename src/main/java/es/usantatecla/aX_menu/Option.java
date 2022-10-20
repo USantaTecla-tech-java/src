@@ -10,7 +10,7 @@ public abstract class Option {
 
     public abstract void exec();
 
-    String getTitle() {
+    protected String getTitle() {
         return this.title;
     }
 

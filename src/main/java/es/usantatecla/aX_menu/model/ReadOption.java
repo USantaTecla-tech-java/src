@@ -11,7 +11,6 @@ public class ReadOption extends ModelOption {
     @Override
     public void exec() {
         Console console = new Console();
-        console.writeln(this.model == null);
         for (int i = 0; i < this.model.size(); i++) {
             console.writeln((i + 1) + ". " + this.model.get(i));
         }

@@ -6,17 +6,17 @@ import es.usantatecla.aX_menu.model.ReadOption;
 import es.usantatecla.aX_menu.model.RemoveOption;
 
 public abstract class DynamicMenu extends IterativeMenu {
-    
-    public DynamicMenu(String title){
+
+    public DynamicMenu(String title) {
         super(title);
     }
 
     @Override
-    public void exec(){
+    public void exec() {
         do {
             this.addOptions();
             super.exec();
-        } while(!this.isExecutedEscapeOption());
+        } while (!this.isExecutedEscapeOption());
     }
 
 }
@@ -28,19 +28,20 @@ class YIterativeMenu extends IterativeMenu {
     public YIterativeMenu(Model model) {
         super("YIterativeMenu");
         this.model = model;
+        this.addOptions();
     }
 
     @Override
     protected void addOptions() {
-        this.add(new ReadOption(this.model));
-        this.add(new AddOption(this.model));
-        this.add(new RemoveOption(this.model));
+        if (this.model != null) {
+            this.add(new ReadOption(this.model));
+            this.add(new AddOption(this.model));
+            this.add(new RemoveOption(this.model));
+        }
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         new YIterativeMenu(new Model()).exec();
     }
 
 }
-
-

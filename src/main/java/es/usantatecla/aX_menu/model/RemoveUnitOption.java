@@ -7,7 +7,12 @@ public class RemoveUnitOption extends ModelOption {
 
     public RemoveUnitOption(Model model, int index) {
         super("Eliminar ", model);
+        this.model = model;
         this.index = index;
+    }
+
+    protected String getTitle(){
+        return super.getTitle() + index + ": " + model.get(index);
     }
 
     @Override
