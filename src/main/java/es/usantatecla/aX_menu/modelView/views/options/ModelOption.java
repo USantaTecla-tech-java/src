@@ -1,6 +1,7 @@
-package es.usantatecla.aX_menu.model;
+package es.usantatecla.aX_menu.modelView.views.options;
 
-import es.usantatecla.aX_menu.Option;
+import es.usantatecla.aX_menu.modelView.models.Model;
+import es.usantatecla.aX_menu.utils.Option;
 
 public abstract class ModelOption extends Option {
 
@@ -10,5 +11,7 @@ public abstract class ModelOption extends Option {
         super(string);
         this.model = model;
     }
+
+    public abstract void interact();
 
 }

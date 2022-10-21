@@ -1,28 +1,27 @@
-package es.usantatecla.aX_menu.model;
+package es.usantatecla.aX_menu.modelView.models;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Model {
-    
+
     private List<String> strings;
 
-    public Model(){
+    public Model() {
         this.strings = new ArrayList<String>();
-        this.strings.add("Ana");
-        this.strings.add("Bea");
-        this.strings.add("Cio");
+        for (String string : new String[] { "Ana", "Bea", "Cio" })
+            this.strings.add(string);
     }
 
-    public void add(String string){
+    public void add(String string) {
         this.strings.add(string);
     }
 
-    public void remove(int index){
+    public void remove(int index) {
         this.strings.remove(index);
     }
 
-    public String get(int index){
+    public String get(int index) {
         return this.strings.get(index);
     }
 

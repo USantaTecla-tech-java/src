@@ -1,21 +1,21 @@
-package es.usantatecla.aX_menu;
+package es.usantatecla.aX_menu.utils;
 
-public class EscapeOption extends Option{
+public class QuitOption extends Option {
 
     private boolean executed;
 
-    public EscapeOption(){
+    public QuitOption() {
         super("Salir");
         this.executed = false;
     }
 
     @Override
-    public void exec() {
+    public void interact() {
         this.executed = true;
-    }  
+    }
 
-    protected boolean isExecuted(){
+    protected boolean isExecuted() {
         return this.executed;
     }
-    
+
 }

@@ -10,7 +10,7 @@ public class App {
         console.writeln("cadena de caracteres con comillas dobles 'con comillas simples' dentro"); // cadena de caracteres con comillas dobles 'con comillas simples' dentro
         console.writeln("cadena de caracteres\ncon salto de línea y \ttabulador"); // cadena de caracteres
         // con salto de línea y    tabulador
-        console.writeln("Qué \"incomodo\" usar comillas con 'escape'!!!"); // Qué "comodo" usar comillas con normalidad sin 'escaparlas'!!!
+        console.writeln("Qué \"incomodo\" usar comillas con 'quit'!!!"); // Qué "comodo" usar comillas con normalidad sin 'escaparlas'!!!
         console.writeln(""); //  
         console.writeln("1"); // 1
         console.writeln("123"); // 123
