@@ -5,10 +5,10 @@ class Node extends Interval {
 	private Node previous;
 	private Node next;
 
-	public Node(Node previous, Interval interval, Node mext) {
+	public Node(Node previous, Interval interval, Node next) {
 		super(interval);
 		this.setPrevious(previous);
-		this.setNext(mext);
+		this.setNext(next);
 	}
 
 	public Node getPrevious() {

@@ -67,16 +67,14 @@ class List {
 	}
 
 	public boolean includes(Interval interval) {
-		if (this.isEmpty()) {
+		if (this.isEmpty())
 			return false;
-		} else {
-			Node current = this.first;
-			while (current.getNext() != null &&
-					!current.getInterval().equals(interval)) {
-				current = current.getNext();
-			}
-			return current.getInterval().equals(interval);
+		Node current = this.first;
+		while (current.getNext() != null &&
+				!current.getInterval().equals(interval)) {
+			current = current.getNext();
 		}
+		return current.getInterval().equals(interval);
 	}
 
 	public Iterator getIterator() {
@@ -96,7 +94,7 @@ class List {
 	public static void main(String[] args) {
 		GestorIO gestorIO = GestorIO.getGestorIO();
 		List list = new List();
-		gestorIO.writeln ("Contenido inicial de la lista:");
+		gestorIO.writeln("Contenido inicial de la lista:");
 		list.writeln();
 		gestorIO.writeln("Esta: " + list.includes(new Interval(-7, 7)));
 
