@@ -21,6 +21,10 @@ public class Registry {
 		this.options.add(this.activeOption, option);
 	}
 
+	public boolean undoable() {
+		return this.activeOption < this.options.size();
+	}
+
 	public void undo() {
 		assert this.undoable();
 
@@ -28,19 +32,15 @@ public class Registry {
 		this.activeOption++;
 	}
 
+	public boolean redoable() {
+		return this.activeOption > 0;
+	}
+
 	public void redo() {
 		assert this.redoable();
 
 		this.activeOption--;
 		this.options.get(this.activeOption).redo();
-	}
-
-	public boolean undoable() {
-		return this.activeOption < this.options.size();
-	}
-
-	public boolean redoable() {
-		return this.activeOption > 0;
 	}
 
 }
