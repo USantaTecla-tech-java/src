@@ -15,5 +15,9 @@ public class App {
         console.writeln(x); // 0
         x = x + 1;
         console.writeln(x); // 1
+        console.writeln(x + 1); // 2
+        console.writeln(x); // 1
+        console.writeln(x = x + 1); // 2
+        console.writeln(x); // 2
     }
 }
