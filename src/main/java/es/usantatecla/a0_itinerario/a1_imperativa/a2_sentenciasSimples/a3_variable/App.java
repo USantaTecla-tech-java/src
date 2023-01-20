@@ -12,11 +12,11 @@ public class App {
         console.writeln("Valor actual ." + identifier + "."); // Valor actual .0.
         int identifierWithoutInitialization;
         //console.writeln("." + identifierWithoutInitialization + "."); // Error
-        byte code;
-        short age;
-        long euros;
-        float distance;
-        double lighYear;
+        byte code = 127;
+        short age = -1000;
+        long euros = 1234567890;
+        float distance; // conversion
+        double lighYear = 0.0234;
         char initial = 'A';
         boolean error = false;
     }

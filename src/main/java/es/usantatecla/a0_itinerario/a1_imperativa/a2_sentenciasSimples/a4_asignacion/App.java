@@ -6,18 +6,14 @@ public class App {
 
     public static void main(String[] args) {
         Console console = new Console();
-        byte byteVariable = 1;
-        short shortVariable = 2;
-        int intVariable = 3;
-        long longVariable = 4;
-        //float floatVariable = 0.1;
-        double doubleVariable  = 0.01;
-        char character = ' ';
-        boolean  logic = true;
         int x;
         int y;
         int z = -1;
         x = y = z;
         console.writeln(x); // -1
+        x = 0;
+        console.writeln(x); // 0
+        x = x + 1;
+        console.writeln(x); // 1
     }
 }
