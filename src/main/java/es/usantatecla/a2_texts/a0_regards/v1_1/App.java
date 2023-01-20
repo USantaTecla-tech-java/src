@@ -5,7 +5,8 @@ import es.usantatecla.utils.Console;
 public class App {
 
     public static void main(String[] args) {
-        Console console = new Console();console.writeln("Hola, Mundo!!!\n" 
+        Console console = new Console();
+        console.writeln("Hola, Mundo!!!\n" 
         + "Disculpa, no me despedí!!!\n"
         + "Hasta luego!!!");
     }
