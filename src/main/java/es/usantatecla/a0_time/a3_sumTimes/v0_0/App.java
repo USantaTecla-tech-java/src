@@ -17,6 +17,10 @@ public class App {
       afterMinutes -= MINUTES_PER_HOUR;
       afterHours++;
     }
+    final int HOURS_PER_DAY = 24;
+    if (afterHours >= HOURS_PER_DAY) {
+      afterHours -= HOURS_PER_DAY;
+    }
     console.writeln("Serán las " + afterHours + ":" + afterMinutes);
   }
 
