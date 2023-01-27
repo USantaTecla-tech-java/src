@@ -6,9 +6,6 @@ public class App {
 
   public static void main(String[] args) {
     Console console = new Console();
-    int[] array = new int[] { 1, 2, 3, 4, 5 };
-    console.writeln(array + " con " + array.length); // 1,2,3,4,5 con 5 items
-
     int[][] bidimensional = new int[][] {
         { 1, 2, 3 },
         { 0 },
