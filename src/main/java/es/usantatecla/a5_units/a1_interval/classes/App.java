@@ -94,8 +94,16 @@ class Interval {
 
     public void read() {
         Console console = new Console();
-        this.min = console.readFloat("Dame el mínimo del intervalo");
-        this.max = console.readFloat("Dame el máximo del intervalo");
+        this.min = console.readFloat("Dame el mínimo del intervalo: ");
+        this.max = console.readFloat("Dame el máximo del intervalo: ");
+    }
+
+    public void writeln() {
+        new Console().writeln(this.toString());
+    }
+
+    public String toString() {
+        return "[" + this.min + ", " + this.max + "]";
     }
 
 }
@@ -113,15 +121,22 @@ public class App {
         for (int i = 0; i < intervals.length; i++) {
             console.writeln("Intervalo: " + intervals[i] + " e inversa: " + intervals[i].opposite());
         }
-        Interval sum = new Interval(0);
-        Interval product = new Interval(1);
-        for (int i = 0; i < intervals.length; i++) {
+        Interval union = intervals[0];
+        Interval intersection = intervals[0];
+        for (Interval interval : intervals) {
+            union = union.union(interval);
+            intersection = intersection.intersection(interval);
         }
-        console.writeln("Suma: " + sum);
-        console.writeln("Producto: " + product);
-        for (int i = 0; i < intervals.length; i++) {
-            console.writeln("Suma sin " + intervals[i] + ": ");
-            console.writeln("Producto sin " + intervals[i] + ": ");
+        console.writeln("Union: " + union);
+        console.writeln("Intersection: " + intersection);
+
+        Interval interval = new Interval();
+        interval.read();
+        final int times = console.readInt("Dame el número de partes: ");
+        intervals = interval.split(times);
+        for(Interval part : intervals){
+            part.writeln();
         }
+
     }
 }
