@@ -1,59 +1,127 @@
-const { Console } = require("./console");
+package es.usantatecla.a5_units.a1_interval.classes;
 
-const console = new Console();
-let interval = {
-    min: -4,
-    max: 100,
-    length: function () {
-        return -this.min + this.max;
-    },
+import es.usantatecla.utils.Console;
 
-    midpoint: function () {
+class Interval {
+
+    private float min;
+    private float max;
+
+    public Interval(float min, float max) {
+        this.min = min;
+        this.max = max;
+    }
+
+    public Interval(float max) {
+        this(0, max);
+    }
+
+    public Interval() {
+        this(0);
+    }
+
+    public Interval clone(){
+        return new Interval(this);
+    }
+
+    private Interval(Interval interval) {
+        this(interval.min, interval.max);
+    }
+
+    public float length() {
+        return this.max - this.min;
+    }
+
+    public float midpoint() {
         return (-this.min + this.max) / 2;
-    },
-    displacedLeft: function () {
-        let points = [];
-        let origin = -this.min + this.min;
-        let displacedMax = -this.min + this.max;
+    }
 
-        points.push(origin, displacedMax);
+    public boolean includes(float point) {
+        return this.min <= point && point <= this.max;
+    }
 
-        return points;
+    public boolean includes(Interval interval) {
+        return this.includes(interval.min) 
+            && this.includes(interval.max);
+    }
 
-    },
-    displacedRight: function () {
-        let points = [];
-        let origin = -this.max + this.max;
-        let displacedMin = -this.max + this.min;
+    public boolean isIntersected(Interval interval) {
+        return this.includes(interval.min) 
+            || this.includes(interval.max) 
+            || interval.includes(this);
+    }
 
-        points.push(displacedMin, origin);
+    public Interval intersection(Interval interval){
+        Interval intersection = this.clone();
+        if (interval.min > this.min){
+            intersection.min = interval.min;
+        }
+        if (interval.max < this.max){
+            intersection.max = interval.max;
+        }
+        return intersection;
+    }
 
-        return points;
+    public Interval union(Interval interval){
+        Interval union = this.clone();
+        if (interval.min < this.min){
+            union.min = interval.min;
+        }
+        if (interval.max > this.max){
+            union.max = interval.max;
+        }
+        return union;
+    }
 
-    },
-    displacedCentral: function () {
-        let points = [];
-        let midMax = (-this.min + this.max) / 2;
-        let midMin = -(-this.min + this.max) / 2;
-        points.push(midMax, midMin);
-        return points;
+    public Interval shifted(float shiftment) {
+        return new Interval(this.min + shiftment, this.max + shiftment);
+    }
 
-    },
-    displacedInverse: function () {
-        let points = [];
+    public Interval opposite() {
+        return new Interval(-this.max, -this.min);
+    }
 
-        points.push(-this.max, -this.min);
-        return points;
+    public Interval[] split(int times){
+        Interval[] intervals = new Interval[times];
+        final float length = this.length() / times;
+        float origin = this.min;
+        for(int i=0; i<intervals.length; i++){
+            intervals[i] = new Interval(origin, origin + length);
+            origin += length;
+        }
+        return intervals;
+    }
 
-    },
+    public void read() {
+        Console console = new Console();
+        this.min = console.readFloat("Dame el mínimo del intervalo");
+        this.max = console.readFloat("Dame el máximo del intervalo");
+    }
 
 }
-let msg =
-    'Longitud: ' + interval.length() + '\n' +
-    'Punto medio: ' + interval.midpoint() + '\n' +
-    'Desplazado izquierda: ' + interval.displacedLeft() + '\n' +
-    'Desplazado derecha: ' + interval.displacedRight() + '\n' +
-    'Desplazado central: ' + interval.displacedCentral() + '\n' +
-    'Desplazado inverso: ' + interval.displacedInverse();
 
-console.writeln(msg);
+public class App {
+
+    public static void main(String[] args) {
+        Console console = new Console();
+        final int SIZE = 3;
+        Interval[] intervals = new Interval[SIZE];
+        for (int i = 0; i < intervals.length; i++) {
+            intervals[i] = new Interval();
+            intervals[i].read();
+        }
+        for (int i = 0; i < intervals.length; i++) {
+            console.writeln("Intervalo: " + intervals[i] + " e inversa: " + intervals[i].opposite());
+        }
+        Interval sum = new Interval(0);
+        Interval product = new Interval(1);
+        for (int i = 0; i < intervals.length; i++) {
+        }
+        console.writeln("Suma: " + sum);
+        console.writeln("Producto: " + product);
+        for (int i = 0; i < intervals.length; i++) {
+            console.writeln("Suma sin " + intervals[i] + ": ");
+            console.writeln("Producto sin " + intervals[i] + ": ");
+        }
+    }
+}
