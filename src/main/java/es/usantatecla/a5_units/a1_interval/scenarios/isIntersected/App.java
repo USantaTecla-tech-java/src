@@ -19,6 +19,6 @@ import es.usantatecla.utils.Console;
         }
         console.writeln(isIntersected + " existe intersección entre los intervalos "
                 + "[" + min1 + ", " + max1 + "] y " 
-                + "[" + min2 + ", " + max2 + "] y ");
+                + "[" + min2 + ", " + max2 + "]");
     }
 }
