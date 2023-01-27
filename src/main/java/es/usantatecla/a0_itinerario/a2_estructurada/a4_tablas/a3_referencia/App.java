@@ -6,6 +6,11 @@ public class App {
 
     public static void main(String[] args) {
         Console console = new Console();
+        int[] array = new int[] { 1, 2, 3, 4, 5 };
+        console.writeln(array[0]); // 1
+        console.writeln(array[4]); // 5
+        // console.writeln(array[5]); // ERROR!!!
+        
         int primitive1 = 1;
         int primitive2 = primitive1;
         console.writeln(primitive1); // 1

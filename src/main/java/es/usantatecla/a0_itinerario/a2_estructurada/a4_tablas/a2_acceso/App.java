@@ -9,10 +9,6 @@ public class App {
         console.writeln(new int[] { 1, 2, 3, 4, 5 }[0]); // 1
         console.writeln(new int[] { 1, 2, 3, 4, 5 }[4]); // 5
         console.writeln(new int[] { 1, 2, 3, 4, 5 }[5]); // ERROR
-        int[] array = new int[] { 1, 2, 3, 4, 5 };
-        console.writeln(array[0]); // 1
-        console.writeln(array[4]); // 5
-        // console.writeln(array[5]); // ERROR!!!
 
         console.writeln(new String[][] { 
             { "a", "b", "c" }, 
