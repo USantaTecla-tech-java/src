@@ -71,6 +71,7 @@ public class App {
         // false false
         // false false
         // false false
-        
+
+        int[][] amedias  = new int[10][];
     }
 }
