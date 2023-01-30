@@ -1,4 +1,4 @@
-package es.usantatecla.a0_itinerario.a3_basadaObjetos.a_enum.a_clazz;
+package es.usantatecla.a0_itinerario.a3_basadaObjetos.a3_enum.a_clazz;
 
 import es.usantatecla.utils.Console;
 

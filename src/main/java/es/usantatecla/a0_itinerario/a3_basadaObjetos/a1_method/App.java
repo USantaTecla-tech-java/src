@@ -1,4 +1,4 @@
-package es.usantatecla.a0_itinerario.a3_basadaObjetos.a_method;
+package es.usantatecla.a0_itinerario.a3_basadaObjetos.a1_method;
 
 import es.usantatecla.utils.Console;
 
@@ -50,7 +50,7 @@ class Clazz {
 
 }
 
-class Client {
+class App {
 
     public static void main(String[] args) {
         Console console = new Console();
