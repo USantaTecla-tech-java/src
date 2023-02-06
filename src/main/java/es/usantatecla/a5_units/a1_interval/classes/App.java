@@ -33,17 +33,18 @@ class Interval {
     }
 
     public double middlePoint() {
-        return (this.min + this.max) / 2;
+        // return (this.min + this.max) / 2;
+        return this.min + this.length() / 2;
     }
 
     public void scale(double scale) {
         double newMiddelPoint = this.middlePoint();
-        double newLength = this.length() * scale;
-        this.min = newMiddelPoint - newLength / 2;
-        this.max = newMiddelPoint + newLength / 2;
+        double newHalfLength = this.length() * scale / 2;
+        this.min = newMiddelPoint - newHalfLength;
+        this.max = newMiddelPoint + newHalfLength;
     }
 
-    public Interval scaled(double scale){
+    public Interval scaled(double scale) {
         Interval scaled = this.clone();
         scaled.scale(scale);
         return scaled;
@@ -68,30 +69,29 @@ class Interval {
                 || interval.includes(this);
     }
 
-    public Interval intersection(Interval interval) {
-        Interval intersection = this.clone();
-        if (interval.min > this.min) {
-            intersection.min = interval.min;
-        }
-        if (interval.max < this.max) {
-            intersection.max = interval.max;
-        }
-        return intersection;
-    }
+    // public Interval intersection(Interval interval) {
+    // Interval intersection = this.clone();
+    // if (interval.min > this.min) {
+    // intersection.min = interval.min;
+    // }
+    // if (interval.max < this.max) {
+    // intersection.max = interval.max;
+    // }
+    // return intersection;
+    // }
 
-    // public Interval intersection(Interval intervalo) {
-    // if (this.includes(intervalo)) {
-    // return intervalo.clone();
-    // } else if (intervalo.includes(this)) {
-    // return this.clone();
-    // } else if (this.includes(intervalo.min)) {
-    // return new Interval(intervalo.min, this.max);
-    // } else if (this.includes(intervalo.max)) {
-    // return new Interval(this.min, intervalo.max);
-    // } else {
-    // return null;
-    // }
-    // }
+    public Interval intersection(Interval intervalo) {
+        if (this.includes(intervalo)) {
+            return intervalo.clone();
+        }
+        if (intervalo.includes(this)) {
+            return this.clone();
+        }
+        if (this.includes(intervalo.min)) {
+            return new Interval(intervalo.min, this.max);
+        }
+        return new Interval(this.min, intervalo.max);
+    }
 
     public Interval union(Interval interval) {
         Interval union = this.clone();
@@ -107,7 +107,7 @@ class Interval {
     public Interval shifted(float shiftment) {
         return new Interval(this.min + shiftment, this.max + shiftment);
     }
-    
+
     public void shift(double cantidad) {
         this.min += cantidad;
         this.max += cantidad;
@@ -130,11 +130,15 @@ class Interval {
         do {
             this.min = console.readFloat("Dame el mínimo del intervalo: ");
             this.max = console.readFloat("Dame el máximo del intervalo: ");
-            error = this.min <= this.max;
+            error = this.isValid();
             if (error) {
                 console.writeln("El minimo no puede ser mayor que el maximo");
             }
         } while (error);
+    }
+
+    private boolean isValid(){
+        return this.min <= this.max;
     }
 
     public void writeln() {

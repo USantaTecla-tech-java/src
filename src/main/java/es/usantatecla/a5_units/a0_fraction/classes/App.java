@@ -8,8 +8,21 @@ class Fraction {
   private int denominator;
   
   public Fraction(int numerator, int denominator) {
-    this.numerator = numerator;
-    this.denominator = denominator;
+    int gcd = this.gcd(numerator, denominator);
+    this.numerator = numerator / gcd;
+    this.denominator = denominator / gcd;
+    if (this.denominator < 0){
+      this.numerator *= -1;
+      this.denominator *= -1;
+    }
+  }
+
+  private int gcd(int x, int y) {
+    if (x == y)
+      return x;
+    if (x > y)
+      return this.gcd(x - y, y);
+    return this.gcd(x, y - x);
   }
 
   public Fraction(int numerator) {
@@ -23,20 +36,7 @@ class Fraction {
   public Fraction add(Fraction fraction) {
     return new Fraction(
       this.numerator * fraction.denominator + fraction.numerator * this.denominator,
-      this.denominator * fraction.denominator).simplified();
-  }
-
-  private Fraction simplified() {
-    final int divisor = this.gcd();
-    return new Fraction(this.numerator / divisor, this.denominator / divisor);
-  }
-
-  private int gcd() {
-    if (this.numerator == this.denominator)
-      return this.numerator;
-    if (this.numerator > this.denominator)
-      return new Fraction(this.numerator - this.denominator, this.denominator).gcd();
-    return new Fraction(this.numerator, this.denominator - this.numerator).gcd();
+      this.denominator * fraction.denominator);
   }
 
   public Fraction subtract(Fraction fraction) {
@@ -50,7 +50,7 @@ class Fraction {
   public Fraction multiply(Fraction fraction) {
     return new Fraction(
       this.numerator * fraction.numerator,
-      this.denominator * fraction.denominator).simplified();
+      this.denominator * fraction.denominator);
   }
 
   public Fraction divide(Fraction fraction) {
@@ -61,6 +61,11 @@ class Fraction {
     return new Fraction(this.denominator, this.numerator);
   }
 
+  public Fraction power(int exponent) {
+    Fraction power = ths.clone();
+
+  }
+
   public String toString() {
     return "(" + this.numerator + "/" + this.denominator+")";
   }
@@ -69,6 +74,19 @@ class Fraction {
     Console console = new Console();
     this.numerator = console.readInt("Dame el numerador");
     this.denominator = console.readInt("Dame el denominador");
+  }
+
+  public void write(){
+    new Console().writeln(this.toString());
+  }
+
+  public String toString(){
+    return this.numerator + "/" + this.denominator;
+  }
+
+  public void writeln(){
+    this.write();
+    new Console().writeln();
   }
 
 }
