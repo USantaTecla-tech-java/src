@@ -6,12 +6,12 @@ class Fraction {
 
   private int numerator;
   private int denominator;
-  
+
   public Fraction(int numerator, int denominator) {
     int gcd = this.gcd(numerator, denominator);
     this.numerator = numerator / gcd;
     this.denominator = denominator / gcd;
-    if (this.denominator < 0){
+    if (this.denominator < 0) {
       this.numerator *= -1;
       this.denominator *= -1;
     }
@@ -35,8 +35,8 @@ class Fraction {
 
   public Fraction add(Fraction fraction) {
     return new Fraction(
-      this.numerator * fraction.denominator + fraction.numerator * this.denominator,
-      this.denominator * fraction.denominator);
+        this.numerator * fraction.denominator + fraction.numerator * this.denominator,
+        this.denominator * fraction.denominator);
   }
 
   public Fraction subtract(Fraction fraction) {
@@ -49,8 +49,8 @@ class Fraction {
 
   public Fraction multiply(Fraction fraction) {
     return new Fraction(
-      this.numerator * fraction.numerator,
-      this.denominator * fraction.denominator);
+        this.numerator * fraction.numerator,
+        this.denominator * fraction.denominator);
   }
 
   public Fraction divide(Fraction fraction) {
@@ -62,12 +62,15 @@ class Fraction {
   }
 
   public Fraction power(int exponent) {
-    Fraction power = ths.clone();
-
+    Fraction power = new Fraction(1);
+    for (int i = 0; i < exponent; i++) {
+      power = power.multiply(this);
+    }
+    return power;
   }
 
-  public String toString() {
-    return "(" + this.numerator + "/" + this.denominator+")";
+  public Fraction clone() {
+    return new Fraction(this.numerator, this.denominator);
   }
 
   public void read() {
@@ -76,15 +79,15 @@ class Fraction {
     this.denominator = console.readInt("Dame el denominador");
   }
 
-  public void write(){
+  public void write() {
     new Console().writeln(this.toString());
   }
 
-  public String toString(){
+  public String toString() {
     return this.numerator + "/" + this.denominator;
   }
 
-  public void writeln(){
+  public void writeln() {
     this.write();
     new Console().writeln();
   }
@@ -93,7 +96,7 @@ class Fraction {
 
 public class App {
 
-  public static void main(String[] args){
+  public static void main(String[] args) {
     Console console = new Console();
     final int SIZE = 3;
     Fraction[] fractions = new Fraction[SIZE];
@@ -118,5 +121,3 @@ public class App {
     }
   }
 }
-
-

@@ -1,4 +1,4 @@
-package es.usantatecla.managers.services.classes;
+package es.usantatecla.managers.services.statics;
 
 import es.usantatecla.utils.Console;
 
@@ -7,9 +7,9 @@ class Date {
 	private int day;
 	private int month;
 	private int year;;
-	public final int DAYS_PER_YEAR = 360;
-	private final int DAYS_PER_MONTH = 30;
-	private final int MONTHS_PER_YEAR = 12;
+	public static final int DAYS_PER_YEAR = 360;
+	private static final int DAYS_PER_MONTH = 30;
+	private static final int MONTHS_PER_YEAR = 12;
 
 	public Date(int day, int month, int year) {
 		this.day = day;
@@ -50,10 +50,10 @@ class Date {
 	}
 
 	public Date next() {
-		if (day < this.DAYS_PER_MONTH) {
+		if (day < Date.DAYS_PER_MONTH) {
 			return new Date(day + 1, month, year);
 		}
-		if (month != this.MONTHS_PER_YEAR) {
+		if (month != Date.MONTHS_PER_YEAR) {
 			return new Date(1, month + 1, year);
 		}
 		return new Date(1, 1, year + 1);
@@ -68,7 +68,7 @@ class Date {
 	}
 
 	public int daysElapsedYear() {
-		return (this.day-1) + (this.month - 1) * this.DAYS_PER_MONTH;
+		return (this.day-1) + (this.month - 1) * Date.DAYS_PER_MONTH;
 	}
 
 	public int getDay() {
@@ -239,14 +239,14 @@ class ServicesContract {
 	private String name;
 	private final int year;
 	private Interval[] intervals;
-	private final Interval PRESET_INTERVAL = new Interval(8.0, 12.0);
-	private final double PRESET_COST_PER_HOUR = 70.0;
-	private final double EXTRAORDINARY_COST_PER_HOUR = 90.0;
+	private static final Interval PRESET_INTERVAL = new Interval(8.0, 12.0);
+	private static final double PRESET_COST_PER_HOUR = 70.0;
+	private static final double EXTRAORDINARY_COST_PER_HOUR = 90.0;
 
 	public ServicesContract(String name, int year) {
 		this.name = name;
 		this.year = year;
-		intervals = new Interval[new Date(1, 1, year).DAYS_PER_YEAR];
+		intervals = new Interval[Date.DAYS_PER_YEAR];
 		for (int i = 0; i < intervals.length; i++) {
 			intervals[i] = PRESET_INTERVAL.clone();
 		}
@@ -284,13 +284,13 @@ class ServicesContract {
 		for (Interval interval : this.intervals) {
 			if (interval != null) {
 				double presetHours = 0.0;
-				Interval intersection = interval.intersection(PRESET_INTERVAL);
+				Interval intersection = interval.intersection(ServicesContract.PRESET_INTERVAL);
 				if (intersection != null) {
 					presetHours = intersection.length();
-					cost += presetHours * PRESET_COST_PER_HOUR;
+					cost += presetHours * ServicesContract.PRESET_COST_PER_HOUR;
 				}
 				cost += (interval.length() - presetHours)
-						* EXTRAORDINARY_COST_PER_HOUR;
+						* ServicesContract.EXTRAORDINARY_COST_PER_HOUR;
 			}
 		}
 		return cost;
