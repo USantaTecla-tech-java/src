@@ -1,4 +1,4 @@
-package es.usantatecla.a5_units.a1_interval.scenarios.isIntersected;
+package es.usantatecla.a5_units.a1_interval.a0_scenarios.isIntersected;
 
 import es.usantatecla.utils.Console;
 

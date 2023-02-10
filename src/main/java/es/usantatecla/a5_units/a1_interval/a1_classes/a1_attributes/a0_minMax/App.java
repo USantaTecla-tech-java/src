@@ -1,4 +1,4 @@
-package es.usantatecla.a5_units.a1_interval.classes;
+package es.usantatecla.a5_units.a1_interval.a1_classes.a1_attributes.a0_minMax;
 
 import es.usantatecla.utils.Console;
 
@@ -28,13 +28,44 @@ class Interval {
         this(interval.min, interval.max);
     }
 
+    public double getMin() {
+        return this.min;
+    }
+
+    public void setMin(double min){
+        this.min = min;
+    }
+
+    public double getMax() {
+        return this.max;
+    }
+
+    public void setMax(double max){
+        this.max = max;
+    }
+
     public double length() {
         return this.max - this.min;
     }
 
+    public void setLength(double length) {
+        double middlePoint = this.middlePoint();
+        this.setMin(middlePoint - length / 2);
+        this.setMax(middlePoint + length / 2);
+    }
+    
+    // public double middlePoint() {
+    //     return (this.min + this.max) / 2;
+    // }
+
     public double middlePoint() {
-        // return (this.min + this.max) / 2;
         return this.min + this.length() / 2;
+    }
+
+    public void setMiddlePoint(double middlePoint) {
+        double length = this.length();
+        this.setMin(middlePoint - length / 2);
+        this.setMax(middlePoint + length / 2);
     }
 
     public void scale(double scale) {
@@ -59,17 +90,22 @@ class Interval {
     }
 
     public boolean includes(Interval interval) {
+        assert this != null;
+
         return this.includes(interval.min)
                 && this.includes(interval.max);
     }
 
     public boolean isIntersected(Interval interval) {
+        assert this != null;
+
         return this.includes(interval.min)
                 || this.includes(interval.max)
                 || interval.includes(this);
     }
 
     // public Interval intersection(Interval interval) {
+    // assert this.isIntersected(intervalo);
     // Interval intersection = this.clone();
     // if (interval.min > this.min) {
     // intersection.min = interval.min;
@@ -81,6 +117,8 @@ class Interval {
     // }
 
     public Interval intersection(Interval intervalo) {
+        assert this.isIntersected(intervalo);
+
         if (this.includes(intervalo)) {
             return intervalo.clone();
         }
@@ -93,33 +131,64 @@ class Interval {
         return new Interval(this.min, intervalo.max);
     }
 
-    public Interval union(Interval interval) {
-        Interval union = this.clone();
-        if (interval.min < this.min) {
-            union.min = interval.min;
+    // public Interval union(Interval interval) {
+    //     assert this.isIntersected(intervalo);
+
+    //     Interval union = this.clone();
+    //     if (interval.min < this.min) {
+    //         union.min = interval.min;
+    //     }
+    //     if (interval.max > this.max) {
+    //         union.max = interval.max;
+    //     }
+    //     return union;
+    // }
+
+    public Interval union(Interval intervalo) {
+        assert this.isIntersected(intervalo);
+
+        if (this.includes(intervalo)) {
+            return this.clone();
         }
-        if (interval.max > this.max) {
-            union.max = interval.max;
+        if (intervalo.includes(this)) {
+            return intervalo.clone();
         }
-        return union;
+        if (this.includes(intervalo.min)) {
+            return new Interval(this.min, intervalo.max);
+        }
+        return new Interval(intervalo.min, this.max);
     }
 
-    public Interval shifted(float shiftment) {
+    public Interval shifted(double shiftment) {
         return new Interval(this.min + shiftment, this.max + shiftment);
     }
 
-    public void shift(double cantidad) {
-        this.min += cantidad;
-        this.max += cantidad;
+    public void shift(double shiftment) {
+        this.min += shiftment;
+        this.max += shiftment;
     }
 
+    // public Interval[] split(int times) {
+    //     assert times > 0;
+
+    //     Interval[] intervals = new Interval[times];
+    //     final double length = this.length() / times;
+    //     double origin = this.min;
+    //     for (int i = 0; i < intervals.length; i++) {
+    //         intervals[i] = new Interval(origin, origin + length);
+    //         origin += length;
+    //     }
+    //     return intervals;
+    // }
+
     public Interval[] split(int times) {
+        assert times > 0;
+        
         Interval[] intervals = new Interval[times];
         final double length = this.length() / times;
-        double origin = this.min;
-        for (int i = 0; i < intervals.length; i++) {
-            intervals[i] = new Interval(origin, origin + length);
-            origin += length;
+        intervals[0] = new Interval(this.min, this.min + length);
+        for (int i = 1; i < intervals.length; i++) {
+            intervals[i] = intervals[i-1].shifted(length);
         }
         return intervals;
     }
@@ -130,7 +199,7 @@ class Interval {
         do {
             this.min = console.readFloat("Dame el mínimo del intervalo: ");
             this.max = console.readFloat("Dame el máximo del intervalo: ");
-            error = this.isValid();
+            error = !this.isValid();
             if (error) {
                 console.writeln("El minimo no puede ser mayor que el maximo");
             }
@@ -173,12 +242,19 @@ public class App {
         console.writeln("Union: " + union);
         console.writeln("Intersección: " + intersection);
 
-        Interval interval = new Interval();
-        interval.read();
+        union.setMin(0);
+        union.writeln();
+        union.setMax(10);
+        union.writeln();
+        union.setMiddlePoint(3);
+        union.writeln();
+        union.setLength(4);
+        union.writeln();
+
         final int times = console.readInt("Dame el número de partes: ");
-        intervals = interval.split(times);
-        for (Interval part : intervals) {
-            part.writeln();
+        intervals = union.split(times);
+        for (Interval interval : intervals) {
+            interval.writeln();
         }
 
     }

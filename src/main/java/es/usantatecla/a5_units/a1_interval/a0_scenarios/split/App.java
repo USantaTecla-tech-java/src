@@ -1,4 +1,4 @@
-package es.usantatecla.a5_units.a1_interval.scenarios.split;
+package es.usantatecla.a5_units.a1_interval.a0_scenarios.split;
 
 import es.usantatecla.utils.Console;
 

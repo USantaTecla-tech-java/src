@@ -6,7 +6,7 @@ class Date {
 
 	private int day;
 	private int month;
-	private int year;;
+	private int year;
 	public final int DAYS_PER_YEAR = 360;
 	private final int DAYS_PER_MONTH = 30;
 	private final int MONTHS_PER_YEAR = 12;
@@ -246,22 +246,22 @@ class ServicesContract {
 	public ServicesContract(String name, int year) {
 		this.name = name;
 		this.year = year;
-		intervals = new Interval[new Date(1, 1, year).DAYS_PER_YEAR];
+		this.intervals = new Interval[new Date(1, 1, year).DAYS_PER_YEAR];
 		for (int i = 0; i < intervals.length; i++) {
-			intervals[i] = PRESET_INTERVAL.clone();
+			this.intervals[i] = this.PRESET_INTERVAL.clone();
 		}
 	}
 
 	public void cancel(Date date) {
-		intervals[date.daysElapsedYear()] = null;
+		this.intervals[date.daysElapsedYear()] = null;
 	}
 
 	public void enlarge(Date date, double scale) {
-		intervals[date.daysElapsedYear()].scale(scale);
+		this.intervals[date.daysElapsedYear()].scale(scale);
 	}
 
 	public void shift(Date date, double shiftment) {
-		intervals[date.daysElapsedYear()].shift(shiftment);
+		this.intervals[date.daysElapsedYear()].shift(shiftment);
 	}
 
 	public void writeln() {
@@ -269,9 +269,9 @@ class ServicesContract {
 		console.writeln("Contrato de limpieza: " + name + "-" + year);
 		Date date = new Date(1, 1, year);
 		for (int i = 0; i < intervals.length; i++) {
-			console.write("(" + (i + 1) + ") " + date + " - ");
+			console.write("(" + (i + 1) + "º) " + date + " - ");
 			if (intervals[i] == null) {
-				console.writeln("Anulado");
+				console.writeln("Cancelado");
 			} else {
 				console.writeln(intervals[i].toString());
 			}
