@@ -1,0 +1,82 @@
+@startuml
+
+class BoundedQueue {
+	Interval[] intervals
+	int size
+	int next
+	int first;
+	BoundedQueue(int)
+	void add(Interval) 
+	boolean isEmpty()
+	Interval remove()
+	boolean isFull()
+}
+
+BoundedQueue *-down-> Node
+Node *-down-> Interval
+
+class BoundedStack {
+	Interval[] intervals
+	int size
+	int next
+	BoundedStack(int)
+	void add(Interval) 
+	boolean isEmpty()
+	Interval remove()
+	boolean isFull()
+}
+
+class Interval {
+	double min
+	double max
+	double getMin() 
+	double getMax()
+	Interval(double, double)
+	Interval(double)
+	Interval()
+	Interval(Interval intervalo)
+	double length()
+	double middlePoint()
+	Interval copy()
+	Interval symetric()
+	boolean includes(double)
+	boolean includes(Interval)
+	boolean equals(Interval) 
+	Interval interseccion(Interval)
+	Interval union(Interval)
+	Interval shifted(double) 
+	void writeln()
+	String toString()
+}
+
+
+class Node {
+	Interval interval
+	Node previous;
+	Node next;
+	Node(Node, Interval, Node)
+	Node getPrevious()
+	Node getNext()
+	void setPrevious(Node) 
+	void setNext(Node)
+	Interval getInterval()
+}
+
+class UnboundedQueue {
+	Node entrance
+	Node exit;
+	UnboundedQueue()
+	void add(Interval)
+	boolean isEmpty()
+	Interval remove()
+}
+
+class UnboundedStack {
+	Node entrance
+	UnboundedStack()
+	void add(Interval)
+	boolean isEmpty()
+	Interval remove()
+}
+
+@enduml

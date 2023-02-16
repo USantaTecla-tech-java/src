@@ -60,9 +60,8 @@ enum Month {
   public Month getPrevious() {
     if (this == Month.JANUARY) {
       return Month.DECEMBER;
-    } else {
-      return Month.values()[this.ordinal() - 1];
-    }
+    } 
+    return Month.values()[this.ordinal() - 1];
   }
 
 }

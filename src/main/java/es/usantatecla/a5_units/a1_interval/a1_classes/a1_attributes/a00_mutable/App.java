@@ -1,4 +1,4 @@
-package es.usantatecla.a5_units.a1_interval.a1_classes.a1_attributes.a0_minMax;
+package es.usantatecla.a5_units.a1_interval.a1_classes.a1_attributes.a00_mutable;
 
 import es.usantatecla.utils.Console;
 
@@ -9,18 +9,8 @@ public class App {
         final int SIZE = 3;
         Interval[] intervals = new Interval[SIZE];
         for (int i = 0; i < intervals.length; i++) {
-            double min;
-            double max;
-            boolean ok;
-            do {
-                min = console.readDouble("Dame el mínimo del intervalo: ");
-                max = console.readDouble("Dame el máximo del intervalo: ");
-                ok = min <= max;
-                if (!ok) {
-                    console.writeln("El minimo no puede ser mayor que el maximo");
-                }
-            } while (!ok);
-            intervals[i] = new Interval(min, max);
+            intervals[i] = new Interval();
+            intervals[i].read();
         }
         for (int i = 0; i < intervals.length; i++) {
             console.writeln("Intervalo: " + intervals[i] + " e inversa: " + intervals[i].opposite());
@@ -33,6 +23,15 @@ public class App {
         }
         console.writeln("Union: " + union);
         console.writeln("Intersección: " + intersection);
+
+        union.setMin(0);
+        union.writeln();
+        union.setMax(10);
+        union.writeln();
+        union.setMiddlePoint(3);
+        union.writeln();
+        union.setLength(4);
+        union.writeln();
 
         final int times = console.readInt("Dame el número de partes: ");
         intervals = union.split(times);

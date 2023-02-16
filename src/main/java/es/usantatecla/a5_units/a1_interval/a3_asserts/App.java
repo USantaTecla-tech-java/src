@@ -1,4 +1,4 @@
-package es.usantatecla.a5_units.a1_interval.a1_classes.a1_attributes.a0_minMax;
+package es.usantatecla.a5_units.a1_interval.a3_asserts;
 
 import es.usantatecla.utils.Console;
 
@@ -9,18 +9,7 @@ public class App {
         final int SIZE = 3;
         Interval[] intervals = new Interval[SIZE];
         for (int i = 0; i < intervals.length; i++) {
-            double min;
-            double max;
-            boolean ok;
-            do {
-                min = console.readDouble("Dame el mínimo del intervalo: ");
-                max = console.readDouble("Dame el máximo del intervalo: ");
-                ok = min <= max;
-                if (!ok) {
-                    console.writeln("El minimo no puede ser mayor que el maximo");
-                }
-            } while (!ok);
-            intervals[i] = new Interval(min, max);
+            intervals[i] = Interval.read();
         }
         for (int i = 0; i < intervals.length; i++) {
             console.writeln("Intervalo: " + intervals[i] + " e inversa: " + intervals[i].opposite());
@@ -39,7 +28,6 @@ public class App {
         for (Interval interval : intervals) {
             interval.writeln();
         }
-
     }
 
 }
