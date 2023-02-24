@@ -1,4 +1,4 @@
-package es.usantatecla.aX_listas.a0_classes;
+package es.usantatecla.aX_listas.a4_extends;
 
 class List {
 
