@@ -48,10 +48,10 @@ class Date {
   }
 
   public Date next() {
-    if (day < this.DAYS_PER_MONTH) {
+    if (day < Date.DAYS_PER_MONTH) {
       return new Date(day + 1, month, year);
     }
-    if (month != this.MONTHS_PER_YEAR) {
+    if (month != Date.MONTHS_PER_YEAR) {
       return new Date(1, month + 1, year);
     }
     return new Date(1, 1, year + 1);
@@ -66,7 +66,7 @@ class Date {
   }
 
   public int daysElapsedYear() {
-    return (this.day - 1) + (this.month - 1) * this.DAYS_PER_MONTH;
+    return (this.day - 1) + (this.month - 1) * Date.DAYS_PER_MONTH;
   }
 
   public int getDay() {
