@@ -1,8 +1,6 @@
 package es.usantatecla.a0_time.a1_major.v0_1;
 
-import es.usantatecla.utils.Console;
-
-public class App {
+class App {
 
     public static void main(String[] args) {
         Console console = new Console();

@@ -1,7 +1,5 @@
 package es.usantatecla.a3_numbers.a8_friends.v1_1;
 
-import es.usantatecla.utils.Console;
-
 class App {
   public static void main(String[] args) {
     Console console = new Console();

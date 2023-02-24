@@ -1,7 +1,5 @@
 package es.usantatecla.a5_units.a0_fraction.classes;
 
-import es.usantatecla.utils.Console;
-
 class Fraction {
 
   private int numerator;

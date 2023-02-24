@@ -1,8 +1,6 @@
 package es.usantatecla.a1_space.a2_triangle.v0_0;
 
-import es.usantatecla.utils.Console;
-
-public class App {
+class App {
 
     public static void main(String[] args) {
         Console console = new Console();

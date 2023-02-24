@@ -1,7 +1,5 @@
 package es.usantatecla.a0_itinerario.a3_basadaObjetos.a3_enum.a_enum;
 
-import es.usantatecla.utils.Console;
-
 enum Enun {
     OBJECT_1(1),
     OBJECT_2(2),

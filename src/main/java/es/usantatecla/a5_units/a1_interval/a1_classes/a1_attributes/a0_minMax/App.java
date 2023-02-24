@@ -1,7 +1,5 @@
 package es.usantatecla.a5_units.a1_interval.a1_classes.a1_attributes.a0_minMax;
 
-import es.usantatecla.utils.Console;
-
 public class App {
 
     public static void main(String[] args) {

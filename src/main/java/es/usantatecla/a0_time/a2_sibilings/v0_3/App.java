@@ -1,8 +1,6 @@
 package es.usantatecla.a0_time.a2_sibilings.v0_3;
 
-import es.usantatecla.utils.Console;
-
-public class App {
+class App {
 
     public static void main(String[] args) {
         Console console = new Console();

@@ -1,7 +1,5 @@
 package es.usantatecla.a5_units.a3_date.a3_enums;
 
-import es.usantatecla.utils.Console;
-
 enum Language {
   SPANISH,
   ENGLISH;

@@ -1,7 +1,5 @@
 package es.usantatecla.managers.services.packages;
 
-import es.usantatecla.utils.Console;
-
 class ServicesContract {
 
 	private final int year;

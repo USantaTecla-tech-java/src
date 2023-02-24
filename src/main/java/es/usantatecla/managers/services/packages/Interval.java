@@ -1,7 +1,5 @@
 package es.usantatecla.managers.services.packages;
 
-import es.usantatecla.utils.Console;
-
 class Interval {
 
 	private double min;

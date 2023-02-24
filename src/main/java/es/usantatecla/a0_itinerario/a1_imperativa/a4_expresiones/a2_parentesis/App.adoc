@@ -1,8 +1,6 @@
 package es.usantatecla.a0_itinerario.a1_imperativa.a4_expresiones.a2_parentesis;
 
-import es.usantatecla.utils.Console;
-
-public class App {
+class App {
 
     public static void main(String[] args) {
         Console console = new Console();

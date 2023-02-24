@@ -1,8 +1,6 @@
 package es.usantatecla.a0_itinerario.a2_estructurada.a3_secuencial.a1_sinVariables;
 
-import es.usantatecla.utils.Console;
-
-public class App {
+class App {
 
   public static void main(String[] args) {
     Console console = new Console();

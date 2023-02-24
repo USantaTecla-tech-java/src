@@ -1,8 +1,6 @@
 package es.usantatecla.a0_time.a3_sumTimes.v0_0;
 
-import es.usantatecla.utils.Console;
-
-public class App {
+class App {
 
   public static void main(String[] args) {
     Console console = new Console();

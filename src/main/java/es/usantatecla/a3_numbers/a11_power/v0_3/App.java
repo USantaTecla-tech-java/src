@@ -1,8 +1,6 @@
 package es.usantatecla.a3_numbers.a11_power.v0_3;
 
-import es.usantatecla.utils.Console;
-
-public class App {
+class App {
 
   public static void main(String[] args) {
     Console console = new Console();

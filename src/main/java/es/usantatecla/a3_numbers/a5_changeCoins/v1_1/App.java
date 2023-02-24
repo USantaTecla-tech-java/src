@@ -1,8 +1,6 @@
 package es.usantatecla.a3_numbers.a5_changeCoins.v1_1;
 
-import es.usantatecla.utils.Console;
-
-public class App {
+class App {
 
     public static void main(String[] args) {
         Console console = new Console();

@@ -1,7 +1,5 @@
 package es.usantatecla.a0_itinerario.a2_estructurada.a2_iterativa;
 
-import es.usantatecla.utils.Console;
-
 public class App {
 
     public static void main(String[] args) {

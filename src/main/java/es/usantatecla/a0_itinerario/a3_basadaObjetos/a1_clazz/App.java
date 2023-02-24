@@ -1,18 +1,16 @@
 package es.usantatecla.a0_itinerario.a3_basadaObjetos.a1_clazz;
 
-import es.usantatecla.utils.Console;
-
 class Clazz {
-    
+
     public int publicAtributte; // Desaconsejado
     private int privateAtributte;
 
-    public Clazz(int value){
+    public Clazz(int value) {
         this.publicAtributte = 2;
         this.privateAtributte = value;
     }
 
-    private Clazz(){
+    private Clazz() {
         this(3);
         // ...
     }
@@ -31,12 +29,12 @@ class Clazz {
         console.writeln("privateInstnaceMethod : publicAtributte: " + this.publicAtributte);
         console.writeln("privateInstnaceMethod : privateAtributte: " + this.privateAtributte);
     }
-    
+
 }
 
 class App {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Console console = new Console();
         console.writeln();
         Clazz object = new Clazz(0);
@@ -46,4 +44,3 @@ class App {
         // object.privateInstnaceMethod();
     }
 }
-

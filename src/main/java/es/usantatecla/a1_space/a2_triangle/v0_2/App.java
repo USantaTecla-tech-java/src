@@ -1,15 +1,13 @@
 package es.usantatecla.a1_space.a2_triangle.v0_2;
 
-import es.usantatecla.utils.Console;
-
-public class App {
+class App {
 
   public static void main(String[] args) {
     Console console = new Console();
-    final float sideA = console.readFloat("Dame el 1º lado del triangulo: ");
-    final float sideB = console.readFloat("Dame el 2º lado del triangulo: ");
-    final float sideC = console.readFloat("Dame el 3º lado del triangulo: ");
-    float greater;
+    final double sideA = console.readDouble("Dame el 1º lado del triangulo: ");
+    final double sideB = console.readDouble("Dame el 2º lado del triangulo: ");
+    final double sideC = console.readDouble("Dame el 3º lado del triangulo: ");
+    double greater;
     if (sideA >= sideB && sideA >= sideC) {
       greater = sideA;
     } else if (sideB >= sideA && sideB >= sideC) {

@@ -1,7 +1,5 @@
 package es.usantatecla.a0_itinerario.a3_basadaObjetos.a3_enum.a_clazz;
 
-import es.usantatecla.utils.Console;
-
 class Enun {
     public static Enun OBJECT_1 = new Enun(1, "OBJECT_1");
     public static Enun OBJECT_2 = new Enun(2, "OBJECT_2");

@@ -1,7 +1,5 @@
 package es.usantatecla.a0_itinerario.a3_basadaObjetos.a1_method;
 
-import es.usantatecla.utils.Console;
-
 class X {
 }
 

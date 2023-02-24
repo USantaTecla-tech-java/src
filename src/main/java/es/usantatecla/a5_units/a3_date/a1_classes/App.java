@@ -1,7 +1,5 @@
 package es.usantatecla.a5_units.a3_date.a1_classes;
 
-import es.usantatecla.utils.Console;
-
 class Date {
 
 	private int day;

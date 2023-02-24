@@ -1,8 +1,6 @@
 package es.usantatecla.a5_units.a1_interval.a1_classes.a1_attributes.a00_mutable;
 
-import es.usantatecla.utils.Console;
-
-public class App {
+class App {
 
     public static void main(String[] args) {
         Console console = new Console();

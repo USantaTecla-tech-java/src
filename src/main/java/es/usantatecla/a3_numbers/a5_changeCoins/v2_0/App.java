@@ -1,8 +1,6 @@
 package es.usantatecla.a3_numbers.a5_changeCoins.v2_0;
 
-import es.usantatecla.utils.Console;
-
-public class App {
+class App {
 
   static final int[] COINS = new int[] { 11, 5, 1 };
 

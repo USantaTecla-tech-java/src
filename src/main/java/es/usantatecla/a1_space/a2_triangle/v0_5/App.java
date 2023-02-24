@@ -1,15 +1,13 @@
 package es.usantatecla.a1_space.a2_triangle.v0_5;
 
-import es.usantatecla.utils.Console;
-
-public class App {
+class App {
 
   public static void main(String[] args) {
     Console console = new Console();
     final int SIDES = 3;
-    float[] sides = new float[SIDES];
+    double[] sides = new double[SIDES];
     for (int i = 0; i < SIDES; i++) {
-      sides[i] = console.readFloat("Dame el " + i + "º lado del triangulo: ");
+      sides[i] = console.readDouble("Dame el " + i + "º lado del triangulo: ");
     }
 
     String msg = "Los lados ";
@@ -27,12 +25,12 @@ public class App {
     console.writeln(msg);
   }
 
-  static boolean isTriangle(float[] sides) {
+  static boolean isTriangle(double[] sides) {
     return getGreater(sides) < getSum(sides) - getGreater(sides);
   }
 
-  static float getGreater(float[] sides) {
-    float greater = sides[0];
+  static double getGreater(double[] sides) {
+    double greater = sides[0];
     for (int i = 1; i < sides.length; i++) {
       if (sides[i] > greater) {
         greater = sides[i];
@@ -41,19 +39,19 @@ public class App {
     return greater;
   }
 
-  static float getSum(float[] sides) {
-    float sum = 0;
+  static double getSum(double[] sides) {
+    double sum = 0;
     for (int i = 0; i < sides.length; i++) {
       sum += sides[i];
     }
     return sum;
   }
 
-  static String getTriangleType(float[] sides) {
+  static String getTriangleType(double[] sides) {
     return new String[] { "escaleno", "isosceles", null, "equilatero" }[getPairs(sides)];
   }
 
-  static int getPairs(float[] sides) {
+  static int getPairs(double[] sides) {
     int pairs = 0;
     for (int i = 0; i < sides.length; i++) {
       for (int j = i + 1; j < sides.length; j++) {
