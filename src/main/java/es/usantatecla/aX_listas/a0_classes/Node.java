@@ -1,13 +1,14 @@
 package es.usantatecla.aX_listas.a0_classes;
 
-class Node extends Interval {
+class Node  {
 
 	private Node previous;
+	private Interval interval;
 	private Node next;
 
 	public Node(Node previous, Interval interval, Node next) {
-		super(interval);
 		this.setPrevious(previous);
+		this.interval = interval;
 		this.setNext(next);
 	}
 
@@ -34,7 +35,7 @@ class Node extends Interval {
 	}
 
 	public Interval getInterval() {
-		return new Interval(this.getMin(), this.getMax());
+		return new Interval(this.interval);
 	}
-	
+
 }
