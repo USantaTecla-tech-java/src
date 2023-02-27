@@ -2,14 +2,22 @@ package es.usantatecla.aX_dispensers.a1_classes_a1_operations;
 
 class Node {
 
-	private Interval interval;
 	private Node previous;
+	private Interval interval;
 	private Node next;
 
 	public Node(Node previous, Interval interval, Node next) {
-		this.interval = interval;
 		this.setPrevious(previous);
+		this.interval = interval;
 		this.setNext(next);
+	}
+
+	public Node(Interval interval, Node next) {
+		this(null, interval, next);
+	}
+
+	public Node(Node previous, Interval interval) {
+		this(previous, interval, null);
 	}
 
 	public Node getPrevious() {

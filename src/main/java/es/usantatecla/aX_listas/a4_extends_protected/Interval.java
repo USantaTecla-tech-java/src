@@ -1,4 +1,4 @@
-package es.usantatecla.aX_listas.a4_extends;
+package es.usantatecla.aX_listas.a4_extends_protected;
 
 class Interval {
 
@@ -18,12 +18,17 @@ class Interval {
 		this(interval.min, interval.max);
 	}
 
-	public double getMin() {
+	protected double getMin() {
 		return this.min;
 	}
 
-	public double getMax() {
+	protected double getMax() {
 		return this.max;
+	}
+
+	public void set(Interval interval) {
+		this.min = interval.min;
+		this.max = interval.max;
 	}
 
 	public boolean equals(Interval interval) {
@@ -45,6 +50,18 @@ class Interval {
 
 	public Interval symetric() {
 		return new Interval(-this.max, -this.min);
+	}
+
+	public void shift(double amount) {
+		this.min += amount;
+		this.max += amount;
+	}
+
+	public void scale(double factor) {
+		double newLength = this.length() * factor;
+		double middlePoint = this.getMiddlePoint();
+		this.min = middlePoint - newLength / 2;
+		this.max = middlePoint + newLength / 2;
 	}
 
 	public boolean includes(double value) {
@@ -71,9 +88,9 @@ class Interval {
 	}
 
 	public Interval shifted(double amount) {
-		return new Interval(
-			this.getMin()+ amount, 
-			this.getMax() + amount);
+		Interval interval = this.copy();
+		interval.shift(amount);
+		return interval;
 	}
 
 	public void read() {

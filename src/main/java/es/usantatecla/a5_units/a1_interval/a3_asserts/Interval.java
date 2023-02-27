@@ -56,7 +56,7 @@ class Interval {
     }
 
     public boolean includes(Interval interval) {
-        assert this != null;
+        assert interval != null;
 
         return this.includes(interval.min)
                 && this.includes(interval.max);
@@ -70,19 +70,19 @@ class Interval {
                 || interval.includes(this);
     }
     
-    public Interval intersection(Interval intervalo) {
-        assert this.isIntersected(intervalo);
+    public Interval intersection(Interval interval) {
+        assert this.isIntersected(interval);
 
-        if (this.includes(intervalo)) {
-            return intervalo.clone();
+        if (this.includes(interval)) {
+            return interval.clone();
         }
-        if (intervalo.includes(this)) {
+        if (interval.includes(this)) {
             return this.clone();
         }
-        if (this.includes(intervalo.min)) {
-            return new Interval(intervalo.min, this.max);
+        if (this.includes(interval.min)) {
+            return new Interval(interval.min, this.max);
         }
-        return new Interval(this.min, intervalo.max);
+        return new Interval(this.min, interval.max);
     }
     
     public Interval union(Interval intervalo) {

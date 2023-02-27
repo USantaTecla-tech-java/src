@@ -9,7 +9,9 @@ class UnboundedStack {
 	}
 
 	public void add(Interval interval) {
-		this.entrance = new Node(null, interval, this.entrance);
+		assert interval != null;
+
+		this.entrance = new Node(interval, this.entrance);
 	}
 
 	public boolean isEmpty() {
@@ -17,19 +19,23 @@ class UnboundedStack {
 	}
 
 	public Interval remove() {
+		assert !this.isEmpty();
+
 		Interval interval = entrance.getInterval();
 		entrance = entrance.getNext();
 		return interval;
 	}
 
 	public void writeln(String title) {
+		assert title != null;
+
 		Console console = new Console();
 		console.writeln(title);
-		Node node = this.entrance;
+		Node current = this.entrance;
 		int position = 0;
-		while (node != null) {
-			console.writeln((position + 1) + ": " + node.getInterval());
-			node = node.getNext();
+		while (current != null) {
+			console.writeln((position + 1) + ": " + current.getInterval());
+			current = current.getNext();
 		}
 	}
 

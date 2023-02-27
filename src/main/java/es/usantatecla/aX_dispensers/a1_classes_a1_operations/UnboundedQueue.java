@@ -16,7 +16,7 @@ class UnboundedQueue {
 
 	public void add(Interval interval) {
 		boolean empty = this.isEmpty();
-		this.entrance = new Node(null, interval, this.entrance);
+		this.entrance = new Node(interval, this.entrance);
 		if (empty) {
 			this.exit = this.entrance;
 		}

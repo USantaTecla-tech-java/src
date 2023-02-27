@@ -1,4 +1,4 @@
-package es.usantatecla.aX_listas.a0_classes;
+package es.usantatecla.aX_listas.a4_extends_protected;
 
 class List {
 
@@ -31,14 +31,14 @@ class List {
 	}
 
 	public void insertFirst(Interval interval) {
-		this.first = new Node(interval, this.first);
+		this.first = new Node(null, interval, this.first);
 		if (this.last == null) {
 			this.last = this.first;
 		}
 	}
 
 	public void insertLast(Interval interval) {
-		this.last = new Node(this.last, interval);
+		this.last = new Node(this.last, interval, null);
 		if (this.first == null) {
 			this.first = this.last;
 		}
