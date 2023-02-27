@@ -10,20 +10,12 @@ class List {
 		this.last = null;
 	}
 
-	protected Node getFirst() {
+	public Node getFirst() {
 		return this.first;
 	}
 
-	protected Node getLast() {
+	public Node getLast() {
 		return this.last;
-	}
-
-	protected void setFirst(Node first) {
-		this.first = first;
-	}
-
-	protected void setEnd(Node last) {
-		this.last = last;
 	}
 
 	public boolean isEmpty() {

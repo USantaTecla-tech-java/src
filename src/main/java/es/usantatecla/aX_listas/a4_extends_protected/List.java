@@ -18,14 +18,6 @@ class List {
 		return this.last;
 	}
 
-	protected void setFirst(Node first) {
-		this.first = first;
-	}
-
-	protected void setEnd(Node last) {
-		this.last = last;
-	}
-
 	public boolean isEmpty() {
 		return this.first == null;
 	}

@@ -1,9 +1,9 @@
-package es.usantatecla.aX_listas.a4_extends_protected;
+package es.usantatecla.aX_listas.a4_extends_protected_attibutes;
 
 class Interval {
 
-	private double min;
-	private double max;
+	protected double min;
+	protected double max;
 
 	public Interval(double min, double max) {
 		this.min = min;
@@ -16,14 +16,6 @@ class Interval {
 
 	public Interval(Interval interval) {
 		this(interval.min, interval.max);
-	}
-
-	protected double getMin() {
-		return this.min;
-	}
-
-	protected double getMax() {
-		return this.max;
 	}
 
 	public boolean equals(Interval interval) {
@@ -72,8 +64,8 @@ class Interval {
 
 	public Interval shifted(double amount) {
 		return new Interval(
-			this.getMin() + amount,
-			this.getMax() + amount);
+			this.min + amount,
+			this.max + amount);
 	}
 
 	public void read() {
