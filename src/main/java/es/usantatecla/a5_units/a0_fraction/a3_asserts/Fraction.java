@@ -16,21 +16,13 @@ class Fraction {
       numerator *= -1;
       denominator *= -1;
     }
-    boolean negative = numerator < 0;
-    if (negative) {
-      numerator *= -1;
+    if (numerator != 0) {
+      int gcd = this.gcd(numerator > 0 ? numerator : -numerator, denominator);
+      numerator = numerator / gcd;
+      denominator = denominator / gcd;
     }
-    if (numerator == 0) {
-      this.numerator = numerator;
-      this.denominator = denominator;
-    } else {
-      int gcd = this.gcd(numerator, denominator);
-      this.numerator = numerator / gcd;
-      this.denominator = denominator / gcd;
-    }
-    if (negative){
-      this.numerator *= -1;
-    }
+    this.numerator = numerator;
+    this.denominator = denominator;
   }
 
   private int gcd(int x, int y) {
@@ -98,6 +90,14 @@ class Fraction {
     return power;
   }
 
+  public int getNumerator() {
+    return this.numerator;
+  }
+
+  public int getDenominator() {
+    return this.denominator;
+  }
+
   public double getValue() {
     return (double) this.numerator / this.denominator;
   }
@@ -113,7 +113,7 @@ class Fraction {
     boolean ok;
     do {
       denominator = console.readInt("Dame el denominador: ");
-      ok = denominator == 0;
+      ok = denominator != 0;
     } while (!ok);
     this.simplified(numerator, denominator);
   }
