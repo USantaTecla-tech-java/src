@@ -10,7 +10,7 @@ public abstract class Option {
 
     public abstract void interact();
 
-    public void showTitle(int index) {
+    protected void showTitle(int index) {
         Console.getInstance().writeln(index + ". " + this.getTitle());
     }
 

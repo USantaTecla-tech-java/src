@@ -9,7 +9,6 @@ public class InverseListModelOption extends ModelOption {
         super("Listar inverso", model);
     }
 
-    @Override
     public void interact() {
         for (int i = this.model.size() - 1; i >= 0; i--) {
             Console.getInstance().writeln((i + 1) + ". " + this.model.get(i));

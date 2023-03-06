@@ -9,9 +9,9 @@ class QuitOption extends Option {
         this.executed = false;
     }
 
-    @Override
     public void interact() {
         this.executed = true;
+        Console.getInstance().writeln("Adiós");
     }
 
     protected boolean isExecuted() {

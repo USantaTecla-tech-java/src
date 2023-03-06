@@ -9,16 +9,11 @@ public abstract class QuitMenu extends Menu {
         this.quitOption = new QuitOption();
     }
 
-    @Override
     protected void showTitles() {
-        this.addquitOption();
-        super.showTitles();
-    }
-
-    protected void addquitOption() {
         if (!this.hasOption(this.quitOption)) {
             this.add(this.quitOption);
         }
+        super.showTitles();
     }
 
     protected boolean isExecutedquitOption() {

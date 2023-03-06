@@ -9,7 +9,6 @@ public class ListModelOption extends ModelOption {
         super("Listar", model);
     }
 
-    @Override
     public void interact() {
         for (int i = 0; i < this.model.size(); i++) {
             Console.getInstance().writeln((i + 1) + ". " + this.model.get(i));

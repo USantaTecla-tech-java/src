@@ -40,4 +40,13 @@ class Model {
         return this.size;
     }
 
+    public boolean find(String string){
+        for(int i=0; i<this.size; i++){
+            if (this.strings[i].equals(string)){
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

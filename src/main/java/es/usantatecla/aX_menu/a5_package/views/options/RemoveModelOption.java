@@ -4,12 +4,10 @@ import es.usantatecla.aX_menu.a5_package.models.Model;
 
 public class RemoveModelOption extends ModelOption {
 
-    private Model model;
     private int index;
 
     public RemoveModelOption(Model model, int index) {
         super("Eliminar ", model);
-        this.model = model;
         this.index = index;
     }
 
@@ -17,7 +15,6 @@ public class RemoveModelOption extends ModelOption {
         return super.getTitle() + ": " + model.get(this.index);
     }
 
-    @Override
     public void interact() {
         this.model.remove(this.index);
     }

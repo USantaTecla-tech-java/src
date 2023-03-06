@@ -6,7 +6,6 @@ class RemoveModelsOption extends ModelOption {
         super("Eliminar", model);
     }
 
-    @Override
     public void interact() {
         new ModelDynamicMenu(this.model).interact();
     }

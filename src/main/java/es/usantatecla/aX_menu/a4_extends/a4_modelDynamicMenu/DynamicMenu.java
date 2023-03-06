@@ -6,7 +6,6 @@ abstract class DynamicMenu extends IterativeMenu {
         super(title);
     }
 
-    @Override
     public void interact() {
         do {
             this.removeOptions();

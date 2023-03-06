@@ -8,10 +8,8 @@ class ModelDynamicMenu extends DynamicMenu {
         super("Model Dynamic Menu");
         this.model = model;
         this.addOptions();
-
     }
 
-    @Override
     protected void addOptions() {
         for (int i = 0; i < model.size(); i++) {
             this.add(new RemoveModelOption(model, i));

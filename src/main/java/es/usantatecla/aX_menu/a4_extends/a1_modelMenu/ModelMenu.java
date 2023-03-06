@@ -12,6 +12,7 @@ class ModelMenu extends Menu {
     protected void addOptions() {
         this.add(new ListModelOption(this.model));
         this.add(new InverseListModelOption(this.model));
+        this.add(new FindModelOption(this.model));
     }
 
 }

@@ -6,7 +6,6 @@ abstract class IterativeMenu extends QuitMenu {
         super(title);
     }
 
-    @Override
     public void interact() {
         this.addOptions();
         do {
