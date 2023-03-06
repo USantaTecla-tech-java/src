@@ -1,17 +1,32 @@
 package es.usantatecla.a5_units.a0_fraction.a1_classes;
-
 class Fraction {
 
   private int numerator;
   private int denominator;
 
   public Fraction(int numerator, int denominator) {
-    int gcd = this.gcd(numerator, denominator);
-    this.numerator = numerator / gcd;
-    this.denominator = denominator / gcd;
-    if (this.denominator < 0) {
+    this.simplified(numerator, denominator);
+  }
+
+  private void simplified(int numerator, int denominator) {
+    if (denominator < 0) {
+      numerator *= -1;
+      denominator *= -1;
+    }
+    boolean negative = numerator < 0;
+    if (negative) {
+      numerator *= -1;
+    }
+    if (numerator == 0) {
+      this.numerator = numerator;
+      this.denominator = denominator;
+    } else {
+      int gcd = this.gcd(numerator, denominator);
+      this.numerator = numerator / gcd;
+      this.denominator = denominator / gcd;
+    }
+    if (negative){
       this.numerator *= -1;
-      this.denominator *= -1;
     }
   }
 
@@ -19,8 +34,8 @@ class Fraction {
     if (x == y)
       return x;
     if (x > y)
-      return this.gcd(x - y, y);
-    return this.gcd(x, y - x);
+      return gcd(x - y, y);
+    return gcd(x, y - x);
   }
 
   public Fraction(int numerator) {
@@ -67,14 +82,24 @@ class Fraction {
     return power;
   }
 
+  public double getValue() {
+    return (double) this.numerator / this.denominator;
+  }
+
   public Fraction clone() {
     return new Fraction(this.numerator, this.denominator);
   }
 
   public void read() {
     Console console = new Console();
-    this.numerator = console.readInt("Dame el numerador");
-    this.denominator = console.readInt("Dame el denominador");
+    int numerator = console.readInt("Dame el numerador: ");
+    int denominator;
+    boolean ok;
+    do {
+      denominator = console.readInt("Dame el denominador: ");
+      ok = denominator == 0;
+    } while (!ok);
+    this.simplified(numerator, denominator);
   }
 
   public void write() {

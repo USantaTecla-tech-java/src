@@ -8,6 +8,10 @@ class Fraction {
   public Fraction(int numerator, int denominator) {
     assert denominator != 0;
 
+    this.simplified(numerator, denominator);
+  }
+
+  private void simplified(int numerator, int denominator) {
     if (denominator < 0) {
       numerator *= -1;
       denominator *= -1;
@@ -16,9 +20,14 @@ class Fraction {
     if (negative) {
       numerator *= -1;
     }
-    int gcd = this.gcd(numerator, denominator);
-    this.numerator = numerator / gcd;
-    this.denominator = denominator / gcd;
+    if (numerator == 0) {
+      this.numerator = numerator;
+      this.denominator = denominator;
+    } else {
+      int gcd = this.gcd(numerator, denominator);
+      this.numerator = numerator / gcd;
+      this.denominator = denominator / gcd;
+    }
     if (negative){
       this.numerator *= -1;
     }
@@ -99,8 +108,14 @@ class Fraction {
 
   public void read() {
     Console console = new Console();
-    this.numerator = console.readInt("Dame el numerador");
-    this.denominator = console.readInt("Dame el denominador");
+    int numerator = console.readInt("Dame el numerador: ");
+    int denominator;
+    boolean ok;
+    do {
+      denominator = console.readInt("Dame el denominador: ");
+      ok = denominator == 0;
+    } while (!ok);
+    this.simplified(numerator, denominator);
   }
 
   public void write() {

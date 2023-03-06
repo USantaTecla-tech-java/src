@@ -4,6 +4,16 @@ public class App {
 
   public static void main(String[] args) {
     Console console = new Console();
+    console.writeln(new Fraction(1,2).getValue());
+    console.writeln(new Fraction(-1,2).getValue());
+    console.writeln(new Fraction(-1,-2).getValue());
+    console.writeln(new Fraction(1,-2).getValue());
+    //console.writeln(new Fraction(1,0).getValue());
+    console.writeln(new Fraction(0,1).getValue());
+    // console.writeln(new Fraction(0,0).getValue());
+    console.writeln(new Fraction().getValue());
+    console.writeln(new Fraction(1).getValue());
+
     final int SIZE = 3;
     Fraction[] fractions = new Fraction[SIZE];
     for (int i = 0; i < fractions.length; i++) {
