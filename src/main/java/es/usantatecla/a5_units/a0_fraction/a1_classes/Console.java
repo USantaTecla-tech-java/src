@@ -1,4 +1,4 @@
-package es.usantatecla.a5_units.a0_fraction.classes;
+package es.usantatecla.a5_units.a0_fraction.a1_classes;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

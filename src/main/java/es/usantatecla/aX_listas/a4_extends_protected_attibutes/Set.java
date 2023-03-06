@@ -14,29 +14,4 @@ class Set extends List {
 		}
 	}
 
-	public Set union(Set set) {
-		Set union = new Set();
-		Iterator iterator = this.getIterator();
-		while (iterator.hasNext()) {
-			union.insertFirst(iterator.next());
-		}
-		iterator = set.getIterator();
-		while (iterator.hasNext()) {
-			union.insertFirst(iterator.next());
-		}
-		return union;
-	}
-
-	public Set intersection(Set set) {
-		Set intersection = new Set();
-		Iterator iterator = this.getIterator();
-		while (iterator.hasNext()) {
-			Interval interval = iterator.next();
-			if (set.includes(interval)) {
-				intersection.insertFirst(interval);
-			}
-		}
-		return intersection;
-	}
-
 }

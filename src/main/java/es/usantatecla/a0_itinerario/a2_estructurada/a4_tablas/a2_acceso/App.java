@@ -7,14 +7,14 @@ class App {
         console.writeln(new int[] { 1, 2, 3, 4, 5 }[0]); // 1
         console.writeln(new int[] { 1, 2, 3, 4, 5 }[4]); // 5
         //console.writeln(new int[] { 1, 2, 3, 4, 5 }[5]); // ERROR
-
         console.writeln(new String[][] { 
             { "a", "b", "c" }, 
             { "x", "y", "z" } }[0][0]); // a
-        console.writeln(new String[][] { 
+        for(String value : new String[][] { 
             { "a", "b", "c" }, 
-            { "x", "y", "z" } }[1]); // x - y - z
-
+            { "x", "y", "z" } }[1]){
+            console.write(value + ", "); // x, y, z,
+        }
         console.writeln();
         console.writeln(new int[] { 0, 1, 2 }.length); // 3
         console.writeln(new String[][] { 

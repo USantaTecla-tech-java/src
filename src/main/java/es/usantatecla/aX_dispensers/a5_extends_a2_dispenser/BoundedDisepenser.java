@@ -14,6 +14,8 @@ abstract class BoundedDisepenser extends Dispenser {
 		this.next = 0;
 	}
 
+	public abstract Interval remove();
+
 	public void add(Interval interval) {
 		assert interval != null;
 		assert !this.isFull();

@@ -4,8 +4,8 @@ class SentinelList extends List {
 
 	public boolean includes(Interval interval) {
 		this.insertLast(interval);
-		Node sentinel = this.first;
-		Node current = this.last;
+		Node sentinel = this.last;
+		Node current = this.first; 
 		while (!current.getInterval().equals(interval)) {
 			current = current.getNext();
 		}

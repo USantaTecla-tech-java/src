@@ -4,47 +4,44 @@ class App {
 
     public static void main(String[] args) {
         Console console = new Console();
-        console.writeln(new int[] {}); //
-        console.writeln(new int[] { 1, 2, 3, 4, 5 }); // 1 2 3 4 5
-        for (String x : new String[] { "Java", "Javascript", "Scala" }) {
-            console.write(x + ", ");
+        for (int value : new int[] {}) {
+            console.write(value); //
         }
-        console.writeln(); // Javascript, Java, Scala
-        console.writeln(new String[] { "Java", "Javascript", "Scala" }); // Javascript Java Scala
+        console.writeln();
+        for (int value : new int[] { 1, 2, 3, 4, 5 }) {
+            console.write(value + ", "); // 1, 2, 3, 4, 5,
+        }
+        console.writeln();
+        for (String value : new String[] { "Java", "Javascript", "Scala" }) {
+            console.write(value + ", "); // Javascript, Java, Scala
+        }
+        console.writeln();
         for (boolean value : new boolean[] { false, true }) {
-            console.write(value + ", ");
+            console.write(value + ", "); // false, true
         }
-        console.writeln(); // false, true
+        console.writeln();
         boolean b = false;
         for (boolean x : new boolean[] { true, b, 5 + 6 > 5 - 6 }) {
-            console.write(x + ", ");
+            console.write(x + ", "); // true, false, true,
         }
-        console.writeln(); // true, false, true,
-
+        console.writeln();
         for (char[] vowels : new char[][] {
                 { 'a', 'e', 'i', 'o', 'u' },
                 { 'A', 'E', 'I', 'O', 'U' } }) {
             for (char vowel : vowels) {
-                console.write(vowel + ", ");
+                console.write(vowel + ", "); // a, e, i, o, u, A, E, I, O, U
             }
-            console.writeln();
         }
-        // a, e, i, o, u,
-        // A, E, I, O, U
-
+        console.writeln();
         for (char[] row : new char[][] {
                 { 'x', ' ', 'o' },
                 { 'x', 'o', 'o' },
                 { ' ', ' ', 'x' } }) {
             for (char token : row) {
-                console.write(token + ", ");
+                console.write(token + ", "); // x, ,o, x, o, o, , ,x
             }
-            console.writeln();
         }
-        console.writeln(); // x, ,o
-        // x,o,o,
-        // , ,x
-
+        console.writeln();
         for (int[][] tableData : new int[][][] {
                 {
                         { 0, 0, 0 },
@@ -53,23 +50,24 @@ class App {
                 {
                         {},
                         { 1, 2, 3, 4 } } }) {
-            for (int[] rowData : tableData) {
-                for (int value : rowData) {
-                    console.write(value + ", ");
+            for (int[] row : tableData) {
+                for (int value : row) {
+                    console.write(value + ", "); // 0, 0, 0, 0, 0, 0, 1, 2, 3, 4
                 }
             }
         }
-        console.writeln(); // 0,0,0,0,0,0,1,2,3,4
-        
-        console.writeln(new int[3 * 2]); // 0 0 0 0 0 0
-        int length = 3;
-        for(boolean[] row : new boolean[length][2]){
-            console.writeln(row); 
+        console.writeln();
+        for (int value : new int[3 * 2]) {
+            console.write(value + ", "); // 0, 0, 0, 0, 0, 0,
         }
-        // false false
-        // false false
-        // false false
-
-        int[][] amedias  = new int[10][];
+        console.writeln();
+        int length = 3;
+        for (boolean[] row : new boolean[length - 1][2]) {
+            for (boolean value : row) {
+                console.write(value + ", "); // false, false, false, false,
+            }
+        }
+        console.writeln();
+        int[][] notIntsOnlyRows = new int[10][];
     }
 }
