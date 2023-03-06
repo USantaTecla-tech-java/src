@@ -1,4 +1,4 @@
-package es.usantatecla.a5_units.a3_date.a2_statics;
+package es.usantatecla.aX_managers.services.a2_statics;
 
 class Date {
 
@@ -49,11 +49,11 @@ class Date {
 
 	public boolean equals(Date date) {
 		return this.day == date.day &&
-				this.month == date.month &&
-				this.year == date.year;
+			   this.month == date.month &&
+			   this.year == date.year;
 	}
 
-	public boolean after(Date date) {
+	public boolean posteriorA(Date date) {
 		if (this.year == date.year) {
 			if (this.month == date.month) {
 				return this.day > date.day;
@@ -65,8 +65,8 @@ class Date {
 		}
 	}
 
-	public boolean before(Date date) {
-		return !this.equals(date) && date.after(this);
+	public boolean anteriorA(Date date) {
+		return !this.equals(date) && date.posteriorA(this);
 	}
 
 	public static void setGeneralFormat(Format generalFormat) {
@@ -93,14 +93,13 @@ class Date {
 		if (this.isLeapYear() &&
 				this.equals(new Date(28, Month.FEBRUARY, year))) {
 			return new Date(29, Month.FEBRUARY, year);
-		}
-		if (day < month.getDays()) {
+		} else if (day < month.getDays()) {
 			return new Date(day + 1, month, year);
-		}
-		if (month != Month.DECEMBER) {
+		} else if (month != Month.DECEMBER) {
 			return new Date(1, month.getNext(), year);
+		} else {
+			return new Date(1, Month.JANUARY, year + 1);
 		}
-		return new Date(1, Month.JANUARY, year + 1);
 	}
 
 	public int daysElapsedYear() {
@@ -111,7 +110,7 @@ class Date {
 			month = month.getNext();
 		}
 		if (this.isLeapYear() &&
-				this.after(new Date(29, Month.FEBRUARY, year))) {
+				this.posteriorA(new Date(29, Month.FEBRUARY, year))) {
 			days++;
 		}
 		return days;
@@ -132,7 +131,7 @@ class Date {
 		}
 		return days;
 	}
-
+	
 	public Date pasadosDias(int dias) {
 		Date fecha = new Date(this);
 		for (int i = 0; i < dias; i++) {
@@ -140,10 +139,11 @@ class Date {
 		}
 		return fecha;
 	}
-
+	
 	public static Date pasadosDiasAño(int dias, int año) {
 		Date fecha = new Date(1, Month.JANUARY, año);
-		return fecha.pasadosDias(dias);
+		return fecha.pasadosDias(dias);		
 	}
 
 }
+

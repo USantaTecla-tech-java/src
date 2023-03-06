@@ -1,13 +1,13 @@
-package es.usantatecla.managers.services.a2_statics;
+package es.usantatecla.aX_managers.services.a1_classes;
 
 class Date {
 
 	private int day;
 	private int month;
-	private int year;;
-	public static final int DAYS_PER_YEAR = 360;
-	private static final int DAYS_PER_MONTH = 30;
-	private static final int MONTHS_PER_YEAR = 12;
+	private int year;
+	public final int DAYS_PER_YEAR = 360;
+	private final int DAYS_PER_MONTH = 30;
+	private final int MONTHS_PER_YEAR = 12;
 
 	public Date(int day, int month, int year) {
 		this.day = day;
@@ -48,10 +48,10 @@ class Date {
 	}
 
 	public Date next() {
-		if (day < Date.DAYS_PER_MONTH) {
+		if (day < this.DAYS_PER_MONTH) {
 			return new Date(day + 1, month, year);
 		}
-		if (month != Date.MONTHS_PER_YEAR) {
+		if (month != this.MONTHS_PER_YEAR) {
 			return new Date(1, month + 1, year);
 		}
 		return new Date(1, 1, year + 1);
@@ -66,7 +66,7 @@ class Date {
 	}
 
 	public int daysElapsedYear() {
-		return (this.day-1) + (this.month - 1) * Date.DAYS_PER_MONTH;
+		return (this.day-1) + (this.month - 1) * this.DAYS_PER_MONTH;
 	}
 
 	public int getDay() {
@@ -86,3 +86,4 @@ class Date {
 	}
 
 }
+

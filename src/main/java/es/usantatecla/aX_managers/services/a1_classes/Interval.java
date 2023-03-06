@@ -1,4 +1,4 @@
-package es.usantatecla.managers.services.a1_classes;
+package es.usantatecla.aX_managers.services.a1_classes;
 
 class Interval {
 

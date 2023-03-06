@@ -1,7 +1,7 @@
-package es.usantatecla.managers.services.a2_statics;
+package es.usantatecla.aX_managers.services.a1_classes;
 
 class App {
-
+  
   public static void main(String[] args) {
 		final int YEAR = 2022;
 		ServicesContract servicesContract = new ServicesContract("USantaTecla", YEAR);
@@ -25,5 +25,5 @@ class App {
 		cost = servicesContract.getCost();
 		Console.getInstance().writeln("Coste anual del contrato: " + cost);
 	}
-  
+
 }

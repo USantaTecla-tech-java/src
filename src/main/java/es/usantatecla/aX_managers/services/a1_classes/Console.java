@@ -1,4 +1,4 @@
-package es.usantatecla.managers.services.a2_statics;
+package es.usantatecla.aX_managers.services.a1_classes;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

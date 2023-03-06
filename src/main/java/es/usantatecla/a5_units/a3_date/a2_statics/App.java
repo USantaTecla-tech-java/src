@@ -7,13 +7,13 @@ class App {
     int day = console.readInt("Dame el día:");
     int month = console.readInt("Dame el mes: ");
     int year = console.readInt("Dame el año: ");
-    Date date = new Date(day, month, year);
+    Date date = new Date(day, Month.getMonth(month), year);
 
     final Date[] firstSeasons = new Date[] {
-        new Date(21, 3, year),
-        new Date(21, 6, year),
-        new Date(21, 9, year),
-        new Date(21, 12, year) };
+        new Date(21,  Month.MARCH, year),
+        new Date(21, Month.JUNE, year),
+        new Date(21, Month.SEPTEMBER, year),
+        new Date(21, Month.DECEMBER, year) };
     int season = 3;
     for (int i = 0; i < firstSeasons.length; i++) {
       if (firstSeasons[i].before(date) || firstSeasons[i].equals(date)) {
@@ -22,7 +22,7 @@ class App {
     }
     int position = 0;
     for (int i = 0; i < 12; i++) {
-      if (new Date(21, i + 1, year).before(date)) {
+      if (new Date(21, Month.getMonth(i + 1), year).before(date)) {
         position++;
       }
     }

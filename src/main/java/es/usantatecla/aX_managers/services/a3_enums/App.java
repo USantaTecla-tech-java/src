@@ -1,4 +1,4 @@
-package es.usantatecla.managers.services.a5_packages;
+package es.usantatecla.aX_managers.services.a3_enums;
 
 class App {
 
@@ -29,5 +29,5 @@ class App {
 		console.writeln("Coste anual del contrato: " + cost + " €");
 		console.writeln(cost == 102300 ? "" : "ERROR!!!!");
 	}
-  
+
 }

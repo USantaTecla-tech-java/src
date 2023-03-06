@@ -1,9 +1,21 @@
-package es.usantatecla.managers.services.a5_packages;
+package es.usantatecla.aX_managers.services.a2_statics;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 class Console {
+
+	private static Console instance = null;
+
+	public static Console getInstance() {
+		if (Console.instance == null){
+			Console.instance = new Console();
+		}
+		return Console.instance;
+	}
+
+	private Console() {
+	}
 
 	private BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
