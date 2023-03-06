@@ -18,9 +18,5 @@ public class ModelIterativeMenu extends IterativeMenu {
         this.add(new ListModelOption(this.model));
         this.add(new InverseListModelOption(this.model));
     }
-
-    public static void main(String[] args) {
-        ModelIterativeMenu modelIterativeMenu = new ModelIterativeMenu(new Model());
-        modelIterativeMenu.interact();
-    }
+    
 }

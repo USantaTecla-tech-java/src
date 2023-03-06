@@ -19,8 +19,4 @@ public class ModelMenu extends Menu {
         this.add(new InverseListModelOption(this.model));
     }
 
-    public static void main(String[] args) {
-        ModelMenu modelAlternativeMenu = new ModelMenu(new Model());
-        modelAlternativeMenu.interact();
-    }
 }

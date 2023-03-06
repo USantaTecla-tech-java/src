@@ -18,9 +18,5 @@ public class ModelQuitMenu extends QuitMenu {
         this.add(new ListModelOption(this.model));
         this.add(new InverseListModelOption(this.model));
     }
-
-    public static void main(String[] args) {
-        ModelQuitMenu modelQuitMenu = new ModelQuitMenu(new Model());
-        modelQuitMenu.interact();
-    }
+    
 }

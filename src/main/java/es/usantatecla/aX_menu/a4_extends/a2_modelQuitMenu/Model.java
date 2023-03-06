@@ -1,6 +1,6 @@
-package es.usantatecla.aX_menu.a5_package.models;
+package es.usantatecla.aX_menu.a4_extends.a2_modelQuitMenu;
 
-public class Model {
+class Model {
 
     private String[] strings;
     private static final int MAX = 100;
