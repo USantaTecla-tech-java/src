@@ -21,7 +21,7 @@ class App {
       }
     }
     int position = 0;
-    for (int i = 0; i < 12; i++) {
+    for (int i = 0; i < Month.values().length; i++) {
       if (new Date(21, Month.getMonth(i + 1), year).before(date)) {
         position++;
       }

@@ -1,21 +1,25 @@
 package es.usantatecla.a5_units.a3_date.a2_statics;
 
-enum Format {
+class Format {
 
-	SPANISH,
-	ENGLISH;
+	public static final Format SPANISH = new Format();
+	public static final Format ENGLISH = new Format();
 
 	String toString(Date date) {
-		switch (this) {
-			case SPANISH:
+		if (this == Format.SPANISH) {
 				return date.getDay() + " de " +
 						date.getMonth().getName(this) + " de " +
 						date.getYear();
-			case ENGLISH:
-				return date.getMonth().getName(this) + ", " +
-						date.getDay() + "th " +
-						date.getYear();
+		} 
+		if (this == Format.ENGLISH){
+			return date.getMonth().getName(this) + ", " +
+			date.getDay() + "th " +
+			date.getYear();
 		}
 		return null;
 	}
+
+  public int ordinal() {
+    return 0;
+  }
 }

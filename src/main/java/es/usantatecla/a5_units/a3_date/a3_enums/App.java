@@ -21,8 +21,8 @@ class App {
       }
     }
     int position = 0;
-    for (int i = 0; i < 12; i++) {
-      if (new Date(21, Month.values()[i], year).before(date)) {
+    for (int i = 0; i < Month.values().length; i++) {
+      if (new Date(Season.FIRST_DAY, Month.values()[i], year).before(date)) {
         position++;
       }
     }
