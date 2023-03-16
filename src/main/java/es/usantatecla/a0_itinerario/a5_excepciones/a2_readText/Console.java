@@ -1,4 +1,4 @@
-package es.usantatecla.a0_itinerario.a3_basadaObjetos.a2_static;
+package es.usantatecla.a0_itinerario.a5_excepciones.a2_readText;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

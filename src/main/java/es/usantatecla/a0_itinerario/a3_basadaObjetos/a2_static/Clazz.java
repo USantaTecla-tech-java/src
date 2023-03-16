@@ -18,47 +18,43 @@ class Clazz {
     }
 
     public void publicInstnaceMethod() {
-        Console console = new Console();
-        console.writeln();
-        console.writeln("publicInstnaceMethod : PUBLIC_CONSTANT: " + Clazz.PUBLIC_CONSTANT);
-        console.writeln("publicInstnaceMethod : PRIVATE_CONSTANT: " + Clazz.PRIVATE_CONSTANT);
-        console.writeln("publicInstnaceMethod : publicAtributte: " + this.publicAtributte);
-        console.writeln("publicInstnaceMethod : privateAtributte: " + this.privateAtributte);
+        Console.getInstance().writeln();
+        Console.getInstance().writeln("publicInstnaceMethod : PUBLIC_CONSTANT: " + Clazz.PUBLIC_CONSTANT);
+        Console.getInstance().writeln("publicInstnaceMethod : PRIVATE_CONSTANT: " + Clazz.PRIVATE_CONSTANT);
+        Console.getInstance().writeln("publicInstnaceMethod : publicAtributte: " + this.publicAtributte);
+        Console.getInstance().writeln("publicInstnaceMethod : privateAtributte: " + this.privateAtributte);
         this.privateInstnaceMethod();
         Clazz.publicStaticMethod();
         Clazz.privateStaticMethod();
     }
 
     private void privateInstnaceMethod() {
-        Console console = new Console();
-        console.writeln();
-        console.writeln("privateInstnaceMethod : PUBLIC_CONSTANT: " + Clazz.PUBLIC_CONSTANT);
-        console.writeln("privateInstnaceMethod : PRIVATE_CONSTANT: " + Clazz.PRIVATE_CONSTANT);
-        console.writeln("privateInstnaceMethod : publicAtributte: " + this.publicAtributte);
-        console.writeln("privateInstnaceMethod : privateAtributte: " + this.privateAtributte);
+        Console.getInstance().writeln();
+        Console.getInstance().writeln("privateInstnaceMethod : PUBLIC_CONSTANT: " + Clazz.PUBLIC_CONSTANT);
+        Console.getInstance().writeln("privateInstnaceMethod : PRIVATE_CONSTANT: " + Clazz.PRIVATE_CONSTANT);
+        Console.getInstance().writeln("privateInstnaceMethod : publicAtributte: " + this.publicAtributte);
+        Console.getInstance().writeln("privateInstnaceMethod : privateAtributte: " + this.privateAtributte);
         Clazz.publicStaticMethod();
         Clazz.privateStaticMethod();
     }
 
     public static void publicStaticMethod() {
-        Console console = new Console();
-        console.writeln();
-        console.writeln("privateInstnaceMethod : PUBLIC_CONSTANT: " + Clazz.PUBLIC_CONSTANT);
-        console.writeln("privateInstnaceMethod : PRIVATE_CONSTANT: " + Clazz.PRIVATE_CONSTANT);
-        // console.writeln("privateInstnaceMethod : publicAtributte: " + this.publicAtributte);
-        // console.writeln("privateInstnaceMethod : privateAtributte: " + this.privateAtributte);
+        Console.getInstance().writeln();
+        Console.getInstance().writeln("privateInstnaceMethod : PUBLIC_CONSTANT: " + Clazz.PUBLIC_CONSTANT);
+        Console.getInstance().writeln("privateInstnaceMethod : PRIVATE_CONSTANT: " + Clazz.PRIVATE_CONSTANT);
+        // Console.getInstance().writeln("privateInstnaceMethod : publicAtributte: " + this.publicAtributte);
+        // Console.getInstance().writeln("privateInstnaceMethod : privateAtributte: " + this.privateAtributte);
         // this.privateInstnaceMethod();
         // Clazz.publicStaticMethod();
         Clazz.privateStaticMethod();
     }
 
     private static void privateStaticMethod() {
-        Console console = new Console();
-        console.writeln();
-        console.writeln("privateInstnaceMethod : PUBLIC_CONSTANT: " + Clazz.PUBLIC_CONSTANT);
-        console.writeln("privateInstnaceMethod : PRIVATE_CONSTANT: " + Clazz.PRIVATE_CONSTANT);
-        // console.writeln("privateInstnaceMethod : publicAtributte: " + this.publicAtributte);
-        // console.writeln("privateInstnaceMethod : privateAtributte: " + this.privateAtributte);
+        Console.getInstance().writeln();
+        Console.getInstance().writeln("privateInstnaceMethod : PUBLIC_CONSTANT: " + Clazz.PUBLIC_CONSTANT);
+        Console.getInstance().writeln("privateInstnaceMethod : PRIVATE_CONSTANT: " + Clazz.PRIVATE_CONSTANT);
+        // Console.getInstance().writeln("privateInstnaceMethod : publicAtributte: " + this.publicAtributte);
+        // Console.getInstance().writeln("privateInstnaceMethod : privateAtributte: " + this.privateAtributte);
     }
     
 }
@@ -66,13 +62,12 @@ class Clazz {
 class Client {
 
     public static void main(String[] args){
-        Console console = new Console();
-        console.writeln();
+        Console.getInstance().writeln();
         Clazz object = new Clazz(0);
-        console.writeln("main.PUBLIC_CONSTANT: " + Clazz.PUBLIC_CONSTANT);
-        // console.writeln("main.PRIVATE_CONSTANT: " + Clazz.PRIVATE_CONSTANT);
-        console.writeln("main.publicAtributte: " + object.publicAtributte);
-        // console.writeln("main.privateAtributte: " + object.privateAtributte);
+        Console.getInstance().writeln("main.PUBLIC_CONSTANT: " + Clazz.PUBLIC_CONSTANT);
+        // Console.getInstance().writeln("main.PRIVATE_CONSTANT: " + Clazz.PRIVATE_CONSTANT);
+        Console.getInstance().writeln("main.publicAtributte: " + object.publicAtributte);
+        // Console.getInstance().writeln("main.privateAtributte: " + object.privateAtributte);
         object.publicInstnaceMethod();
         // object.privateInstnaceMethod();
         Clazz.publicStaticMethod();

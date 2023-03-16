@@ -2,8 +2,8 @@ package es.usantatecla.aX_dispensers.a6_interfaces;
 
 class BoundedStack extends BoundedDisepenser {
 
-	public BoundedStack(int tamaño) {
-		super(tamaño);
+	public BoundedStack(int size) {
+		super(size);
 	}
 
 	public Interval remove() {

@@ -1,4 +1,4 @@
-package es.usantatecla.a0_itinerario.a3_basadaObjetos.a2_static;
+package es.usantatecla.a0_itinerario.a5_excepciones.a3_writeBinary;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

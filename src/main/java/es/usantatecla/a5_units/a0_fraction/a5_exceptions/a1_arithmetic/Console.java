@@ -1,4 +1,5 @@
-package es.usantatecla.a0_itinerario.a3_basadaObjetos.a2_static;
+package es.usantatecla.a5_units.a0_fraction.a5_exceptions.a1_arithmetic;
+
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -10,12 +11,8 @@ class Console {
 	public static Console getInstance() {
 		return instance;
 	}
-
-	private BufferedReader bufferedReader;
-
-	private Console() {
-		this.bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-	}
+	
+	private BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
 	public String readString(String title) {
 		String input = null;
@@ -78,19 +75,11 @@ class Console {
 		System.out.print(string);
 	}
 
-	public void write(int value) {
-		System.out.print(value);
-	}
-
-	public void write(double value) {
-		System.out.print(value);
+	public void write(int integer) {
+		System.out.print(integer);
 	}
 
 	public void write(char character) {
-		System.out.print(character);
-	}
-
-	public void write(boolean character) {
 		System.out.print(character);
 	}
 
@@ -103,23 +92,8 @@ class Console {
 		this.writeln();
 	}
 
-	public void writeln(int value) {
-		this.write(value);
-		this.writeln();
-	}
-
-	public void writeln(double value) {
-		this.write(value);
-		this.writeln();
-	}
-
-	public void writeln(char value) {
-		this.write(value);
-		this.writeln();
-	}
-
-	public void writeln(boolean value) {
-		this.write(value);
+	public void writeln(int integer) {
+		this.write(integer);
 		this.writeln();
 	}
 
@@ -129,3 +103,5 @@ class Console {
 	}
 
 }
+
+
