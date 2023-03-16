@@ -1,8 +1,5 @@
 package es.usantatecla.a5_units.a0_fraction.a5_exceptions.a1_arithmetic;
 
-import java.util.Scanner;
-import java.util.regex.Pattern;
-
 class Fraction {
 
   private final int numerator;
@@ -10,7 +7,7 @@ class Fraction {
 
   public Fraction(int numerator, int denominator) {
     if (denominator == 0)
-        throw new ArithmeticException("El denominador no puede ser 0");
+      throw new ArithmeticException("El denominador no puede ser 0");
 
     if (denominator < 0) {
       numerator *= -1;
@@ -25,20 +22,6 @@ class Fraction {
     this.denominator = denominator;
   }
 
-  public Fraction(String string) {
-    if (!Pattern.matches(" *(\\d+) */ *(\\d+) *", string))
-        throw new NumberFormatException("Formato incorrecto");
-    Scanner scanner = new Scanner(string);
-    int numerator = scanner.nextInt();
-    scanner.next();
-    int denominator = scanner.nextInt();
-    scanner.close();
-    if (denominator == 0)
-        throw new ArithmeticException("El denominador no puede ser 0");
-    this.numerator = numerator;
-    this.denominator = denominator;
-}
-
   private int gcd(int x, int y) {
     assert x > 0;
     assert y > 0;
@@ -48,6 +31,11 @@ class Fraction {
     if (x > y)
       return gcd(x - y, y);
     return gcd(x, y - x);
+  }
+
+  public Fraction(String string) {
+    this(new FractionScanner(string).getNumerator(),
+    new FractionScanner(string).getDenominator());
   }
 
   public Fraction(int numerator) {
@@ -120,6 +108,7 @@ class Fraction {
     return new Fraction(this.numerator, this.denominator);
   }
 
+  @Override
   public String toString() {
     return this.numerator + "/" + this.denominator;
   }

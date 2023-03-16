@@ -7,4 +7,5 @@ public class App {
     new FractionView().writeln(new Fraction("2/a3"));
     Console.getInstance().writeln("Despues");
   }
+  
 }

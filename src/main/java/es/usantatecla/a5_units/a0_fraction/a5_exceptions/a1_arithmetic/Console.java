@@ -12,7 +12,11 @@ class Console {
 		return instance;
 	}
 	
-	private BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+	private BufferedReader bufferedReader;
+	
+	private Console() {
+		this.bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+	}
 
 	public String readString(String title) {
 		String input = null;

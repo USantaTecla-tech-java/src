@@ -7,4 +7,5 @@ public class App {
     new FractionView().writeln(new Fraction(3, 0));
     Console.getInstance().writeln("Despues");
   }
+  
 }
