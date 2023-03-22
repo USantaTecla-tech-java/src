@@ -1,45 +1,45 @@
 package es.usantatecla.aX_dispensers.a3_asserts;
+
 class BoundedStack {
 
-	protected Interval[] intervals;
-	protected int size;
-	protected int next;
+	private Interval[] elements;
+	private int next;
 
 	public BoundedStack(int capacity) {
 		assert capacity > 0;
 
-		this.intervals = new Interval[capacity];
-		this.size = 0;
+		this.elements = new Interval[capacity];
 		this.next = 0;
 	}
 
-	public void add(Interval interval) {
-		assert interval != null;
-		assert !this.isFull();
+	public void add(Interval element) {
+		assert element != null;
 
-		this.size++;
-		this.intervals[this.next] = interval;
+		this.elements[this.next] = element;
 		this.next++;
 	}
 
 	public boolean isEmpty() {
-		return this.size == 0;
+		return this.next == 0;
 	}
 
 	public boolean isFull() {
-		return this.size == intervals.length;
+		return this.next == elements.length;
 	}
 
 	public Interval remove() {
-		assert !this.isEmpty();
-		
-		this.size--;
+		assert this.next > 0;
+
 		this.next--;
-		return intervals[next];
+		return elements[next];
 	}
 
-	public BoundedStackIterator getIterator() {
-		return new BoundedStackIterator(intervals, size, next);
+	public Interval[] getElements(){
+		Interval[] elements = new Interval[this.next];
+		for (int position = 0; position < this.next; position++) {
+			elements[position] = this.elements[this.next - 1 - position];
+		}
+		return elements;
 	}
 
 }

@@ -2,37 +2,41 @@ package es.usantatecla.aX_dispensers.a6_interfaces;
 
 public class App {
 
-	public static void main(String[] args) {
-		App.examplePolymorphic(new BoundedQueue(10));
-		App.examplePolymorphic(new BoundedStack(10));
-		App.examplePolymorphic(new UnboundedQueue());
-		App.examplePolymorphic(new UnboundedStack());
+	public static void main(String[] args){
+		App.example(new BoundedQueue(10),"BoundedQueue");
+		App.example(new BoundedStack(10),"BoundedStack");
+		App.example(new UnboundedQueue(),"UnboundedQueue");
+		App.example(new UnboundedStack(),"UnboundedStack");
 	}
 
-	private static void examplePolymorphic(Dispenser dispenser) {
-		Console.getInstance().writeln("=======");
-		App.writelnDispenser(dispenser.getIterator());
+	private static void example(Dispenser dispenser, String title) {
+		Console.getInstance().writeln("======= " + title);
+		Console.getInstance().writeln("------- Vacío");
+		App.writeln(dispenser.getElements());
 
+		Console.getInstance().writeln("------- Metemos 10");
 		for (int i = 0; i < 10; i++) {
 			dispenser.add(new Interval(-i, i));
 		}
-		Console.getInstance().writeln("-------");
-		App.writelnDispenser(dispenser.getIterator());
-
+		App.writeln(dispenser.getElements());
+		
+		Console.getInstance().writeln("------- Sacamos 5");
 		for (int i = 0; i < 5; i++) {
 			dispenser.remove();
 		}
+		App.writeln(dispenser.getElements());
+
+		Console.getInstance().writeln("------- Metemos 3");
 		for (int i = 0; i < 3; i++) {
 			dispenser.add(new Interval(-100, 100));
 		}
-		Console.getInstance().writeln("-------");
-		App.writelnDispenser(dispenser.getIterator());
+		App.writeln(dispenser.getElements());
 	}
 
-	private static void writelnDispenser(Iterator iterator) {
+	private static void writeln(Interval[] elements) {
 		int position = 1;
-		while (iterator.hasNext()) {
-			Console.getInstance().writeln(position + ": " + iterator.next());
+		for(Interval interval : elements){
+			Console.getInstance().writeln(position + ": " + interval.toString());
 			position++;
 		}
 	}

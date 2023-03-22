@@ -7,15 +7,17 @@ class BoundedStack extends BoundedDisepenser {
 	}
 
 	public Interval remove() {
-		assert !this.isEmpty();
-		
-		size--;
-		next--;
-		return intervals[next];
+		this.size--;
+		this.next--;
+		return this.elements[next];
 	}
 
-	public Iterator getIterator() {
-		return new BoundedStackIterator(intervals, size, next);
+	public Interval[] getElements(){
+		Interval[] elements = new Interval[this.next];
+		for (int position = 0; position < this.next; position++) {
+			elements[position] = this.elements[this.next - 1 - position];
+		}
+		return elements;
 	}
 
 }

@@ -2,26 +2,26 @@ package es.usantatecla.aX_dispensers.a5_extends_a2_dispenser;
 
 abstract class BoundedDisepenser extends Dispenser {
 
-	protected Interval[] intervals;
+	protected Interval[] elements;
 	protected int size;
 	protected int next;
 
 	protected BoundedDisepenser(int capacity) {
 		assert capacity > 0;
 
-		this.intervals = new Interval[capacity];
+		this.elements = new Interval[capacity];
 		this.size = 0;
 		this.next = 0;
 	}
 
 	public abstract Interval remove();
 
-	public void add(Interval interval) {
-		assert interval != null;
+	public void add(Interval element) {
+		assert element != null;
 		assert !this.isFull();
 
 		this.size++;
-		this.intervals[this.next] = interval;
+		this.elements[this.next] = element;
 		this.next++;
 	}
 
@@ -30,6 +30,6 @@ abstract class BoundedDisepenser extends Dispenser {
 	}
 
 	public boolean isFull() {
-		return this.size == intervals.length;
+		return this.size == elements.length;
 	}
 }

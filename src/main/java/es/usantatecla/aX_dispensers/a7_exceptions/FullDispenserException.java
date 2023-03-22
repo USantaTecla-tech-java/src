@@ -9,7 +9,7 @@ class FullDispenserException extends DispenserException {
 
 	public void recover() {
 		Console.getInstance().writeln("Reparando......");
-		((BoundedDispenser) this.dispenser).duplicate();
+		((BoundedDisepenser) this.dispenser).duplicate();
 		try {
 			this.dispenser.add(interval);
 		} catch (FullDispenserException ex) {}

@@ -65,17 +65,17 @@ public class Intervalo<Elemento extends Comparable<Elemento>> {
 
 	public static void main(String[] args) {
 		Intervalo<Integer> intervaloEnteros1 = new Intervalo<Integer>(
-				new Integer(1), new Integer(5));
+				Integer.valueOf(1), Integer.valueOf(5));
 		Intervalo<Integer> intervaloEnteros2 = new Intervalo<Integer>(
-				new Integer(2), new Integer(3));
+			Integer.valueOf(2), Integer.valueOf(3));
 		System.out.println("El intervalo " + intervaloEnteros1 +
 				(intervaloEnteros1.incluye(intervaloEnteros2) ? " SI" : " NO") +
 				" incluye al intervalo " + intervaloEnteros2);
 
 		Intervalo<Double> intervaloReales1 = new Intervalo<Double>(
-				new Double(3.3), new Double(5.5));
+			Double.valueOf(3.3), Double.valueOf(5.5));
 		Intervalo<Double> intervaloReales2 = new Intervalo<Double>(
-				new Double(4.4), new Double (6.6));
+			Double.valueOf(4.4), Double.valueOf(6.6));
 		System.out.println("El intervalo " + intervaloReales1 +
 				(intervaloReales1.incluye(intervaloReales2) ? " SI" : " NO") +
 				" incluye al intervalo " + intervaloReales2);

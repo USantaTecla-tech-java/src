@@ -40,7 +40,7 @@ public class Fecha implements Comparable<Fecha> {
 
 	public static void main(String[] args) {
 		Fecha fecha11 = new Fecha(
-				new Integer(1), new Integer(1), new Integer(1982));
+			Integer.valueOf(1), Integer.valueOf(1), new Integer(1982));
 		Fecha fecha12 = new Fecha(
 				new Integer(31), new Integer(12), new Integer(1982));
 		Intervalo<Fecha> intervaloFechas1 = new Intervalo<Fecha>(

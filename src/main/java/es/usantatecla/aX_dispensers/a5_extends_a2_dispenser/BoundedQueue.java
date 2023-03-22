@@ -9,24 +9,28 @@ class BoundedQueue extends BoundedDisepenser {
 		this.first = 0;
 	}
 
-	public void add(Interval interval) {
-		super.add(interval);
-		if (this.next == this.intervals.length) {
+	public void add(Interval element) {
+		super.add(element);
+		if (this.next == this.elements.length) {
 			this.next = 0;
 		}
 	}
 
 	public Interval remove() {
-		assert !this.isEmpty();
+		assert this.size > 0;
 		
 		this.size--;
-		Interval interval = this.intervals[this.first];
-		this.first = (this.first + 1) % this.intervals.length;
-		return interval;
+		Interval element = this.elements[this.first];
+		this.first = (this.first + 1) % this.elements.length;
+		return element;
 	}
 
-	public Iterator getIterator() {
-		return new BoundedQueueIterator(this.intervals, this.size, this.first);
+	public Interval[] getElements() {
+		Interval[] elements = new Interval[this.size];
+		for(int position= 0; position < this.size; position++){
+			elements[position] = this.elements[(position + this.first)  % this.elements.length];
+		}
+		return elements;
 	}
 
 }

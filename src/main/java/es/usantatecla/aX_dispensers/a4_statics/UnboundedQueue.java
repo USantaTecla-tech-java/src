@@ -2,10 +2,10 @@ package es.usantatecla.aX_dispensers.a4_statics;
 
 class UnboundedQueue {
 
+	private Node entrance;
 	private Node exit;
-	protected Node entrance;
 
-	protected UnboundedQueue() {
+	UnboundedQueue() {
 		this.entrance = null;
 		this.exit = null;
 	}
@@ -14,16 +14,20 @@ class UnboundedQueue {
 		return this.entrance == null;
 	}
 
-	public void add(Interval interval) {
+	public void add(Interval element) {
+		assert element != null;
+
 		boolean empty = this.isEmpty();
-		this.entrance = new Node(null, interval, this.entrance);
+		this.entrance = new Node(element, this.entrance);
 		if (empty) {
 			this.exit = this.entrance;
 		}
 	}
 
 	public Interval remove() {
-		Interval interval = exit.getInterval();
+		assert this.exit != null;
+
+		Interval element = this.exit.getElement();
 		if (this.exit.getPrevious() == null) {
 			this.entrance = null;
 			this.exit = null;
@@ -31,11 +35,23 @@ class UnboundedQueue {
 			this.exit = exit.getPrevious();
 			this.exit.setNext(null);
 		}
-		return interval;
+		return element;
 	}
 
-	public UnboundedQueueIterator getIterator() {
-		return new UnboundedQueueIterator(exit);
+	public Interval[] getElements() {
+		int size = 0;
+		Node node = this.exit;
+		while (node != null) {
+			size++;
+			node = node.getPrevious();
+		}
+		Interval[] elements = new Interval[size];
+		node = this.exit;
+		for(int position = 0; position < size; position++){
+			elements[position] = node.getElement();
+ 			node = node.getPrevious();
+		}
+		return elements;
 	}
 
 }

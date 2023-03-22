@@ -4,25 +4,42 @@ class UnboundedStack {
 
 	private Node entrance;
 
-	protected UnboundedStack() {
+	UnboundedStack() {
 		this.entrance = null;
 	}
 
-	public void add(Interval interval) {
-		this.entrance = new Node(null, interval, this.entrance);
+	public void add(Interval element) {
+		assert element != null;
+
+		this.entrance = new Node(element, this.entrance);
 	}
 
 	public boolean isEmpty() {
 		return this.entrance == null;
 	}
+
 	public Interval remove() {
-		Interval interval = entrance.getInterval();
+		assert !this.isEmpty();
+
+		Interval element = entrance.getElement();
 		entrance = entrance.getNext();
-		return interval;
+		return element;
 	}
 
-	public UnboundedStackIterator getIterator() {
-		return new UnboundedStackIterator(entrance);
+	public Interval[] getElements() {
+		int size = 0;
+		Node node = this.entrance;
+		while (node != null) {
+			size++;
+			node = node.getNext();
+		}
+		Interval[] elements = new Interval[size];
+		node = this.entrance;
+		for(int position = 0; position < size; position++){
+			elements[position] = node.getElement();
+ 			node = node.getNext();
+		}
+		return elements;
 	}
 
 }

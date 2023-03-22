@@ -2,14 +2,24 @@ package es.usantatecla.aX_dispensers.a4_statics;
 
 class Node {
 
-	private Interval interval;
 	private Node previous;
+	private Interval element;
 	private Node next;
 
-	public Node(Node previous, Interval interval, Node next) {
-		this.interval = interval;
+	public Node(Node previous, Interval element, Node next) {
+		assert element != null;
+		
 		this.setPrevious(previous);
+		this.element = element;
 		this.setNext(next);
+	}
+
+	public Node(Interval element, Node next) {
+		this(null, element, next);
+	}
+
+	public Node(Node previous, Interval element) {
+		this(previous, element, null);
 	}
 
 	public Node getPrevious() {
@@ -34,8 +44,8 @@ class Node {
 		}
 	}
 
-	public Interval getInterval() {
-		return new Interval(this.interval);
+	public Interval getElement() {
+		return new Interval(this.element);
 	}
-	
+
 }

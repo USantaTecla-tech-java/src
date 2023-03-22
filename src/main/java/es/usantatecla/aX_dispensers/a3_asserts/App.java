@@ -2,182 +2,129 @@ package es.usantatecla.aX_dispensers.a3_asserts;
 
 public class App {
 
-	public static void main(String[] args) {
-		App.exampleBoundedQueue();
-		App.exampleBoundedStack();
-		App.exampleUnboundedQueue();
-		App.exampleUnboundedStack();
+	public static void main(String[] args){
+		new App().exec();
 	}
 
-	private static void exampleBoundedQueue() {
-		Console console = new Console();
-		  console.writeln("=======");
-		BoundedQueue boundedQueue = new BoundedQueue(10);
-		BoundedQueueIterator iterator = boundedQueue.getIterator();
+	private Console console;
+
+	public App() {
+		this.console = new Console();
+	}
+
+	public void exec() {
+		this.exampleBoundedQueue();
+		this.exampleBoundedStack();
+		this.exampleUnboundedQueue();
+		this.exampleUnboundedStack();
+	}
+
+	private void exampleBoundedQueue() {
+		this.console.writeln("======= BoundedQueue");
+		this.console.writeln("------- Vacío");
+		BoundedQueue dispenser = new BoundedQueue(10);
+		this.writeln(dispenser.getElements());
+
+		this.console.writeln("------- Metemos 10");
+		for (int i = 0; i < 10; i++) {
+			dispenser.add(new Interval(-i, i));
+		}
+		this.writeln(dispenser.getElements());
+		
+		this.console.writeln("------- Sacamos 5");
+		for (int i = 0; i < 5; i++) {
+			dispenser.remove();
+		}
+		this.writeln(dispenser.getElements());
+
+		this.console.writeln("------- Metemos 3");
+		for (int i = 0; i < 3; i++) {
+			dispenser.add(new Interval(-100, 100));
+		}
+		this.writeln(dispenser.getElements());
+	}
+
+	private void writeln(Interval[] elements) {
 		int position = 1;
-		while (iterator.hasNext()) {
-			  console.writeln(position + ": " + iterator.next());
-			position++;
-		}
-
-		for (int i = 0; i < 10; i++) {
-			boundedQueue.add(new Interval(-i, i));
-		}
-		  console.writeln("-------");
-		iterator = boundedQueue.getIterator();
-		position = 1;
-		while (iterator.hasNext()) {
-			  console.writeln(position + ": " + iterator.next());
-			position++;
-		}
-
-		for (int i = 0; i < 5; i++) {
-			boundedQueue.remove();
-		}
-		for (int i = 0; i < 3; i++) {
-			boundedQueue.add(new Interval(-100, 100));
-		}
-		  console.writeln("-------");
-		iterator = boundedQueue.getIterator();
-		position = 1;
-		while (iterator.hasNext()) {
-			  console.writeln(position + ": " + iterator.next());
+		for(Interval interval : elements){
+			this.console.writeln(position + ": " + interval.toString());
 			position++;
 		}
 	}
 
-	private static void exampleBoundedStack() {
-		Console console = new Console();
-		  console.writeln("=======");
-		BoundedStack boudedStack = new BoundedStack(10);
-		BoundedStackIterator iterator = boudedStack.getIterator();
-		int position= 1;
-		while (iterator.hasNext()) {
-			  console.writeln(position + ": " + iterator.next());
-			position++;
-		}
+	private void exampleBoundedStack() {
+		this.console.writeln("======= BoundedStack");
+		this.console.writeln("------- Vacío");
+		BoundedStack dispenser = new BoundedStack(10);
+		this.writeln(dispenser.getElements());
 
+		this.console.writeln("------- Metemos 10");
 		for (int i = 0; i < 10; i++) {
-			boudedStack.add(new Interval(-i, i));
+			dispenser.add(new Interval(-i, i));
 		}
-		  console.writeln("-------");
-		iterator = boudedStack.getIterator();
-		position = 1;
-		while (iterator.hasNext()) {
-			  console.writeln(position + ": " + iterator.next());
-			position++;
-		}
-
+		this.writeln(dispenser.getElements());
+		
+		this.console.writeln("------- Sacamos 5");
 		for (int i = 0; i < 5; i++) {
-			boudedStack.remove();
+			dispenser.remove();
 		}
+		this.writeln(dispenser.getElements());
+
+		this.console.writeln("------- Metemos 3");
 		for (int i = 0; i < 3; i++) {
-			boudedStack.add(new Interval(-100, 100));
+			dispenser.add(new Interval(-100, 100));
 		}
-		  console.writeln("-------");
-		iterator = boudedStack.getIterator();
-		position = 1;
-		while (iterator.hasNext()) {
-			  console.writeln(position + ": " + iterator.next());
-			position++;
-		}
+		this.writeln(dispenser.getElements());
 	}
 
-	private static void exampleUnboundedQueue() {
-		Console console = new Console();
-		  console.writeln("=======");
-		UnboundedQueue unboundedQueue = new UnboundedQueue();
-		UnboundedQueueIterator iterator = unboundedQueue.getIterator();
-		int position= 1;
-		while (iterator.hasNext()) {
-			  console.writeln(position + ": " + iterator.next());
-			position++;
-		}
+	private void exampleUnboundedQueue() {
+		this.console.writeln("======= UnboundedQueue");
+		this.console.writeln("------- Vacío");
+		UnboundedQueue dispenser = new UnboundedQueue();
+		this.writeln(dispenser.getElements());
 
+		this.console.writeln("------- Metemos 10");
 		for (int i = 0; i < 10; i++) {
-			unboundedQueue.add(new Interval(-i, i));
+			dispenser.add(new Interval(-i, i));
 		}
-		  console.writeln("-------");
-		iterator = unboundedQueue.getIterator();
-		position = 1;
-		while (iterator.hasNext()) {
-			  console.writeln(position + ": " + iterator.next());
-			position++;
-		}
-
+		this.writeln(dispenser.getElements());
+		
+		this.console.writeln("------- Sacamos 5");
 		for (int i = 0; i < 5; i++) {
-			unboundedQueue.remove();
+			dispenser.remove();
 		}
-		for (int i = 0; i < 3; i++) {
-			unboundedQueue.add(new Interval(-100, 100));
-		}
-		  console.writeln("-------");
-		iterator = unboundedQueue.getIterator();
-		position = 1;
-		while (iterator.hasNext()) {
-			  console.writeln(position + ": " + iterator.next());
-			position++;
-		}
+		this.writeln(dispenser.getElements());
 
-		for (int i = 0; i < 8; i++) {
-			unboundedQueue.remove();
+		this.console.writeln("------- Metemos 3");
+		for (int i = 0; i < 3; i++) {
+			dispenser.add(new Interval(-100, 100));
 		}
-		  console.writeln("-------");
-		iterator = unboundedQueue.getIterator();
-		position = 1;
-		while (iterator.hasNext()) {
-			  console.writeln(position + ": " + iterator.next());
-			position++;
-		}
+		this.writeln(dispenser.getElements());
 	}
 
-	private static void exampleUnboundedStack() {
-		Console console = new Console();
-		  console.writeln("=======");
-		UnboundedStack unboundedStack = new UnboundedStack();
-		UnboundedStackIterator iterator = unboundedStack.getIterator();
-		int position = 1;
-		while (iterator.hasNext()) {
-			  console.writeln(position + ": " + iterator.next());
-			position++;
-		}
+	private void exampleUnboundedStack() {
+		this.console.writeln("======= UnboundedStack");
+		this.console.writeln("------- Vacío");
+		UnboundedStack dispenser = new UnboundedStack();
+		this.writeln(dispenser.getElements());
 
+		this.console.writeln("------- Metemos 10");
 		for (int i = 0; i < 10; i++) {
-			unboundedStack.add(new Interval(-i, i));
+			dispenser.add(new Interval(-i, i));
 		}
-		  console.writeln("-------");
-		iterator = unboundedStack.getIterator();
-		position = 1;
-		while (iterator.hasNext()) {
-			  console.writeln(position + ": " + iterator.next());
-			position++;
-		}
-
+		this.writeln(dispenser.getElements());
+		
+		this.console.writeln("------- Sacamos 5");
 		for (int i = 0; i < 5; i++) {
-			unboundedStack.remove();
+			dispenser.remove();
 		}
+		this.writeln(dispenser.getElements());
+
+		this.console.writeln("------- Metemos 3");
 		for (int i = 0; i < 3; i++) {
-			unboundedStack.add(new Interval(-100, 100));
+			dispenser.add(new Interval(-100, 100));
 		}
-
-		  console.writeln("-------");
-		iterator = unboundedStack.getIterator();
-		position = 1;
-		while (iterator.hasNext()) {
-			  console.writeln(position + ": " + iterator.next());
-			position++;
-		}
-
-		for (int i = 0; i < 8; i++) {
-			unboundedStack.remove();
-		}
-		  console.writeln("-------");
-		iterator = unboundedStack.getIterator();
-		position = 1;
-		while (iterator.hasNext()) {
-			  console.writeln(position + ": " + iterator.next());
-			position++;
-		}
+		this.writeln(dispenser.getElements());
 	}
 
 }

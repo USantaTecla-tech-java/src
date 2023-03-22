@@ -2,18 +2,22 @@ package es.usantatecla.aX_dispensers.a6_interfaces;
 
 class BoundedStack extends BoundedDisepenser {
 
-	public BoundedStack(int size) {
-		super(size);
+	public BoundedStack(int capacity) {
+		super(capacity);
 	}
 
 	public Interval remove() {
-		size--;
-		next--;
-		return intervals[next];
+		this.size--;
+		this.next--;
+		return this.elements[next];
 	}
 
-	public Iterator getIterator() {
-		return new BoundedStackIterator(intervals, size, next);
+	public Interval[] getElements(){
+		Interval[] elements = new Interval[this.next];
+		for (int position = 0; position < this.next; position++) {
+			elements[position] = this.elements[this.next - 1 - position];
+		}
+		return elements;
 	}
-	
+
 }

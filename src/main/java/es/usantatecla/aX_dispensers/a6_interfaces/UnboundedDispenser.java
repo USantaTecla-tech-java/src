@@ -8,12 +8,14 @@ abstract class UnboundedDispenser implements Dispenser {
 		this.entrance = null;
 	}
 
-	public void add(Interval interval) {
-		this.entrance = new Node(null, interval, this.entrance);
+	public void add(Interval element) {
+		assert element != null;
+
+		this.entrance = new Node(null, element, this.entrance);
 	}
 
 	public boolean isEmpty() {
 		return this.entrance == null;
 	}
-	
+
 }

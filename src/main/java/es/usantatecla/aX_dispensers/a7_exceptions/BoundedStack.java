@@ -1,29 +1,33 @@
 package es.usantatecla.aX_dispensers.a7_exceptions;
 
-class BoundedStack extends BoundedDispenser {
+class BoundedStack extends BoundedDisepenser {
 
-	public BoundedStack(int size) {
-		super(size);
+	public BoundedStack(int capacity) {
+		super(capacity);
 	}
 
-	public Interval remove() throws EmptyDispenserException {
+	public Interval remove()  throws EmptyDispenserException {
 		super.remove();
-		size--;
-		next--;
-		return intervals[next];
+		this.size--;
+		this.next--;
+		return this.elements[next];
 	}
 
-	public Iterator getIterator() {
-		return new BoundedStackIterator(intervals, size, next);
+	public Interval[] getElements(){
+		Interval[] elements = new Interval[this.next];
+		for (int position = 0; position < this.next; position++) {
+			elements[position] = this.elements[this.next - 1 - position];
+		}
+		return elements;
 	}
 
 	public void duplicate() {
-		Interval[] news = new Interval[2 * intervals.length];
-		for (int i = 0; i < size; i++) {
-			news[i] = intervals[i];
+		Interval[] news = new Interval[2 * this.elements.length];
+		for (int i = 0; i < this.size; i++) {
+			news[i] = this.elements[i];
 		}
-		intervals = news;
-		next = size;
+		this.elements = news;
+		this.next = this.size;
 	}
 
 }

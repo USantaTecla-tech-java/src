@@ -5,21 +5,24 @@ import java.io.InputStreamReader;
 
 class Console {
 
-	private static Console instance ;
-	
+	private static Console instance;
+
 	public static Console getInstance() {
 		if (Console.instance == null){
 			Console.instance = new Console();
 		}
-		return instance;
-	}
-
-	private Console() {
+		return Console.instance;
 	}
 	
-	private BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+	private BufferedReader bufferedReader;
+	
+	private Console() {
+		bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+	}
 
 	public String readString(String title) {
+		assert title != null;
+
 		String input = null;
 		this.write(title);
 		try {
@@ -34,6 +37,8 @@ class Console {
 	}
 
 	public int readInt(String title) {
+		assert title != null;
+		
 		int input = 0;
 		boolean ok = false;
 		do {
@@ -48,6 +53,8 @@ class Console {
 	}
 
 	public double readDouble(String title) {
+		assert title != null;
+		
 		double input = 0;
 		boolean ok = false;
 		do {
@@ -62,6 +69,8 @@ class Console {
 	}
 
 	public char readChar(String title) {
+		assert title != null;
+		
 		char charValue = ' ';
 		boolean ok = false;
 		do {
@@ -77,6 +86,8 @@ class Console {
 	}
 
 	public void write(String string) {
+		assert string != null;
+		
 		System.out.print(string);
 	}
 
@@ -102,8 +113,10 @@ class Console {
 		this.writeln();
 	}
 
-	public void writeError(String format) {
-		this.write("FORMAT ERROR! Enter a " + format + " formatted value.");
+	public void writeError(String error) {
+		assert error != null;
+
+		this.write("FORMAT ERROR! Enter a " + error + " formatted value.");
 		this.writeln();
 	}
 
