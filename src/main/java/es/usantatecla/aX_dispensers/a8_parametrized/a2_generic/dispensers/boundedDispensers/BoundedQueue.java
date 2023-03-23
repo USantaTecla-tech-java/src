@@ -1,7 +1,5 @@
 package es.usantatecla.aX_dispensers.a8_parametrized.a2_generic.dispensers.boundedDispensers;
 
-import es.usantatecla.aX_dispensers.a8_parametrized.a2_generic.utils.Interval;
-import es.usantatecla.aX_dispensers.a8_parametrized.a2_generic.utils.Iterator;
 import es.usantatecla.aX_dispensers.a8_parametrized.a2_generic.dispensers.EmptyDispenserException;
 import es.usantatecla.aX_dispensers.a8_parametrized.a2_generic.dispensers.FullDispenserException;
 
@@ -29,20 +27,26 @@ public class BoundedQueue<E> extends BoundedDispenser<E> {
 		return element;
 	}
 
-	public Iterator<E> getIterator() {
-		return new BoundedQueueIterator<E>(this.elements, this.size, this.first);
+	public E[] getElements() {
+		E[] elements = (E[]) new Object[this.size];
+		for (int position = 0; position < this.size; position++) {
+			elements[position] = this.elements[(position + this.first) % this.elements.length];
+		}
+		return elements;
 	}
 
-	@Override
 	public void duplicate() {
-		E[] news = (E[]) new Object[2 * this.elements.length];
-		int i = this.first;
-		for (int j = 0; j < this.size; j++) {
-			news[j] = this.elements[j];
-			i = (i + 1) % this.elements.length;
+		E[] elements = this.getElements();
+		this.elements = (E[]) new Object[2 * this.elements.length];
+		this.size = 0;
+		this.next = 0;
+		for(E element : elements){
+			try {
+				this.add(element);
+			} catch (FullDispenserException e) {
+				e.printStackTrace();
+			}
 		}
-		this.elements = news;
-		this.first = 0;
 	}
 
 }

@@ -31,7 +31,7 @@ public abstract class BoundedDisepenser implements Dispenser {
 
 		this.size++;
 		this.elements[this.next] = element;
-		this.next++;
+		this.next = (this.next + 1) % this.elements.length;
 	}
 
 	public boolean isEmpty() {

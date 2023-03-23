@@ -3,7 +3,6 @@ package es.usantatecla.aX_dispensers.a8_parametrized.a2_generic;
 import es.usantatecla.aX_dispensers.a8_parametrized.a2_generic.utils.Console;
 import es.usantatecla.aX_dispensers.a8_parametrized.a2_generic.utils.Fraction;
 import es.usantatecla.aX_dispensers.a8_parametrized.a2_generic.utils.Interval;
-import es.usantatecla.aX_dispensers.a8_parametrized.a2_generic.utils.Iterator;
 import es.usantatecla.aX_dispensers.a8_parametrized.a2_generic.dispensers.Dispenser;
 import es.usantatecla.aX_dispensers.a8_parametrized.a2_generic.dispensers.DispenserException;
 import es.usantatecla.aX_dispensers.a8_parametrized.a2_generic.dispensers.EmptyDispenserException;
@@ -60,43 +59,45 @@ public class App {
 
 	private static <E> void examplePolymorphic(Dispenser<E> dispenser, E[] in10, E[] in5) {
 		Console.getInstance().writeln("======= Vacío");
-		App.writelnDispenser(dispenser.getIterator());
+		App.writelnDispenser(dispenser.getElements());
 
 		Console.getInstance().writeln("------- Metemos 10");
-		try {
-			for (E element : in10) {
+		for (E element : in10) {
+			try {
 				dispenser.add(element);
+			} catch (FullDispenserException e) {
+				Console.getInstance().writeln("Dispensador lleno, seguimos");
+				e.recover();
 			}
-		} catch (FullDispenserException ex) {
-			Console.getInstance().writeln("Dispensador lleno, seguimos");
 		}
-		App.writelnDispenser(dispenser.getIterator());
+		App.writelnDispenser(dispenser.getElements());
 
 		Console.getInstance().writeln("------- Sacamos 5");
+		for (int i = 0; i < 5; i++) {
 		try {
-			for (int i = 0; i < 5; i++) {
 				dispenser.remove();
+			} catch (EmptyDispenserException ex) {
+				Console.getInstance().writeln("!!! Dispensador vacío, seguimos");
 			}
-		} catch (EmptyDispenserException ex) {
-			Console.getInstance().writeln("!!! Dispensador vacío, seguimos");
 		}
-		App.writelnDispenser(dispenser.getIterator());
+		App.writelnDispenser(dispenser.getElements());
 
 		Console.getInstance().writeln("------- Metemos 5");
-		try {
-			for (E element : in5) {
+		for (E element : in5) {
+			try {
 				dispenser.add(element);
+			} catch (FullDispenserException e) {
+				Console.getInstance().writeln("!!! Dispensador lleno, seguimos");
+				e.recover();
 			}
-		} catch (FullDispenserException ex) {
-			Console.getInstance().writeln("!!! Dispensador lleno, seguimos");
 		}
-		App.writelnDispenser(dispenser.getIterator());
+		App.writelnDispenser(dispenser.getElements());
 	}
 
-	private static <E> void writelnDispenser(Iterator<E> iterator) {
+	private static <E> void writelnDispenser(E[] elements) {
 		int position = 1;
-		while (iterator.hasNext()) {
-			Console.getInstance().writeln(position + ": " + iterator.next());
+		for (E element : elements) {
+			Console.getInstance().writeln(position + ": " + element.toString());
 			position++;
 		}
 	}

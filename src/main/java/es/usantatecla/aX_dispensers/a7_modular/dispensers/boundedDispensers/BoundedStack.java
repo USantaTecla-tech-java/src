@@ -13,7 +13,7 @@ public class BoundedStack extends BoundedDisepenser {
 		super.remove();
 		this.size--;
 		this.next--;
-		return this.elements[next];
+		return this.elements[this.next];
 	}
 
 	public Interval[] getElements() {

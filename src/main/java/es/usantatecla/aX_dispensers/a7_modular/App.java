@@ -26,7 +26,7 @@ public class App {
 
 		Console.getInstance().writeln("------- Metemos 10");
 		for (int i = 0; i < 10; i++) {
-		try {
+			try {
 				dispenser.add(new Interval(-i, i));
 			} catch (FullDispenserException e) {
 				Console.getInstance().writeln("No caben pero seguimos!!!");
@@ -37,7 +37,7 @@ public class App {
 
 		Console.getInstance().writeln("------- Sacamos 5");
 		for (int i = 0; i < 5; i++) {
-		try {
+			try {
 				dispenser.remove();
 			} catch (EmptyDispenserException e) {
 				Console.getInstance().writeln("No hay pero seguimos!!!");
@@ -47,7 +47,7 @@ public class App {
 
 		Console.getInstance().writeln("------- Metemos 3");
 		for (int i = 0; i < 3; i++) {
-		try {
+			try {
 				dispenser.add(new Interval(-100, 100));
 			} catch (FullDispenserException e) {
 				Console.getInstance().writeln("No caben pero seguimos!!!");

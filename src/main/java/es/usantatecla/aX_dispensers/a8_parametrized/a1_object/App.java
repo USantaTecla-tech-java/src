@@ -36,7 +36,7 @@ public class App {
 		App.exampleParametrized(fraction10, fraction5);
 
 		App.exampleParametrized(
-				new Integer[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }, 
+				new Integer[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 },
 				new Integer[] { -2, -1, 0, 1, 2 });
 
 		App.sumFractions(App.getFractionBoundedQueue());
@@ -44,7 +44,7 @@ public class App {
 		try {
 			BoundedQueue boundedQueue = new BoundedQueue(1);
 			// boundedQueue.add(2);
-			boundedQueue.add(new Fraction(1, 2)); 
+			boundedQueue.add(new Fraction(1, 2));
 			int element = (int) boundedQueue.remove();
 			Console.getInstance().writeln(element);
 		} catch (DispenserException e) {
@@ -53,51 +53,54 @@ public class App {
 	}
 
 	private static void exampleParametrized(Object[] in10, Object[] in5) {
-		App.examplePolymorphic(new BoundedQueue(3), in10, in5);
-		App.examplePolymorphic(new BoundedStack(3), in10, in5);
-		App.examplePolymorphic(new UnboundedQueue(), in10, in5);
-		App.examplePolymorphic(new UnboundedStack(), in10, in5);
+		App.example(new BoundedQueue(3), "BoundedQueue", in10, in5);
+		App.example(new BoundedStack(3), "BoundedStack", in10, in5);
+		App.example(new UnboundedQueue(), "UnboundedQueue", in10, in5);
+		App.example(new UnboundedStack(), "UnboundedStack", in10, in5);
 	}
 
-	private static void examplePolymorphic(Dispenser dispenser, Object[] in10, Object[] in5) {
-		Console.getInstance().writeln("======= Vacío");
-		App.writelnDispenser(dispenser.getElements());
+	private static void example(Dispenser dispenser, String title, Object[] in10, Object[] in5) {
+		Console.getInstance().writeln("======= " + title);
+		Console.getInstance().writeln("------- Vacío");
+		App.writeln(dispenser.getElements());
 
 		Console.getInstance().writeln("------- Metemos 10");
-		try {
-			for (Object element : in10) {
-				dispenser.add(element);
+		for (int i = 0; i < 10; i++) {
+			try {
+				dispenser.add(new Interval(-i, i));
+			} catch (FullDispenserException e) {
+				Console.getInstance().writeln("No caben pero seguimos!!!");
+				e.recover();
 			}
-		} catch (FullDispenserException ex) {
-			Console.getInstance().writeln("Dispensador lleno, seguimos");
 		}
-		App.writelnDispenser(dispenser.getElements());
+		App.writeln(dispenser.getElements());
 
 		Console.getInstance().writeln("------- Sacamos 5");
-		try {
-			for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 5; i++) {
+			try {
 				dispenser.remove();
+			} catch (EmptyDispenserException e) {
+				Console.getInstance().writeln("No hay pero seguimos!!!");
 			}
-		} catch (EmptyDispenserException ex) {
-			Console.getInstance().writeln("!!! Dispensador vacío, seguimos");
 		}
-		App.writelnDispenser(dispenser.getElements());
+		App.writeln(dispenser.getElements());
 
-		Console.getInstance().writeln("------- Metemos 5");
-		try {
-			for (Object element : in5) {
-				dispenser.add(element);
+		Console.getInstance().writeln("------- Metemos 3");
+		for (int i = 0; i < 3; i++) {
+			try {
+				dispenser.add(new Interval(-100, 100));
+			} catch (FullDispenserException e) {
+				Console.getInstance().writeln("No caben pero seguimos!!!");
+				e.recover();
 			}
-		} catch (FullDispenserException ex) {
-			Console.getInstance().writeln("!!! Dispensador lleno, seguimos");
 		}
-		App.writelnDispenser(dispenser.getElements());
+		App.writeln(dispenser.getElements());
 	}
 
-	private static void writelnDispenser(Object[] elements) {
+	private static void writeln(Object[] elements) {
 		int position = 1;
-		while (Object object : elements) {
-			Console.getInstance().writeln(position + ": " + object.toString());
+		for (Object element : elements) {
+			Console.getInstance().writeln(position + ": " + element.toString());
 			position++;
 		}
 	}

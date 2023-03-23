@@ -1,6 +1,5 @@
 package es.usantatecla.aX_dispensers.a8_parametrized.a2_generic.dispensers.unboundedDispensers;
 
-import es.usantatecla.aX_dispensers.a8_parametrized.a2_generic.utils.Iterator;
 import es.usantatecla.aX_dispensers.a8_parametrized.a2_generic.utils.Node;
 
 public class UnboundedQueue<E> extends UnboundedDispenser<E> {
@@ -31,8 +30,20 @@ public class UnboundedQueue<E> extends UnboundedDispenser<E> {
 		return element;
 	}
 
-	public Iterator<E> getIterator() {
-		return new UnboundedQueueIterator<E>(exit);
+	public E[] getElements() {
+		int size = 0;
+		Node<E> node = this.exit;
+		while (node != null) {
+			size++;
+			node = node.getPrevious();
+		}
+		E[] elements = (E[]) new Object[size];
+		node = this.exit;
+		for(int position = 0; position < size; position++){
+			elements[position] = node.getElement();
+ 			node = node.getPrevious();
+		}
+		return elements;
 	}
 
 }
