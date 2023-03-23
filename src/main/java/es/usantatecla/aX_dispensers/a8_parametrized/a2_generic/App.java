@@ -44,7 +44,7 @@ public class App {
 			BoundedQueue<Integer> boundedQueue = new BoundedQueue<Integer>(1);
 			boundedQueue.add(2);
 			// boundedQueue.add(new Fraction(1, 2)); No compila!!!
-			int element = (int) boundedQueue.remove();
+			int element = boundedQueue.remove();
 			Console.getInstance().writeln(element);
 		} catch (DispenserException e) {
 			e.printStackTrace();
