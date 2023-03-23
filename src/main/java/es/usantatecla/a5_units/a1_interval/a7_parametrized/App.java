@@ -9,11 +9,18 @@ class App {
             intervals[i] = new Interval<Integer>(-i - 1, i + 1);
         }
         App.scenarioPrametrized(intervals, SIZE);
+
         Interval<Fraction>[] fractions = new Interval[SIZE];
         for (int i = 0; i < fractions.length; i++) {
             fractions[i] = new Interval<Fraction>(new Fraction(-i - 1, i + 1), new Fraction(i + 2, i + 1));
         }
         App.scenarioPrametrized(fractions, SIZE);
+
+        Interval<Integer>[] integers = new Interval[SIZE];
+        for (int i = 0; i < integers.length; i++) {
+            integers[i] = new Interval<Integer>(-i,i);
+        }
+        App.scenarioPrametrized(integers, SIZE);
     }
 
     private static <E> void scenarioPrametrized(Interval<? extends Comparable<E>>[] intervals, final int SIZE) {

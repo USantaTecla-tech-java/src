@@ -32,11 +32,11 @@ public class example {
     //b3.add(new Fraction(3,2)); // Warning!!! y Error!!!
     Console.getInstance().writeln((int) b3.remove());
 
-    //BoundedQueue<Integer>[] a0 = new BoundedQueue<Integer>[3]; Error
+    //BoundedQueue<Integer>[] a0 = new BoundedQueue<Integer>[3]; // Error!!!
     BoundedQueue<Integer>[] a0 = new BoundedQueue[3];
     for(BoundedQueue<Integer> boundedQueue : a0){
       boundedQueue = new BoundedQueue<>(5);
     }
-
   }
+
 }
