@@ -4,7 +4,7 @@ class UnboundedQueue extends UnboundedDispenser {
 
 	private Node exit;
 
-	UnboundedQueue() {
+	public UnboundedQueue() {
 		super();
 		this.exit = null;
 	}

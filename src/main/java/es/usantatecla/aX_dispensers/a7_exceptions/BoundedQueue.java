@@ -33,14 +33,17 @@ class BoundedQueue extends BoundedDisepenser {
 	}
 
 	public void duplicate() {
-		Interval[] news = new Interval[2 * this.elements.length];
-		int i = this.first;
-		for (int j = 0; j < this.size; j++) {
-			news[j] = this.elements[j];
-			i = (i + 1) % this.elements.length;
+		Interval[] elements = this.getElements();
+		this.elements = new Interval[2 * this.elements.length];
+		this.size = 0;
+		this.next = 0;
+		for(Interval interval : elements){
+			try {
+				this.add(interval);
+			} catch (FullDispenserException e) {
+				e.printStackTrace();
+			}
 		}
-		this.elements = news;
-		this.first = 0;
 	}
 
 }

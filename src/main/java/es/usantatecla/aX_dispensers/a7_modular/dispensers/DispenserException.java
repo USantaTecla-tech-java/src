@@ -13,5 +13,4 @@ public class DispenserException extends Exception {
 		this.dispenser = dispenser;
 		this.interval = interval;
 	}
-	
 }

@@ -4,7 +4,7 @@ class UnboundedStack {
 
 	private Node entrance;
 
-	UnboundedStack() {
+	public UnboundedStack() {
 		this.entrance = null;
 	}
 

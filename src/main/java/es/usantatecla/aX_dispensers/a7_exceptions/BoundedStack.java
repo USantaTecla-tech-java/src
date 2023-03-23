@@ -6,14 +6,14 @@ class BoundedStack extends BoundedDisepenser {
 		super(capacity);
 	}
 
-	public Interval remove()  throws EmptyDispenserException {
+	public Interval remove() throws EmptyDispenserException {
 		super.remove();
 		this.size--;
 		this.next--;
 		return this.elements[next];
 	}
 
-	public Interval[] getElements(){
+	public Interval[] getElements() {
 		Interval[] elements = new Interval[this.next];
 		for (int position = 0; position < this.next; position++) {
 			elements[position] = this.elements[this.next - 1 - position];
@@ -22,12 +22,17 @@ class BoundedStack extends BoundedDisepenser {
 	}
 
 	public void duplicate() {
-		Interval[] news = new Interval[2 * this.elements.length];
-		for (int i = 0; i < this.size; i++) {
-			news[i] = this.elements[i];
+		Interval[] elements = this.getElements();
+		this.elements = new Interval[2 * this.elements.length];
+		this.size = 0;
+		this.next = 0;
+		for (int i = elements.length - 1; i >= 0; i--) {
+			try {
+				this.add(elements[i]);
+			} catch (FullDispenserException e) {
+				e.printStackTrace();
+			}
 		}
-		this.elements = news;
-		this.next = this.size;
 	}
 
 }

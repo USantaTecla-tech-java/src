@@ -5,7 +5,7 @@ import es.usantatecla.aX_dispensers.a7_modular.dispensers.EmptyDispenserExceptio
 import es.usantatecla.aX_dispensers.a7_modular.utils.Interval;
 import es.usantatecla.aX_dispensers.a7_modular.utils.Node;
 
-public abstract class UnboundedDispenser implements Dispenser {
+abstract class UnboundedDispenser implements Dispenser {
 
 	protected Node entrance;
 
@@ -13,12 +13,10 @@ public abstract class UnboundedDispenser implements Dispenser {
 		this.entrance = null;
 	}
 
-	public void add(Interval interval) {
-		this.entrance = new Node(null, interval, this.entrance);
-	}
+	public void add(Interval element) {
+		assert element != null;
 
-	public boolean isEmpty() {
-		return this.entrance == null;
+		this.entrance = new Node(null, element, this.entrance);
 	}
 
 	public Interval remove() throws EmptyDispenserException {
@@ -27,4 +25,9 @@ public abstract class UnboundedDispenser implements Dispenser {
 		}
 		return null;
 	}
+
+	public boolean isEmpty() {
+		return this.entrance == null;
+	}
+
 }

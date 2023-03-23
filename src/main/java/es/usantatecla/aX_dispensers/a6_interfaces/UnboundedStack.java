@@ -2,7 +2,7 @@ package es.usantatecla.aX_dispensers.a6_interfaces;
 
 class UnboundedStack extends UnboundedDispenser {
 
-	UnboundedStack() {
+	public UnboundedStack() {
 		super();
 	}
 

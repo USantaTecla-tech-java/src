@@ -1,6 +1,6 @@
 package es.usantatecla.aX_dispensers.a7_exceptions;
 
-public class DispenserException extends Exception {
+class DispenserException extends Exception {
 
   protected Dispenser dispenser;
 	protected Interval interval;

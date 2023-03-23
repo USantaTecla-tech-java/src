@@ -2,7 +2,7 @@ package es.usantatecla.aX_dispensers.a7_exceptions;
 
 class UnboundedStack extends UnboundedDispenser {
 
-	UnboundedStack() {
+	public UnboundedStack() {
 		super();
 	}
 

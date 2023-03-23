@@ -35,6 +35,7 @@ public class App {
 			fraction5[i] = new Fraction(-100, 100);
 		}
 		App.exampleParametrized(fraction10, fraction5);
+
 		App.exampleParametrized(
 				new Integer[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }, 
 				new Integer[] { -2, -1, 0, 1, 2 });
@@ -43,8 +44,8 @@ public class App {
 		App.sumInts(App.getIntBoundedQueue());
 		try {
 			BoundedQueue boundedQueue = new BoundedQueue(1);
-			boundedQueue.add(2);
-			// boundedQueue.add(new Fraction(1, 2));
+			// boundedQueue.add(2);
+			boundedQueue.add(new Fraction(1, 2)); 
 			int element = (int) boundedQueue.remove();
 			Console.getInstance().writeln(element);
 		} catch (DispenserException e) {
@@ -52,7 +53,7 @@ public class App {
 		}
 	}
 
-	private static <E> void exampleParametrized(E[] in10, E[] in5) {
+	private static void exampleParametrized(Object[] in10, Object[] in5) {
 		App.examplePolymorphic(new BoundedQueue(3), in10, in5);
 		App.examplePolymorphic(new BoundedStack(3), in10, in5);
 		App.examplePolymorphic(new UnboundedQueue(), in10, in5);
@@ -103,15 +104,14 @@ public class App {
 	}
 
 	private static BoundedQueue getFractionBoundedQueue() {
+		BoundedQueue boundedQueue = new BoundedQueue(5);
 		try {
-			BoundedQueue boundedQueue = new BoundedQueue(5);
 			boundedQueue.add(new Fraction(1, 2));
 			boundedQueue.add(new Fraction(1, 2));
-			return boundedQueue;
 		} catch (FullDispenserException ex) {
 			ex.printStackTrace();
 		}
-		return null;
+		return boundedQueue;
 	}
 
 	private static Fraction sumFractions(BoundedQueue boundedQueue) {

@@ -2,63 +2,65 @@ package es.usantatecla.aX_dispensers.a7_modular;
 
 import es.usantatecla.aX_dispensers.a7_modular.dispensers.Dispenser;
 import es.usantatecla.aX_dispensers.a7_modular.dispensers.EmptyDispenserException;
-import es.usantatecla.aX_dispensers.a7_modular.dispensers.FullDispenserException;
 import es.usantatecla.aX_dispensers.a7_modular.dispensers.boundedDispensers.BoundedQueue;
 import es.usantatecla.aX_dispensers.a7_modular.dispensers.boundedDispensers.BoundedStack;
+import es.usantatecla.aX_dispensers.a7_modular.dispensers.boundedDispensers.FullDispenserException;
 import es.usantatecla.aX_dispensers.a7_modular.dispensers.unboundedDispensers.UnboundedQueue;
 import es.usantatecla.aX_dispensers.a7_modular.dispensers.unboundedDispensers.UnboundedStack;
 import es.usantatecla.aX_dispensers.a7_modular.utils.Console;
 import es.usantatecla.aX_dispensers.a7_modular.utils.Interval;
-import es.usantatecla.aX_dispensers.a7_modular.utils.Iterator;
 
 public class App {
 
 	public static void main(String[] args) {
-		App.examplePolymorphic(new BoundedQueue(3));
-		App.examplePolymorphic(new BoundedStack(3));
-		App.examplePolymorphic(new UnboundedQueue());
-		App.examplePolymorphic(new UnboundedStack());
+		App.example(new BoundedQueue(3), "BoundedQueue");
+		App.example(new BoundedStack(3), "BoundedStack");
+		App.example(new UnboundedQueue(), "UnboundedQueue");
+		App.example(new UnboundedStack(), "UnboundedStack");
 	}
 
-	private static void examplePolymorphic(Dispenser dispenser) {
-		Console.getInstance().writeln("======= Vacío");
-		App.writelnDispenser(dispenser.getIterator());
+	private static void example(Dispenser dispenser, String title) {
+		Console.getInstance().writeln("======= " + title);
+		Console.getInstance().writeln("------- Vacío");
+		App.writeln(dispenser.getElements());
 
 		Console.getInstance().writeln("------- Metemos 10");
+		for (int i = 0; i < 10; i++) {
 		try {
-			for (int i = 0; i < 10; i++) {
 				dispenser.add(new Interval(-i, i));
+			} catch (FullDispenserException e) {
+				Console.getInstance().writeln("No caben pero seguimos!!!");
+				e.recover();
 			}
-		} catch (FullDispenserException ex){
-			Console.getInstance().writeln("Dispensador lleno, seguimos");
 		}
-		App.writelnDispenser(dispenser.getIterator());
+		App.writeln(dispenser.getElements());
 
 		Console.getInstance().writeln("------- Sacamos 5");
+		for (int i = 0; i < 5; i++) {
 		try {
-			for (int i = 0; i < 5; i++) {
 				dispenser.remove();
+			} catch (EmptyDispenserException e) {
+				Console.getInstance().writeln("No hay pero seguimos!!!");
 			}
-		} catch (EmptyDispenserException ex){
-			Console.getInstance().writeln("!!! Dispensador vacío, seguimos");
 		}
-		App.writelnDispenser(dispenser.getIterator());
+		App.writeln(dispenser.getElements());
 
-		Console.getInstance().writeln("------- Metemos 5");
+		Console.getInstance().writeln("------- Metemos 3");
+		for (int i = 0; i < 3; i++) {
 		try {
-			for (int i = 0; i < 5; i++) {
 				dispenser.add(new Interval(-100, 100));
+			} catch (FullDispenserException e) {
+				Console.getInstance().writeln("No caben pero seguimos!!!");
+				e.recover();
 			}
-		} catch (FullDispenserException ex){
-			Console.getInstance().writeln("!!! Dispensador lleno, seguimos");
 		}
-		App.writelnDispenser(dispenser.getIterator());
+		App.writeln(dispenser.getElements());
 	}
 
-	private static void writelnDispenser(Iterator iterator) {
+	private static void writeln(Interval[] elements) {
 		int position = 1;
-		while (iterator.hasNext()) {
-			Console.getInstance().writeln(position + ": " + iterator.next());
+		for (Interval interval : elements) {
+			Console.getInstance().writeln(position + ": " + interval.toString());
 			position++;
 		}
 	}

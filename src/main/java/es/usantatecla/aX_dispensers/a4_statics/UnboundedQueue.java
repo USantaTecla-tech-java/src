@@ -5,7 +5,7 @@ class UnboundedQueue {
 	private Node entrance;
 	private Node exit;
 
-	UnboundedQueue() {
+	public UnboundedQueue() {
 		this.entrance = null;
 		this.exit = null;
 	}

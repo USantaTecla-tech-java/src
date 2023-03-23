@@ -1,22 +1,20 @@
 package es.usantatecla.aX_dispensers.a7_modular.dispensers.boundedDispensers;
 
 import es.usantatecla.aX_dispensers.a7_modular.dispensers.EmptyDispenserException;
-import es.usantatecla.aX_dispensers.a7_modular.dispensers.FullDispenserException;
 import es.usantatecla.aX_dispensers.a7_modular.utils.Interval;
-import es.usantatecla.aX_dispensers.a7_modular.utils.Iterator;
 
-public class BoundedQueue extends BoundedDispenser {
+public class BoundedQueue extends BoundedDisepenser {
 
 	private int first;
 
-	public BoundedQueue(int size) {
-		super(size);
+	public BoundedQueue(int capacity) {
+		super(capacity);
 		this.first = 0;
 	}
 
-	public void add(Interval interval) throws FullDispenserException {
-		super.add(interval);
-		if (this.next == this.intervals.length) {
+	public void add(Interval element) throws FullDispenserException {
+		super.add(element);
+		if (this.next == this.elements.length) {
 			this.next = 0;
 		}
 	}
@@ -24,25 +22,31 @@ public class BoundedQueue extends BoundedDispenser {
 	public Interval remove() throws EmptyDispenserException {
 		super.remove();
 		this.size--;
-		Interval interval = this.intervals[this.first];
-		this.first = (this.first + 1) % this.intervals.length;
-		return interval;
+		Interval element = this.elements[this.first];
+		this.first = (this.first + 1) % this.elements.length;
+		return element;
 	}
 
-	public Iterator getIterator() {
-		return new BoundedQueueIterator(this.intervals, this.size, this.first);
-	}
-
-	@Override
-	public void duplicate() {
-		Interval[] news = new Interval[2 * this.intervals.length];
-		int i = this.first;
-		for (int j = 0; j < this.size; j++) {
-			news[j] = this.intervals[j];
-			i = (i + 1) % this.intervals.length;
+	public Interval[] getElements() {
+		Interval[] elements = new Interval[this.size];
+		for (int position = 0; position < this.size; position++) {
+			elements[position] = this.elements[(position + this.first) % this.elements.length];
 		}
-		this.intervals = news;
-		this.first = 0;
+		return elements;
+	}
+
+	public void duplicate() {
+		Interval[] elements = this.getElements();
+		this.elements = new Interval[2 * this.elements.length];
+		this.size = 0;
+		this.next = 0;
+		for(Interval interval : elements){
+			try {
+				this.add(interval);
+			} catch (FullDispenserException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 }
