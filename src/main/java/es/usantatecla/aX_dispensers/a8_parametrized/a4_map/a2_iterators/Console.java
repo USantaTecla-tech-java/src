@@ -1,28 +1,25 @@
-package es.usantatecla.aX_dispensers.a8_parametrized.a1_object.utils;
+package es.usantatecla.aX_dispensers.a8_parametrized.a4_map.a2_iterators;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 public class Console {
 
-	private static Console instance;
-
+	private static Console instance ;
+	
 	public static Console getInstance() {
 		if (Console.instance == null){
 			Console.instance = new Console();
 		}
-		return Console.instance;
+		return instance;
 	}
-	
-	private BufferedReader bufferedReader;
-	
+
 	private Console() {
-		bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 	}
+	
+	private BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
 	public String readString(String title) {
-		assert title != null;
-
 		String input = null;
 		this.write(title);
 		try {
@@ -37,8 +34,6 @@ public class Console {
 	}
 
 	public int readInt(String title) {
-		assert title != null;
-		
 		int input = 0;
 		boolean ok = false;
 		do {
@@ -53,8 +48,6 @@ public class Console {
 	}
 
 	public double readDouble(String title) {
-		assert title != null;
-		
 		double input = 0;
 		boolean ok = false;
 		do {
@@ -69,8 +62,6 @@ public class Console {
 	}
 
 	public char readChar(String title) {
-		assert title != null;
-		
 		char charValue = ' ';
 		boolean ok = false;
 		do {
@@ -86,8 +77,6 @@ public class Console {
 	}
 
 	public void write(String string) {
-		assert string != null;
-		
 		System.out.print(string);
 	}
 
@@ -113,10 +102,8 @@ public class Console {
 		this.writeln();
 	}
 
-	public void writeError(String error) {
-		assert error != null;
-
-		this.write("FORMAT ERROR! Enter a " + error + " formatted value.");
+	public void writeError(String format) {
+		this.write("FORMAT ERROR! Enter a " + format + " formatted value.");
 		this.writeln();
 	}
 

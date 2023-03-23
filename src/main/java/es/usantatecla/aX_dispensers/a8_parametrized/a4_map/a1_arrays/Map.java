@@ -1,7 +1,7 @@
-package es.usantatecla.aX_dispensers.a8_parametrized.a4_map;
+package es.usantatecla.aX_dispensers.a8_parametrized.a4_map.a1_arrays;
 
-import es.usantatecla.aX_dispensers.a8_parametrized.a3_iterator.dispensers.unboundedDispensers.UnboundedQueue;
-import es.usantatecla.aX_dispensers.a8_parametrized.a3_iterator.utils.Iterator;
+import es.usantatecla.aX_dispensers.a8_parametrized.a2_generic.dispensers.unboundedDispensers.UnboundedQueue;
+import es.usantatecla.aX_dispensers.a8_parametrized.a2_generic.utils.Iterator;
 
 class Map<Key, Value> {
 

@@ -5,9 +5,11 @@ public class DispenserException extends Exception {
   protected Dispenser dispenser;
 	protected Object element;
 
-	public DispenserException(String message, Dispenser dispenser, Object element) {
+	public DispenserException(String message, Dispenser dispenser,
+			Object element) {
 		super("El dispensador está lleno");
 		this.dispenser = dispenser;
 		this.element = element;
 	}
+	
 }

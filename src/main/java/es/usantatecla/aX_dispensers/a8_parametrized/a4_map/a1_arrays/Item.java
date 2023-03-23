@@ -1,4 +1,4 @@
-package es.usantatecla.aX_dispensers.a8_parametrized.a4_map;
+package es.usantatecla.aX_dispensers.a8_parametrized.a4_map.a1_arrays;
 
 class Item<Clave, Valor> {
 

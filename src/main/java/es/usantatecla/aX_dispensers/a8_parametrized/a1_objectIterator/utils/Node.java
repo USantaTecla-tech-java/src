@@ -12,14 +12,6 @@ public class Node {
 		this.setNext(next);
 	}
 
-	public Node(Object element, Node next) {
-		this(null, element, next);
-	}
-
-	public Node(Node previous, Object element) {
-		this(previous, element, null);
-	}
-
 	public Node getPrevious() {
 		return this.previous;
 	}
@@ -45,5 +37,5 @@ public class Node {
 			this.next.previous = this;
 		}
 	}
-
+	
 }

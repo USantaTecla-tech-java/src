@@ -1,16 +1,17 @@
-package es.usantatecla.aX_dispensers.a8_parametrized.a1_object;
+package es.usantatecla.aX_dispensers.a8_parametrized.a1_objectIterator;
 
-import es.usantatecla.aX_dispensers.a8_parametrized.a1_object.dispensers.Dispenser;
-import es.usantatecla.aX_dispensers.a8_parametrized.a1_object.dispensers.DispenserException;
-import es.usantatecla.aX_dispensers.a8_parametrized.a1_object.dispensers.EmptyDispenserException;
-import es.usantatecla.aX_dispensers.a8_parametrized.a1_object.dispensers.boundedDispensers.BoundedQueue;
-import es.usantatecla.aX_dispensers.a8_parametrized.a1_object.dispensers.boundedDispensers.BoundedStack;
-import es.usantatecla.aX_dispensers.a8_parametrized.a1_object.dispensers.boundedDispensers.FullDispenserException;
-import es.usantatecla.aX_dispensers.a8_parametrized.a1_object.dispensers.unboundedDispensers.UnboundedQueue;
-import es.usantatecla.aX_dispensers.a8_parametrized.a1_object.dispensers.unboundedDispensers.UnboundedStack;
 import es.usantatecla.aX_dispensers.a8_parametrized.a1_object.utils.Console;
 import es.usantatecla.aX_dispensers.a8_parametrized.a1_object.utils.Fraction;
 import es.usantatecla.aX_dispensers.a8_parametrized.a1_object.utils.Interval;
+import es.usantatecla.aX_dispensers.a8_parametrized.a1_object.utils.Iterator;
+import es.usantatecla.aX_dispensers.a8_parametrized.a1_object.dispensers.Dispenser;
+import es.usantatecla.aX_dispensers.a8_parametrized.a1_object.dispensers.DispenserException;
+import es.usantatecla.aX_dispensers.a8_parametrized.a1_object.dispensers.EmptyDispenserException;
+import es.usantatecla.aX_dispensers.a8_parametrized.a1_object.dispensers.FullDispenserException;
+import es.usantatecla.aX_dispensers.a8_parametrized.a1_object.dispensers.boundedDispensers.BoundedQueue;
+import es.usantatecla.aX_dispensers.a8_parametrized.a1_object.dispensers.boundedDispensers.BoundedStack;
+import es.usantatecla.aX_dispensers.a8_parametrized.a1_object.dispensers.unboundedDispensers.UnboundedQueue;
+import es.usantatecla.aX_dispensers.a8_parametrized.a1_object.dispensers.unboundedDispensers.UnboundedStack;
 
 public class App {
 
@@ -61,7 +62,7 @@ public class App {
 
 	private static void examplePolymorphic(Dispenser dispenser, Object[] in10, Object[] in5) {
 		Console.getInstance().writeln("======= Vacío");
-		App.writelnDispenser(dispenser.getElements());
+		App.writelnDispenser(dispenser.getIterator());
 
 		Console.getInstance().writeln("------- Metemos 10");
 		try {
@@ -71,7 +72,7 @@ public class App {
 		} catch (FullDispenserException ex) {
 			Console.getInstance().writeln("Dispensador lleno, seguimos");
 		}
-		App.writelnDispenser(dispenser.getElements());
+		App.writelnDispenser(dispenser.getIterator());
 
 		Console.getInstance().writeln("------- Sacamos 5");
 		try {
@@ -81,7 +82,7 @@ public class App {
 		} catch (EmptyDispenserException ex) {
 			Console.getInstance().writeln("!!! Dispensador vacío, seguimos");
 		}
-		App.writelnDispenser(dispenser.getElements());
+		App.writelnDispenser(dispenser.getIterator());
 
 		Console.getInstance().writeln("------- Metemos 5");
 		try {
@@ -91,13 +92,13 @@ public class App {
 		} catch (FullDispenserException ex) {
 			Console.getInstance().writeln("!!! Dispensador lleno, seguimos");
 		}
-		App.writelnDispenser(dispenser.getElements());
+		App.writelnDispenser(dispenser.getIterator());
 	}
 
-	private static void writelnDispenser(Object[] elements) {
+	private static void writelnDispenser(Iterator iterator) {
 		int position = 1;
-		while (Object object : elements) {
-			Console.getInstance().writeln(position + ": " + object.toString());
+		while (iterator.hasNext()) {
+			Console.getInstance().writeln(position + ": " + iterator.next());
 			position++;
 		}
 	}

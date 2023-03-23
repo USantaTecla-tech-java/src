@@ -6,8 +6,6 @@ public class Interval {
   private final double max;
 
   public Interval(double min, double max) {
-    assert min <= max;
-
       this.min = min;
       this.max = max;
   }
@@ -59,48 +57,48 @@ public class Interval {
   }
 
   public boolean includes(Interval interval) {
-    assert interval != null;
+      assert this != null;
 
       return this.includes(interval.min)
               && this.includes(interval.max);
   }
 
   public boolean isIntersected(Interval interval) {
-    assert interval != null;
+      assert this != null;
 
       return this.includes(interval.min)
               || this.includes(interval.max)
               || interval.includes(this);
   }
 
-  public Interval intersection(Interval interval) {
-    assert interval != null;
+  public Interval intersection(Interval intervalo) {
+      assert this.isIntersected(intervalo);
 
-      if (this.includes(interval)) {
-          return interval.clone();
+      if (this.includes(intervalo)) {
+          return intervalo.clone();
       }
-      if (interval.includes(this)) {
+      if (intervalo.includes(this)) {
           return this.clone();
       }
-      if (this.includes(interval.min)) {
-          return new Interval(interval.min, this.max);
+      if (this.includes(intervalo.min)) {
+          return new Interval(intervalo.min, this.max);
       }
-      return new Interval(this.min, interval.max);
+      return new Interval(this.min, intervalo.max);
   }
 
-  public Interval union(Interval interval) {
-    assert interval != null;
+  public Interval union(Interval intervalo) {
+      assert this.isIntersected(intervalo);
 
-      if (this.includes(interval)) {
+      if (this.includes(intervalo)) {
           return this.clone();
       }
-      if (interval.includes(this)) {
-          return interval.clone();
+      if (intervalo.includes(this)) {
+          return intervalo.clone();
       }
-      if (this.includes(interval.min)) {
-          return new Interval(this.min, interval.max);
+      if (this.includes(intervalo.min)) {
+          return new Interval(this.min, intervalo.max);
       }
-      return new Interval(interval.min, this.max);
+      return new Interval(intervalo.min, this.max);
   }
 
   public Interval shifted(double shiftment) {
@@ -108,6 +106,8 @@ public class Interval {
   }
 
   public Interval[] split(int times) {
+      assert times > 0;
+      
       Interval[] intervals = new Interval[times];
       final double length = this.length() / times;
       intervals[0] = new Interval(this.min, this.min + length);
@@ -115,6 +115,10 @@ public class Interval {
           intervals[i] = intervals[i-1].shifted(length);
       }
       return intervals;
+  }
+
+  public void writeln() {
+      Console.getInstance().writeln(this.toString());
   }
 
   public String toString() {
