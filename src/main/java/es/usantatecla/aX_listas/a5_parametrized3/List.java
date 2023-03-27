@@ -1,4 +1,4 @@
-package es.usantatecla.aX_listas.a5_parametrized2;
+package es.usantatecla.aX_listas.a5_parametrized3;
 
 public class List<E extends Number> {
 
@@ -110,6 +110,20 @@ public class List<E extends Number> {
 			E element = iteradorList.next();
 			this.add(element);
 		}
+	}
+
+	public <T extends Number> List<T> greaters(List<T> list) {
+		List<T> greaters = new List<T>();
+		Iterator<E> iteratorThis = this.iterator();
+		Iterator<T> iteratorList = list.iterator();
+		while (iteratorThis.hasNext() && iteratorList.hasNext()) {
+			E element = iteratorThis.next();
+			T value = iteratorList.next();
+			if (value.doubleValue() > element.doubleValue()) {
+				greaters.add(value);
+			}
+		}
+		return greaters;
 	}
 
 }

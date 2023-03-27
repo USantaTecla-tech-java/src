@@ -1,4 +1,4 @@
-package es.usantatecla.aX_listas.a5_parametrized2;
+package es.usantatecla.aX_listas.a5_parametrized3;
 
 public class App {
     public static void main(String[] args) {
@@ -35,25 +35,14 @@ public class App {
                 numberList + " y " + fractionList + " es ");
         numberList.addAll(fractionList);
         Console.getInstance().writeln(""+numberList);
-        // explanation();
+
+        List<Double> doubleGreaters = integerList.greaters(doubleList);
+        Console.getInstance().writeln("Los elementos de " + doubleList +
+                " mayores que " + integerList + " son " + doubleGreaters);
+
+        List<Integer> integerGreaters = doubleList.greaters(integerList);
+        Console.getInstance().writeln("Los elementos de " + integerList +
+                " mayores que " + doubleList + " son " + integerGreaters);
     }
 
-    private static void explanation() {
-        List<Double> doubleList = new List<Double>();
-        // List<Number> numberList = doubleList; // !!!ERROR
-        // numberList.add(Integer.valueOf(3));
-        Double value = doubleList.get(0);
-
-        // Se podria omitir extends Number
-        List<? extends Number> numberList = doubleList; // CORRECTO
-        // numberList.add(new Double(3)); // !!!ERROR
-        // Number numero = new Double(3);
-        // numberList.add(numero); // !!!ERROR
-        // Double x1 = numberList.get(0); // !!!ERROR
-
-        Number number = numberList.get(0);
-        String string = numberList.toString();
-        numberList.clear(); // CORRECTO
-        string = numberList.toString();
-    }
 }
