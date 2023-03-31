@@ -19,7 +19,9 @@ public class List<E extends Number> {
 	}
 
 	public E get(int position) {
-		Node<E> node = first;
+		assert position < this.size;
+
+		Node<E> node = this.first;
 		for (int i = 0; i < position; i++) {
 			node = node.next();
 		}

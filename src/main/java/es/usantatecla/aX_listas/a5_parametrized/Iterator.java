@@ -13,8 +13,8 @@ public class Iterator<E extends Number> {
 	}
 
 	public E next() {
-		E elemento = current.getElement();
+		E element = current.getElement();
 		current = current.next();
-		return elemento;
+		return element;
 	}
 }
