@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class MultiMap<Key ,Value> {
 
-	private Map<Key, Collection<Value>> maps =
+	private Map<Key, Collection<Value>> map =
 			new HashMap<Key, Collection<Value>>();
 
 	public boolean add(Key key, Value value) {
@@ -17,7 +17,7 @@ public class MultiMap<Key ,Value> {
 		if (collection == null) {
 			collection = new LinkedList<Value>();
 			collection.add(value);
-			maps.put(key, collection);
+			map.put(key, collection);
 			added = true;
 		} else {
 			Value current = null;
@@ -27,7 +27,6 @@ public class MultiMap<Key ,Value> {
 			}
 			if (!value.equals(current)) {
 				collection.add(value);
-				maps.put(key, collection);
 				added = true;
 			}
 		}
@@ -35,7 +34,7 @@ public class MultiMap<Key ,Value> {
 	}
 
 	public Collection<Value> get(Key key) {
-		return this.maps.get(key);
+		return this.map.get(key);
 	}
 
 

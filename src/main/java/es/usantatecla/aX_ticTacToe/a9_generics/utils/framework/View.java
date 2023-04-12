@@ -2,9 +2,9 @@ package es.usantatecla.aX_ticTacToe.a9_generics.utils.framework;
 
 public abstract class View<G extends Game> {
 
-  protected Game game;
+  protected G game;
 
-  public View(Game game){
+  public View(G game){
     this.game = game;
   };
 

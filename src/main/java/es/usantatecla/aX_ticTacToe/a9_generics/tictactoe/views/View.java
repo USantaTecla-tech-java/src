@@ -2,7 +2,8 @@ package es.usantatecla.aX_ticTacToe.a9_generics.tictactoe.views;
 
 import es.usantatecla.aX_ticTacToe.a9_generics.tictactoe.models.Game;
 
-public class View extends es.usantatecla.aX_ticTacToe.a9_generics.utils.framework.View<Game> {
+public class View 
+  extends es.usantatecla.aX_ticTacToe.a9_generics.utils.framework.View<Game> {
 
     private StartView startView;
     private PlayView playView;
