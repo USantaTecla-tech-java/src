@@ -1,4 +1,4 @@
-package es.usantatecla.aX_listas.a2_iterators.a4_extends_protected;
+package es.usantatecla.aX_listas.a2_iterators;
 
 class Interval {
 

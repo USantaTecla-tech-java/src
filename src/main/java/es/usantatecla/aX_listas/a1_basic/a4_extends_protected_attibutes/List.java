@@ -61,17 +61,14 @@ class List {
 		return current.getInterval().equals(interval);
 	}
 
-	public Iterator getIterator() {
-		return new Iterator(this.first);
-	}
-
 	public void writeln() {
-		Iterator iterador = this.getIterator();
-		int posicion = 1;
-		while (iterador.hasNext()) {
-			Console.getInstance().writeln(posicion + ": " +
-					iterador.next().toString());
-			posicion++;
+		if (this.isEmpty()){
+			Console.getInstance().writeln("Lista vacía");
+		}
+		Node current = this.first;
+		while (current!= null) {
+			current.writeln();
+			current = current.getNext();
 		}
 	}
 
