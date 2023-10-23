@@ -37,7 +37,7 @@ class List {
 	}
 
 	public Interval removeFirst() {
-		Interval intervalo = this.first.getInterval();
+		Interval intervalo = this.first;
 		this.first = this.first.getNext();
 		if (this.first == null) {
 			this.last = null;
@@ -48,7 +48,7 @@ class List {
 	}
 
 	public Interval removeLast() {
-		Interval interval = this.last.getInterval();
+		Interval interval = this.last;
 		this.last = this.last.getPrevious();
 		if (this.last == null) {
 			this.first = null;
@@ -63,23 +63,20 @@ class List {
 			return false;
 		Node current = this.first;
 		while (current.getNext() != null &&
-				!current.getInterval().equals(interval)) {
+				!current.equals(interval)) {
 			current = current.getNext();
 		}
-		return current.getInterval().equals(interval);
-	}
-
-	public Iterator getIterator() {
-		return new Iterator(this.first);
+		return current.equals(interval);
 	}
 
 	public void writeln() {
-		Iterator iterador = this.getIterator();
-		int posicion = 1;
-		while (iterador.hasNext()) {
-			Console.getInstance().writeln(posicion + ": " +
-					iterador.next().toString());
-			posicion++;
+		if (this.isEmpty()){
+			Console.getInstance().writeln("Lista vacía");
+		}
+		Node current = this.first;
+		while (current!= null) {
+			current.writeln();
+			current = current.getNext();
 		}
 	}
 

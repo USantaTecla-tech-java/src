@@ -77,18 +77,17 @@ class Interval {
 	}
 
 	public void read() {
-		Console console = new Console();
 		do {
-			this.min = console.readDouble("Introduce el minimo: ");
-			this.max = console.readDouble("Introduce el maximo: ");
+			this.min = Console.getInstance().readDouble("Introduce el minimo: ");
+			this.max = Console.getInstance().readDouble("Introduce el maximo: ");
 			if (this.min > this.max) {
-				console.writeln("El minimo no puede ser mayor que el maximo");
+				Console.getInstance().writeln("El minimo no puede ser mayor que el maximo");
 			}
 		} while (this.min > this.max);
 	}
 	
 	public void writeln(){
-		new Console().writeln(this.toString());
+		Console.getInstance().writeln(this.toString());
 	}
 
 	public String toString() {

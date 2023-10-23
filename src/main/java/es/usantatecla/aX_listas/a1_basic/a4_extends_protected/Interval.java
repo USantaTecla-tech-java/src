@@ -86,6 +86,10 @@ class Interval {
 			}
 		} while (this.min > this.max);
 	}
+	
+	public void writeln(){
+		Console.getInstance().writeln(this.toString());
+	}
 
 	public String toString() {
 		return "[" + this.min + ", " + this.max + "]";

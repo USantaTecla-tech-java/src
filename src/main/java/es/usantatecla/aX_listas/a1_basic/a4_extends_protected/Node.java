@@ -32,9 +32,5 @@ class Node extends Interval {
 			this.next.previous = this;
 		}
 	}
-
-	public Interval getInterval() {
-		return new Interval(this.getMin(), this.getMax());
-	}
 	
 }

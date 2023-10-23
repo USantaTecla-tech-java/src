@@ -6,7 +6,7 @@ class SentinelList extends List {
 		this.insertLast(interval);
 		Node sentinel = this.getLast();
 		Node current = this.getFirst();
-		while (!current.getInterval().equals(interval)) {
+		while (!current.equals(interval)) {
 			current = current.getNext();
 		}
 		this.removeLast();

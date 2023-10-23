@@ -2,14 +2,16 @@ package es.usantatecla.aX_managers.services.a1_classes;
 
 class ServicesContract {
 
-	private String name;
+	private final String name;
 	private final int year;
-	private Interval[] intervals;
+	private final Interval[] intervals;
 	private final Interval PRESET_INTERVAL = new Interval(8.0, 12.0);
 	private final double PRESET_COST_PER_HOUR = 70.0;
 	private final double EXTRAORDINARY_COST_PER_HOUR = 90.0;
 
 	public ServicesContract(String name, int year) {
+		assert name != null && !name.equals("");
+
 		this.name = name;
 		this.year = year;
 		this.intervals = new Interval[new Date(1, 1, year).DAYS_PER_YEAR];

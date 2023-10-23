@@ -16,25 +16,23 @@ class Set extends List {
 
 	public Set union(Set set) {
 		Set union = new Set();
-		Iterator iterator = this.getIterator();
-		while (iterator.hasNext()) {
-			union.insertFirst(iterator.next());
+		
+		Node currentThis = this.getFirst();
+		while (currentThis != null) {
+			union.insertFirst(currentThis);
 		}
-		iterator = set.getIterator();
-		while (iterator.hasNext()) {
-			union.insertFirst(iterator.next());
+		Node currentSet = set.getFirst();
+		while (currentSet != null) {
+			union.insertFirst(currentSet);
 		}
 		return union;
 	}
 
 	public Set intersection(Set set) {
 		Set intersection = new Set();
-		Iterator iterator = this.getIterator();
-		while (iterator.hasNext()) {
-			Interval interval = iterator.next();
-			if (set.includes(interval)) {
-				intersection.insertFirst(interval);
-			}
+		Node currentThis = this.getFirst();
+		while (currentThis != null && set.includes(currentThis)) {
+			intersection.insertFirst(currentThis);
 		}
 		return intersection;
 	}
