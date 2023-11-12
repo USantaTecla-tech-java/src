@@ -1,4 +1,4 @@
-package es.usantatecla.a0_itinerario.a3_basadaObjetos.a2_static;
+package es.usantatecla.a0_itinerario.a3_basadaObjetos.a4_main;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
