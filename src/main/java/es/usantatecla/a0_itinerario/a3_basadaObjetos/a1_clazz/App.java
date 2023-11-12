@@ -20,10 +20,10 @@ class Clazz {
         console.writeln();
         console.writeln("publicInstnaceMethod : publicAtributte: " + this.publicAtributte);
         console.writeln("publicInstnaceMethod : privateAtributte: " + this.privateAtributte);
-        this.privateInstnaceMethod();
+        this.privateInstanceMethod();
     }
 
-    private void privateInstnaceMethod() {
+    private void privateInstanceMethod() {
         Console console = new Console();
         console.writeln();
         console.writeln("privateInstnaceMethod : publicAtributte: " + this.publicAtributte);

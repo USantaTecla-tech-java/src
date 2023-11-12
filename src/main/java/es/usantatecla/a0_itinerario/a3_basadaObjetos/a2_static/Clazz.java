@@ -56,6 +56,19 @@ class Clazz {
         // Console.getInstance().writeln("privateInstnaceMethod : publicAtributte: " + this.publicAtributte);
         // Console.getInstance().writeln("privateInstnaceMethod : privateAtributte: " + this.privateAtributte);
     }
+
+    public static void main(String[] args){
+        Console.getInstance().writeln();
+        Clazz object = new Clazz(0);
+        Console.getInstance().writeln("main.PUBLIC_CONSTANT: " + Clazz.PUBLIC_CONSTANT);
+        Console.getInstance().writeln("main.PRIVATE_CONSTANT: " + Clazz.PRIVATE_CONSTANT);
+        Console.getInstance().writeln("main.publicAtributte: " + object.publicAtributte);
+        Console.getInstance().writeln("main.privateAtributte: " + object.privateAtributte);
+        object.publicInstnaceMethod();
+        object.privateInstnaceMethod();
+        Clazz.publicStaticMethod();
+        Clazz.privateStaticMethod();
+    }
     
 }
 
@@ -73,5 +86,6 @@ class Client {
         Clazz.publicStaticMethod();
         // Clazz.privateStaticMethod();
     }
+
 }
 
