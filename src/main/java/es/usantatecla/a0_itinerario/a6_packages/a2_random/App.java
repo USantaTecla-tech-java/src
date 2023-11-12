@@ -12,8 +12,8 @@ class App {
       Console.instance().writeln(min + random.nextInt(max - min + 1));
     }
     random = new Random(System.currentTimeMillis());
-    random.nextInt();
-    random.nextDouble();
+    Console.instance().writeln(random.nextInt());
+    Console.instance().writeln(random.nextDouble());
   }
 
 }
