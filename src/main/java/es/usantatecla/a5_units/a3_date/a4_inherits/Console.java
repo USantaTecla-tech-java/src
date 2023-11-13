@@ -1,4 +1,4 @@
-package es.usantatecla.a5_units.a3_date.a3_enums;
+package es.usantatecla.a5_units.a3_date.a4_inherits;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

@@ -1,4 +1,4 @@
-package es.usantatecla.a5_units.a3_date.a2_statics;
+package es.usantatecla.a5_units.a3_date.a4_inherits;
 
 class Date {
 

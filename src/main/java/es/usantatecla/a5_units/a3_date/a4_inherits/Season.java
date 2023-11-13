@@ -1,4 +1,4 @@
-package es.usantatecla.a5_units.a3_date.a3_enums;
+package es.usantatecla.a5_units.a3_date.a4_inherits;
 
 enum Season {
   SPRING(Month.MARCH, new String[] { "primavera", "spring" }),

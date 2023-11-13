@@ -5,11 +5,15 @@ class Date {
   private int day;
   private Month month;
   private int year;;
-  public static /* final */ int DAYS_PER_YEAR;
+  private static /* final */ int DAYS_YEAR;
   static {
     for (Month month : Month.values()) {
-      DAYS_PER_YEAR += month.getDays();
+      DAYS_YEAR += month.getMaxLength();
     }
+  }
+
+  public static Date of(int day, Month month, int year) {
+    return new Date(day, month, year);
   }
 
   public Date(int day, Month month, int year) {
@@ -30,53 +34,81 @@ class Date {
     return new Date(this);
   }
 
-  public boolean equals(Date date) {
+  public String getText(Language language) {
+    return language.getText(
+        this.day, this.month.getName(language), this.year);
+  }
+
+  public boolean isEqual(Date date) {
     return this.day == date.day
         && this.month == date.month
         && this.year == date.year;
   }
 
-  public boolean after(Date date) {
+  public boolean isBefore(Date date) {
+    if (this.year < date.year) {
+      return true;
+    }
     if (this.year == date.year) {
-      if (this.month == date.month) {
-        return this.day > date.day;
+      if (this.month.isBefore(date.month)) {
+        return true;
       }
-      return this.month.ordinal() > date.month.ordinal();
+      if (this.month.isEqual(date.month)) {
+        return this.day < date.day;
+      }
     }
-    return this.year > date.year;
+    return false;
   }
 
-  public boolean before(Date date) {
-    return !this.equals(date) && date.after(this);
+  public boolean isAfter(Date date) {
+    return date.isBefore(this) && !date.equals(this);
   }
 
-  public Date next() {
-    if (day < Month.values()[this.month.ordinal()].getDays()) {
-      return new Date(day + 1, month, year);
-    }
-    if (month.ordinal() != Month.values().length) {
-      return new Date(1, month.getNext(), year);
-    }
-    return new Date(1, Month.JANUARY, year + 1);
+  public boolean isBetween(Date firstDate, Date lastDate) {
+      return (firstDate.isBefore(this) || firstDate.isEqual(this))
+          && (this.isBefore(lastDate) || this.isEqual(lastDate));
   }
 
-  public Date next(int days) {
+  public Date plusDay() {
+    if (this.day < this.month.getMaxLength(this.getYear())) {
+      return new Date(this.day + 1, this.month, this.year);
+    }
+    if (this.month.ordinal() != Month.values().length) {
+      return new Date(1, this.month.plusMonth(), this.year);
+    }
+    return new Date(1, Month.JANUARY, this.year + 1);
+  }
+
+  public Date plusDays(int days) {
     Date date = this.clone();
     for (int i = 0; i < days; i++) {
-      date = date.next();
+      date = date.plusDay();
     }
     return date;
   }
 
-  public int daysElapsedYear() {
+  public int getDaysYear() {
     int days = 0;
     for (int i = 0; i < this.month.ordinal(); i++) {
-      days += Month.values()[i].getDays();
+      days += Month.values()[i].getMaxLength();
     }
     return days + this.day - 1;
   }
 
-  public int getDay() {
+  public double getEleapsedPercent() {
+    return this.getDaysYear()
+        / Date.DAYS_YEAR + (Date.isLeap(this.year) ? 1 : 0);
+  }
+
+  public static boolean isLeap(int year) {
+    return year % 4 == 0 && year % 100 != 0 || year % 400 == 0;
+  }
+
+  public boolean isLeap() {
+    return Date.isLeap(this.year);
+  }
+
+  public int getDayMonth() {
     return this.day;
   }
 
@@ -90,6 +122,30 @@ class Date {
 
   public String toString() {
     return this.day + "/" + this.month + "/" + this.year;
+  }
+
+  public static void main(String[] args) {
+    trace(Date.of(17, Month.JUNE, 2018), Date.of(21, Month.MARCH, 2018));
+    
+    trace(Date.of(17, Month.JUNE, 2018), Date.of(17, Month.JUNE, 2020));
+    trace(Date.of(17, Month.JUNE, 2018), Date.of(17, Month.AUGUST, 2018));
+    trace(Date.of(17, Month.JUNE, 2018), Date.of(23, Month.JUNE, 2018));
+    trace(Date.of(17, Month.JUNE, 2018), Date.of(17, Month.JUNE, 2018));
+    trace(Date.of(17, Month.JUNE, 2018), Date.of(3, Month.JUNE, 2018));
+    trace(Date.of(17, Month.JUNE, 2018), Date.of(17, Month.MARCH, 2018));
+    trace(Date.of(17, Month.JUNE, 2018), Date.of(17, Month.JUNE, 2017));
+
+  }
+
+  private static void trace(Date left, Date right) {
+    Language language = Language.SPANISH;
+    Console.instance().writeln(
+        left.getText(language) + " < " + right.getText(language) +
+            " = " + left.isBefore(right) + "\n" +
+            left.getText(language) + " = " + right.getText(language) +
+            " = " + left.isEqual(right) + "\n" +
+            left.getText(language) + " > " + right.getText(language) +
+            " = " + left.isAfter(right) + "\n");
   }
 
 }

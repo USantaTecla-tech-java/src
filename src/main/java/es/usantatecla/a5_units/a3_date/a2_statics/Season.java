@@ -1,10 +1,19 @@
-package es.usantatecla.a5_units.a3_date.a3_enums;
+package es.usantatecla.a5_units.a3_date.a2_statics;
 
-enum Season {
-  SPRING(Month.MARCH, new String[] { "primavera", "spring" }),
-  SUMMER(Month.JUNE, new String[] { "verano", "summer" }),
-  FALL(Month.SEPTEMBER, new String[] { "otoño", "fall" }),
-  WINTER(Month.DECEMBER, new String[] { "invierno", "winter" });
+class Season {
+  public static final Season SPRING = 
+    new Season(Month.MARCH, new String[] { "primavera", "spring" });
+  public static final Season SUMMER = 
+    new Season(Month.JUNE, new String[] { "verano", "summer" });
+  public static final Season FALL = 
+    new Season(Month.SEPTEMBER, new String[] { "otoño", "fall" });
+  public static final Season WINTER = 
+    new Season(Month.DECEMBER, new String[] { "invierno", "winter" });
+
+  public static Season[] values() {
+    return new Season[] {
+      Season.SPRING, Season.SUMMER, Season.FALL, Season.WINTER};
+  }
 
   public static final int FIRST_DAY = 21;
   private Month firstMonth;

@@ -6,7 +6,7 @@ class App {
 
   public static void main(String[] args) {
     LocalDateTime now = LocalDateTime.now();
-    Season season = null;
+    Season season = null; 
     for (Season current: Season.values()) {
       if (current.is(now)) {
         season = current;

@@ -1,21 +1,18 @@
-package es.usantatecla.a5_units.a3_date.a3_enums;
+package es.usantatecla.a0_itinerario.a4_orientadoObjetos.a6_enums.a2_enums;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 class Console {
 
-	private static Console instance = null;
-
+	private static Console instance = new Console();
+	
 	public static Console instance() {
-		if (Console.instance == null) {
-			Console.instance = new Console();
-		}
-		return Console.instance;
+		return instance;
 	}
 
-	private BufferedReader bufferedReader; 
-	
+	private BufferedReader bufferedReader;
+
 	private Console() {
 		this.bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 	}

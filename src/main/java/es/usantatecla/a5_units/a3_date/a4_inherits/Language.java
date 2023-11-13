@@ -1,19 +1,18 @@
-package es.usantatecla.a5_units.a3_date.a3_enums;
+package es.usantatecla.a5_units.a3_date.a4_inherits;
 
 enum Language {
-  SPANISH,
-  ENGLISH;
-
-  public String getText(int day, String month, int year) {
-    switch (this) {
-      case SPANISH:
+  SPANISH{
+      public String getText(int day, String month, int year) {
         return "el " + day + " de " + month + " de " + year;
-      case ENGLISH:
-        return month + " " + day + "th, " + year;
-      default:
-        return "";
     }
-  }
+  },
+  ENGLISH{
+      public String getText(int day, String month, int year) {
+        return month + " " + day + "th, " + year;
+    }
+  };
+
+  public abstract String getText(int day, String month, int year);
 
   public static void main(String[] args){
     for(Language current : Language.values()){

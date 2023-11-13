@@ -10,11 +10,15 @@ class App {
     final String TEXT = "Uno, dos, tres y cuatro.";
     Matcher matcher = words.matcher(TEXT);
     while (matcher.find()) {
-      Console.instance().writeln("\"" + matcher.group() + "\""
-        + "(" + matcher.start() + "-" + matcher.end() + ")");
+      Console.instance().writeln(
+        "\"" + matcher.group() + "\""
+        + "(" + matcher.start() + 
+        "-" + matcher.end() + ")");
     }
-    
-    Pattern separators = Pattern.compile("[\\s,.]+", Pattern.CASE_INSENSITIVE);
-    Console.instance().writeln(separators.matcher(TEXT).replaceAll("\n"));
+    Pattern separators = 
+      Pattern.compile(
+        "[\\s,.]+", Pattern.CASE_INSENSITIVE);
+    Console.instance().writeln(
+      separators.matcher(TEXT).replaceAll("\n"));
   }
 }
