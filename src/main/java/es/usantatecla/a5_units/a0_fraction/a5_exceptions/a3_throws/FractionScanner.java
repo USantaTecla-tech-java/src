@@ -26,4 +26,5 @@ class FractionScanner {
     scanner.close();
     return denominator;
   }
+  
 }

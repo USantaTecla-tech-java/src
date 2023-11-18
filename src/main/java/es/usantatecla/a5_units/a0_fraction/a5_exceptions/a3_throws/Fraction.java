@@ -35,7 +35,7 @@ class Fraction {
 
   public Fraction(String string) throws ArithmeticException, NumberFormatException {
     this(new FractionScanner(string).getNumerator(),
-    new FractionScanner(string).getDenominator());
+        new FractionScanner(string).getDenominator());
   }
 
   public Fraction(int numerator) {

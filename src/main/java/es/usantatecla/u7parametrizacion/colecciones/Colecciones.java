@@ -23,11 +23,11 @@ public class Colecciones {
     
     public static void main(String[] args) {
 	ArrayList<Number> lista = new ArrayList<Number>();
-	lista.add(new Integer(27));
-	lista.add(new Integer(2));
-	lista.add(new Integer(1890));
-	lista.add(new Double(54.43));
-	if (!lista.remove(new Integer(2))){
+	lista.add(Integer.valueOf(27));
+	lista.add(Integer.valueOf(2));
+	lista.add(Integer.valueOf(1890));
+	lista.add(Double.valueOf(54.43));
+	if (!lista.remove(Integer.valueOf(2))){
 	    System.out.println ("Imposible borrar objeto");
 	}
 	Number numero = lista.remove(1);
@@ -46,8 +46,8 @@ public class Colecciones {
 
 	
 	List<Integer> lista2 = new LinkedList<Integer>();
-	lista2.add(new Integer(33));
-	lista2.add(new Integer(44));
+	lista2.add(Integer.valueOf(33));
+	lista2.add(Integer.valueOf(44));
 
 	System.out.println("\nCONTENIDO DEL LINKEDLIST:");
 	Iterator<Integer> it2 = lista2.iterator();
