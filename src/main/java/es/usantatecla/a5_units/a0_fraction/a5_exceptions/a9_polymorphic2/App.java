@@ -8,13 +8,13 @@ public class App {
       Console.getInstance().writeln("Antes");
       new FractionView().writeln(App.createFraction("3/a2"));
       Console.getInstance().writeln("Después");
-    } catch (ArithmeticException ex) {
-      Console.getInstance().writeln("Error aritmetico");
-      ex.printStackTrace();
     } catch (Exception ex) {
       Console.getInstance().writeln("Error");
       ex.printStackTrace();
-    }
+    } // catch (ArithmeticException ex) { Error compilación!!! Excepcion previamente capturada
+      // Console.getInstance().writeln("Error aritmetico");
+      // ex.printStackTrace();
+    // } 
     Console.getInstance().writeln("Fin");
   }
 
