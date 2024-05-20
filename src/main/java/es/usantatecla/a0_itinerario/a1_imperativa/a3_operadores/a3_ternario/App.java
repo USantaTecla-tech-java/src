@@ -7,6 +7,7 @@ class App {
         console.writeln(true ? "si / entonces / segundo / izquierda"
                 : "no / en caso contrario / tercero / derecha "); // si / entonces / segundo / izquierda
         console.writeln(false ? -1 : +1); // 1
-        console.writeln(-5 > 1 ? 1 / 1 : 1 / 0);
+        console.writeln(1 > 0 ? 0 / 1 : 1 / 0);
     }
+
 }
