@@ -10,5 +10,6 @@ class App {
         console.writeln(1-(1-1)); // ¿1 o -1?
         console.writeln(5 * (4+4) * 2); // ¿80 o 28?
         console.writeln((5+4) / (4+2)); // ¿1 u 8?
+        console.writeln((false? true:false) ? false:true);
     }
 }
