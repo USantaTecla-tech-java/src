@@ -2,6 +2,7 @@ package es.usantatecla.aX_menu.a5_package.views.options;
 
 import es.usantatecla.aX_menu.a5_package.models.Model;
 import es.usantatecla.aX_menu.a5_package.utils.Console;
+import es.usantatecla.aX_menu.a5_package.views.menus.ModelOption;
 
 public class FindModelOption extends ModelOption {
 

@@ -1,6 +1,7 @@
 package es.usantatecla.aX_menu.a5_package.views.options;
 
 import es.usantatecla.aX_menu.a5_package.models.Model;
+import es.usantatecla.aX_menu.a5_package.views.menus.ModelOption;
 
 public class RemoveModelOption extends ModelOption {
 

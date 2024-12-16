@@ -9,9 +9,9 @@ class Model {
     public Model() {
         this.strings = new String[Model.MAX];
         this.size = 0;
-        this.add("Ana");
-        this.add("Beatriz");
-        this.add("Carmen");
+        for (String string : new String[] { "Ana", "Beatriz", "Carmen" }) {
+            this.add(string);
+        }
     }
 
     public void add(String string) {
