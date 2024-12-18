@@ -27,7 +27,7 @@ class ModelIterativeMenu extends IterativeMenu<Model> {
             }
 
         });
-        this.add(new Option<Model>("Buscar", this.getTarget()){
+        this.add(new Option<Model>("Buscar", this.getTarget()) {
 
             public void interact() {
                 String string;
@@ -43,7 +43,7 @@ class ModelIterativeMenu extends IterativeMenu<Model> {
             }
 
         });
-        this.add(new Option<Model>("Añadir", this.getTarget()){
+        this.add(new Option<Model>("Añadir", this.getTarget()) {
 
             public void interact() {
                 String string;

@@ -6,7 +6,7 @@ class ModelIterativeMenu extends IterativeMenu<Model> {
         super("Model Iterative Dynamic Menu", model);
     }
 
-    class ListModelOption extends Option<Model> {
+    private class ListModelOption extends Option<Model> {
 
         public ListModelOption(Model model) {
             super("Listar", model);

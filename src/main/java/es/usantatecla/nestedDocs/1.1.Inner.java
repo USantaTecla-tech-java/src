@@ -93,12 +93,6 @@ class AccessOuter {
       int local4 = finalStaticVariableAttribute;
     }
 
-    public void staticMethod() {
-      int local1 = variableAttribute;
-      int local2 = finalAttribute;
-      int local3 = staticVariableAttribute;
-      int local4 = finalStaticVariableAttribute;
-    }
   }
 
   static class StaticClass {
@@ -109,7 +103,7 @@ class AccessOuter {
       int local4 = finalStaticVariableAttribute;
     }
 
-    public void staticMethod() {
+    public static void staticMethod() {
       // int local1 = variableAttribute; Error
       // int local2 = finalAttribute; Error
       int local3 = staticVariableAttribute;

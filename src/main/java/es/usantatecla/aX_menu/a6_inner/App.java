@@ -4,16 +4,16 @@ public class App {
 
   static class PopulatedModel extends Model {
 
-    public PopulatedModel(){
+    public PopulatedModel() {
       super();
       for (String string : new String[] { "Ana", "Beatriz", "Carmen" }) {
         this.add(string);
-    }
+      }
     }
   }
 
   public static void main(String[] args) {
     new ModelIterativeMenu(new PopulatedModel()).interact();
   }
-  
+
 }

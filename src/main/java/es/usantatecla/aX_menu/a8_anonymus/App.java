@@ -6,15 +6,16 @@ public class App {
 
     class PopulatedModel extends Model {
 
-      public PopulatedModel(){
+      public PopulatedModel() {
         super();
         for (String string : new String[] { "Ana", "Beatriz", "Carmen" }) {
           this.add(string);
-      }
+        }
       }
     }
 
     new ModelIterativeMenu(new PopulatedModel()).interact();
+
   }
-  
+
 }

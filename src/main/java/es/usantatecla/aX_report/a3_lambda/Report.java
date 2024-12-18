@@ -39,12 +39,12 @@ class Report<E> {
       numbers[i] = i-new Random().nextInt(5);
     }
 
+    new Report<Integer>(numbers, (Integer element) -> element.intValue()>0).writeln();
     new Report<Integer>(numbers, (Integer element) -> {
-        return element.intValue()>0;
-      }).writeln();
-    new Report<Integer>(numbers, (Integer element) -> {
-        return element.intValue()<0;
-      }).writeln();
+      return element.intValue()>0;
+    }).writeln();
+
+    new Report<Integer>(numbers, (Integer element) -> element.intValue()<0).writeln();
   }
   
   }

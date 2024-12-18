@@ -18,7 +18,7 @@ abstract class Base {
 
 }
 
-class Nominal {
+class Otra {
 
   private Base attribute = new Base() {
 
